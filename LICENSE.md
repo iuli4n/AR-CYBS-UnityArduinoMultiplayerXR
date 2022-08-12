@@ -9,7 +9,7 @@ This project contains multiple libraries each licensed as follows. Any use of th
 Please see [LICENSES.txt](LICENSES.txt) for the actual licenses.
 
 ====
-## OTHER LIBRARIES:
+## OTHER LIBRARIES INCLUDED IN THIS PROJECT:
 
 ### Mixed Reality Toolkit 
 (c) Microsoft Corporation  
