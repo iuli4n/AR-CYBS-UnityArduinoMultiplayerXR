@@ -2,7 +2,7 @@
 (c) 2022 Harvard University  
 Licensed under MIT License (see [LICENSES.txt](LICENSES.txt))  
 
-The majority of this work was created by Iulian Radu while at the Harvard University Graduate School of Education in the Learning, Innovation and Technology Lab, with PI Bertrand Schneider. Other contributors to the source code: Max Cembalest, Tugce Joy, Kyle Lenhart, Max Weinstein, Elliot Lee, Shankar Ravi, Davide Zhang.
+The majority of this work was created by Iulian Radu while at the Harvard University Graduate School of Education in the Learning, Innovation and Technology Lab, with advice from PI Bertrand Schneider. Other contributors to the source code: Max Cembalest, Tugce Joy, Kyle Lenhart, Max Weinstein, Elliot Lee, Shankar Ravi, Davide Zhang.
 
 This project contains multiple libraries each licensed as follows. Any use of third party code included in this software or third party libraries linked the software is subject to the third party licenses pertaining to such third party code.
 
