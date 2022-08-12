@@ -7,7 +7,7 @@ AR CYB Project
 
 (c) 2022 Harvard University
 
-The majority of this work was created by Iulian Radu while at the Harvard University Graduate School of Education in the Learning, Innovation and Technology Lab. Other contributors to the source code: Max Cembalest, Tugce Joy, Kyle Lenhart, Max Weinstein, Elliot Lee, Shankar Ravi, Davide Zhang.
+The majority of this work was created by Iulian Radu while at the Harvard University Graduate School of Education in the Learning, Innovation and Technology Lab, with advice from PI Bertrand Schneider. Other contributors to the source code: Max Cembalest, Tugce Joy, Kyle Lenhart, Max Weinstein, Elliot Lee, Shankar Ravi, Davide Zhang.
 
 MIT License
 
