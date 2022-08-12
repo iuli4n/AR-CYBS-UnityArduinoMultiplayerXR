@@ -1,0 +1,212 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using Photon.Pun;
+
+using Microsoft.MixedReality.Toolkit.UI;
+using Microsoft.MixedReality.Toolkit.UI.BoundsControl;
+using Microsoft.MixedReality.Toolkit.Experimental.UI;
+
+public class SettingsMenuButtonController : MonoBehaviour
+{
+    public SettingsType settingsType;
+    bool pressedToggle;
+    Transform targetTransform;
+    
+    // data channel
+    string channelName;
+
+    // rename tooltip
+    GameObject tooltipRename;
+    GameObject pivot;
+    Text renameTextField;
+    TooltipTextValueController valueController;
+
+    bool renameIsLaunched;
+
+    //move tooltip anchor
+    Vector3 savedAnchorPos;
+    BoxCollider tooltipBoxCollider;
+    GameObject anchor;
+    BoxCollider anchorCollider;
+    BoundsControl anchorBoundsControl;
+    bool isMovingAnchor;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // "Return" and "Escape" keys used to submit or cancel the tooltip changes
+        if (Input.GetKeyDown(KeyCode.Return) && renameIsLaunched)
+        {
+            SubmitRenameTooltip();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && renameIsLaunched)
+        {
+            CancelRenameTooltip();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return) && isMovingAnchor)
+        {
+            pressedToggle = !pressedToggle;
+            DisableMoveTooltip();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && isMovingAnchor)
+        {
+            pressedToggle = !pressedToggle;
+            CancelMoveTooltip();
+            DisableMoveTooltip();
+        }
+    }
+
+    public void SetButtonType(SettingsMenuButton newButtonObj, Transform target)
+    {
+        settingsType = newButtonObj.type;
+        targetTransform = target;
+
+        if (settingsType == SettingsType.DataChannel)
+        {
+            channelName = newButtonObj.text;
+        }
+        else if (settingsType == SettingsType.RenameTooltip)
+        {
+            tooltipRename = targetTransform.Find("TooltipRename").gameObject;
+            renameTextField = targetTransform.Find("TooltipRename/Canvas/MRKeyboardInputField/Text").GetComponent<Text>();
+            pivot = targetTransform.Find("TooltipChild/Pivot").gameObject;
+            valueController = targetTransform.GetComponentsInChildren<TooltipTextValueController>()[0];
+        }
+        else if (settingsType == SettingsType.MoveTooltipAnchor)
+        {
+            tooltipBoxCollider = targetTransform.GetComponent<BoxCollider>();
+            anchor = targetTransform.Find("TooltipChild/Anchor").gameObject;
+            anchorCollider = anchor.GetComponent<BoxCollider>();
+            anchorBoundsControl = anchor.GetComponent<BoundsControl>();
+        }
+    }
+
+    public void DoButtonAction()
+    {
+        pressedToggle = !pressedToggle;
+
+        if (settingsType == SettingsType.Other)
+        {
+            DefaultButtonAction();
+        }
+        else if (settingsType == SettingsType.DataChannel)
+        {
+            ChangeChannel();
+        }
+        else if (settingsType == SettingsType.RenameTooltip)
+        {
+            LaunchRenameTooltip();
+        }
+        else if (settingsType == SettingsType.MoveTooltipAnchor)
+        {
+            MoveTooltipAnchor();
+        }
+    }
+
+    public void DefaultButtonAction()
+    {
+        Debug.Log("button action");
+    }
+
+    public void ChangeChannel()
+    {
+        AtomicDataSwitch targetAtomicDataSwitch = targetTransform.GetComponentsInChildren<AtomicDataSwitch>()[0];
+        targetAtomicDataSwitch.SetCurrentChannel(channelName);
+    }
+
+    public void LaunchRenameTooltip()
+    {
+        //disable the existing tooltip display
+        pivot.SetActive(false);
+
+        //tooltipRename.active = true;
+        tooltipRename.SetActive(true);
+        renameTextField.text = valueController.myModel.Value.ToString();
+        // maybe this will get focus ?
+        targetTransform.Find("TooltipRename/Canvas/MRKeyboardInputField").GetComponent<MRTKUGUIInputField>().selectionFocusPosition = 0;
+
+        // place the tooltip rename field over the existing text display on the tooltip
+        GameObject contentParent = targetTransform.Find("TooltipChild/Pivot/ContentParent").gameObject;
+        tooltipRename.transform.position = new Vector3(contentParent.transform.position.x, contentParent.transform.position.y, contentParent.transform.position.z - .015f);
+        tooltipRename.transform.rotation = contentParent.transform.rotation;
+        tooltipRename.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+
+        // add listeners to rename submit and cancel buttons
+        Interactable submitRenameButtonInteractable = tooltipRename.transform.Find("Buttons").Find("submit1").GetComponent<Interactable>();
+        submitRenameButtonInteractable.OnClick.AddListener(SubmitRenameTooltip);
+        Interactable cancelRenameButtonInteractable = tooltipRename.transform.Find("Buttons").Find("cancel1").GetComponent<Interactable>();
+        cancelRenameButtonInteractable.OnClick.AddListener(CancelRenameTooltip);
+
+        renameIsLaunched = true;
+    }
+
+    void SubmitRenameTooltip()
+    {
+        string text = renameTextField.text;
+        Debug.Log("grabbing typed text " + text);
+
+        // send new value to MVC
+        valueController.SetTooltipValue((text));
+
+        tooltipRename.SetActive(false);
+        pivot.SetActive(true);
+        renameIsLaunched = false;
+    }
+
+    void CancelRenameTooltip()
+    {
+        tooltipRename.SetActive(false);
+        pivot.SetActive(true);
+        renameIsLaunched = false;
+    }
+
+    public void MoveTooltipAnchor()
+    {
+        if (pressedToggle)
+        {          
+            EnableMoveTooltip();
+        }
+        else
+        {
+            DisableMoveTooltip();
+        }
+    }
+
+    void EnableMoveTooltip()
+    {
+        isMovingAnchor = true;
+
+        savedAnchorPos = anchor.transform.position;
+
+        tooltipBoxCollider.enabled = false;
+        anchorCollider.enabled = true;
+        anchorBoundsControl.enabled = true;
+    }
+
+    void DisableMoveTooltip()
+    {
+        isMovingAnchor = false;
+
+        tooltipBoxCollider.enabled = true;
+        anchorCollider.enabled = false;
+        anchorBoundsControl.enabled = false;
+    }
+
+    void CancelMoveTooltip()
+    {
+        anchor.transform.position = savedAnchorPos;
+    }
+}

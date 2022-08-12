@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Harvard/PlayerHololens/DrawingAndPointing/Pointers/GazePointerController.cs.meta
+guid: 41b92fb9d3e9b4c4bbed373cb7d79bb2
+=======
+guid: f6fc880018c3d354186867d28e6e9a86
+>>>>>>> kyle:Assets/Samples/Mixed Reality Toolkit Examples/2.7.2/Demos - HandTracking/Scripts/GestureTester.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

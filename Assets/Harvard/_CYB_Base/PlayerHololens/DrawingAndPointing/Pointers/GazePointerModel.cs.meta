@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Harvard/PlayerHololens/DrawingAndPointing/Pointers/GazePointerModel.cs.meta
+guid: 2d2c9f763ebe19d4086384c5be3a5cdb
+=======
+guid: 142721385ed61f240a621aabeef1b928
+>>>>>>> kyle:Assets/Samples/Mixed Reality Toolkit Examples/2.7.2/Demos - HandTracking/Scripts/GrabTouchExample.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ButtonScript : MonoBehaviour
+{
+    public ObjectManager myObjectManager;
+    public string _name;
+
+    public void Start()
+    {
+        _name = gameObject.name;
+    }
+
+    public void ButtonPress()
+    {
+        // TODO: This should be ExecuteButtonPress
+        myObjectManager.AddButtonPress(_name);
+
+    }
+
+}

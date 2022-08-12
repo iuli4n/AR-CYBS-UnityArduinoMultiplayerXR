@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Harvard/PlayerHololens/DrawingAndPointing/FollowTheFinger.cs.meta
+guid: 4925c7cd70ae2ba4dbd13cb6b6344dd4
+=======
+guid: d21fddcc826f4e144880523b93f121af
+>>>>>>> kyle:Assets/Samples/Mixed Reality Toolkit Examples/2.7.2/Demos - HandTracking/Scripts/DemoTouchButton.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

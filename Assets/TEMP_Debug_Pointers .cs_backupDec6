@@ -1,0 +1,284 @@
+using Microsoft.MixedReality.Toolkit;
+using Microsoft.MixedReality.Toolkit.Input;
+using Microsoft.MixedReality.Toolkit.Teleport;
+using Microsoft.MixedReality.Toolkit.UI.BoundsControl;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TEMP_Debug_Pointers : MonoBehaviour
+{
+    /// <summary>
+    /// Simple class. Keeps track of the current pointer type and draws the proper color pointer tip.
+    /// Also tells the IuliPointer where the tip is and when click happens.
+    /// Also enables/disables editing for drawing mode
+    /// 
+    /// Other classes use this to find out current pointer.
+    /// </summary>
+    /// 
+
+
+    public TEMP_Debug_DemoSequenceTools demoSequence = null;
+
+    public enum PointerType
+    {
+        Default,
+        Create, /*grab move/scale, laser move/scale*/
+        Edit, /*precision move, precision scale*/
+
+        OriginalTool_Drawing,
+        OriginalTool_Point1,
+        OriginalTool_Point2,
+
+
+    }
+    public PointerType currentPointerType;
+
+    public GameObject menuObjects_default;
+    public GameObject menuObjects_editing;
+    public GameObject menuObjects_creating;
+
+
+    public IuliButtonSimulator pointerButtonSimulator = new IuliButtonSimulator();
+    public AtomicDataModelBool pointerClickModel;
+
+    public static TEMP_Debug_Pointers Instance;
+
+    //public IuliPointersMediator pointerMediator;
+
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        Debug.Assert(!Instance, "Should only have one of these objects");
+        Instance = this;
+
+        // find our pointer mediator
+        //ConfigureIuliPointerMediators();
+
+        SwitchPointerTo(PointerType.Default);
+
+    }
+
+    public GameObject tipPoint_forEditing;
+    public GameObject tipPoint_forCreating;
+    public GameObject tipPoint_forDefault;
+
+    public GameObject currentPointerTipPoint;
+
+
+    private void EnableMenuAndTipObjectsForCurrentPointer()
+    {
+
+        if (currentPointerType == PointerType.Edit)
+            currentPointerTipPoint = tipPoint_forEditing;
+
+        if (currentPointerType == PointerType.Create)
+            currentPointerTipPoint = tipPoint_forCreating;
+
+        if (currentPointerType == PointerType.Default)
+            currentPointerTipPoint = tipPoint_forDefault;
+
+
+        menuObjects_default.active = currentPointerType == PointerType.Default;
+        menuObjects_editing.active = currentPointerType == PointerType.Edit;
+        menuObjects_creating.active = currentPointerType == PointerType.Create;
+
+    }
+
+
+    public void SetEditingPointerHead(Color color)
+    {
+        currentPointerTipPoint.GetComponent<Renderer>().material.color = color;
+    }
+
+    float nextUpdatePointers = 0;
+
+    public bool showGUI = false;
+
+    public void SwitchPointerTo(PointerType t)
+    {
+        currentPointerType = t;
+        EnableMenuAndTipObjectsForCurrentPointer();
+
+        if (t == PointerType.OriginalTool_Drawing)
+        {
+            EditingManager.Instance.editingAllowed = false;
+        } else
+        {
+            EditingManager.Instance.editingAllowed = true;
+        }
+    }
+
+    // Update is called once per frame
+    void OnGUI()
+    {
+        if (Time.time > nextUpdatePointers)
+        {
+            nextUpdatePointers = Time.time + 1f;
+
+            foreach (IuliStickPointer p in PointerUtils.GetPointers<IuliStickPointer>())
+            {
+                p.overrideGrabPoint = currentPointerTipPoint;
+            }
+
+            //DisableOtherPointers();
+        }
+
+
+        // Tell the pointer that the mouse has been pushed
+
+        if (pointerButtonSimulator.NowClicked)
+        {
+            foreach (IuliStickPointer p in PointerUtils.GetPointers<IuliStickPointer>())
+            {
+                //Debug.Log("--hack11--");
+                p.HACKEDOnInputDown();
+            }
+        }
+        if (pointerButtonSimulator.NowUnclicked)
+        {
+            foreach (IuliStickPointer p in PointerUtils.GetPointers<IuliStickPointer>())
+            {
+                // TODO:BUG: If the pointer disappears and this happens during that time, the unclick might not be registered ?
+
+                //Debug.Log("--hack22--");
+                p.HACKEDOnInputUp();
+            }
+        }
+
+
+        //if (!showGUI) return;
+
+        //GUILayout.Label("Current mode: " + pointerMediator.currentPointerType);
+
+        /**
+        if (GUILayout.Button("MODE: DEMO"))
+        {
+            SwitchPointerTo(PointerType.Create);
+            demoSequence.BeginSequence();
+        }
+        ***/
+
+
+
+
+
+        return;
+
+        /*
+
+        if (GUILayout.Button("POINTERS OFF"))
+        {
+            UpdatePointers(PointerBehavior.AlwaysOff);
+        }
+        if (GUILayout.Button("POINTERS ON"))
+        { 
+            UpdatePointers(PointerBehavior.Default);
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            foreach (IuliStickPointer p in PointerUtils.GetPointers<IuliStickPointer>())
+            {
+                Debug.Log("--hack1--");
+                p.HACKEDOnInputDown();
+            }
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            foreach (IuliStickPointer p in PointerUtils.GetPointers<IuliStickPointer>())
+            {
+                Debug.Log("--hack2--");
+                p.HACKEDOnInputUp();
+            }
+        }
+        */
+    }
+
+    private void Update()
+    {
+#if UNITY_EDITOR
+        pointerClickModel.Value = Input.GetKey(KeyCode.Return);// Input.GetMouseButton(1);
+#endif
+
+        pointerButtonSimulator.Tick();
+        pointerButtonSimulator.OnButtonChange(pointerClickModel.Value);
+
+    }
+
+}
+
+
+/**
+void ConfigureIuliPointerMediators(IuliPointersMediator.CurrentPointerType pointerType = IuliPointersMediator.CurrentPointerType.Default)
+{
+    IMixedRealityInputSystem inputSystem;
+    if (!MixedRealityServiceRegistry.TryGetService(out inputSystem))
+    {
+        Debug.LogError("Cannot find input system");
+    }
+    int count = 0;
+    foreach (IMixedRealityPointerMediator pm in (inputSystem.FocusProvider as FocusProvider)?.PointerMediators.Values)
+    {
+        if (pm is IuliPointersMediator)
+        {
+            Debug.LogWarning("*** found mediator " + count++ + " " + pm);
+            (pm as IuliPointersMediator).overrideCustomPointerTipWith = editingPoint;
+            (pm as IuliPointersMediator).currentPointerType = pointerType;
+            //if (pointerMediator != null) Debug.LogError("**** Already found another IuliPointersMediator ***");
+            //return (IuliPointersMediator)pm;
+        }
+    }
+    //return null;
+}
+**/
+
+/**
+void ConfigureDefaultMRTKPointers(PointerBehavior beh)
+{
+    PointerUtils.SetPointerBehavior<ShellHandRayPointer>(beh);
+    PointerUtils.SetPointerBehavior<ParabolicTeleportPointer>(beh);
+    PointerUtils.SetPointerBehavior<TouchPointer>(beh);
+    //PointerUtils.SetPointerBehavior<MousePointer>(beh);
+    PointerUtils.SetPointerBehavior<GGVPointer>(beh);
+    //PointerUtils.SetPointerBehavior<PokePointer>(beh);
+    PointerUtils.SetPointerBehavior<SpherePointer>(beh);
+
+}
+
+void DisableOtherPointers()
+{
+    var beh = PointerBehavior.AlwaysOff;
+
+    ConfigureDefaultMRTKPointers(PointerBehavior.AlwaysOff);
+    PointerUtils.SetPointerBehavior<IuliStickPointer>(PointerBehavior.AlwaysOn);
+    //PointerUtils.get
+
+    // TODO: not the right place for this
+
+    //PointerUtils.SetPointerBehavior<IuliStickPointer>(PointerBehavior.AlwaysOn);
+    foreach (IuliStickPointer p in PointerUtils.GetPointers<IuliStickPointer>())
+    {
+        p.overrideGrabPoint = editingPoint;
+    }
+
+}
+void EnableOtherPointers()
+{
+    var beh = PointerBehavior.Default;
+    PointerUtils.SetPointerBehavior<ShellHandRayPointer>(beh);
+    PointerUtils.SetPointerBehavior<ParabolicTeleportPointer>(beh);
+    PointerUtils.SetPointerBehavior<TouchPointer>(beh);
+    //PointerUtils.SetPointerBehavior<MousePointer>(beh);
+    PointerUtils.SetPointerBehavior<GGVPointer>(beh);
+    //PointerUtils.SetPointerBehavior<PokePointer>(beh);
+    PointerUtils.SetPointerBehavior<SpherePointer>(beh);
+
+    PointerUtils.SetPointerBehavior<IuliStickPointer>(PointerBehavior.AlwaysOff);
+}
+
+**/
+
+
