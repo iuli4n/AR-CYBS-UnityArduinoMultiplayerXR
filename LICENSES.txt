@@ -22,7 +22,7 @@ Component:
 Mixed Reality Toolkit
 Downloaded January 2021 from: https://docs.microsoft.com/en-us/windows/mixed-reality/mrtk-unity/
 
-Copyright (c) Microsoft Corporation.
+(c) Microsoft Corporation.
 
 MIT License
 
@@ -35,12 +35,17 @@ THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED
 =======
 Component: 
 Photon Unity Networking
+(c) Exit Games Inc
+
 Licensed under the Unity Asset Store EULA (see LICENSE_UnityAssetStore.txt)
 Downloaded January 2021 from: https://www.photonengine.com/pun
 
 =======
 Component: 
+
 Ardity: Arduino + Unity communication made easy
+(c) Daniel Wilches
+
 Licensed under the Unity Asset Store EULA (see LICENSE_UnityAssetStore.txt)
 Downloaded January 2021 from: https://assetstore.unity.com/
 
