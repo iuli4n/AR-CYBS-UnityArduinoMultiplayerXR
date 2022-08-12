@@ -21,7 +21,7 @@ Downloaded January 2021 from: https://docs.microsoft.com/en-us/windows/mixed-rea
 (c) Exit Games Inc  
 Licensed under the Unity Asset Store EULA (see [LICENSE_UnityAssetStore](LICENSE_UnityAssetStore.txt))
 
-Downloaded January 2021 from: https://www.photonengine.com/pun
+Downloaded January 2021 from: https://assetstore.unity.com/packages/tools/network/pun-2-free-119922
 
 ### Ardity: Arduino + Unity communication made easy
 (c) Daniel Wilches  

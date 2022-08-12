@@ -15,6 +15,13 @@ public class ManualDataChannelsController : MonoBehaviour
     {
         if (isStandalone)
         {
+            if (myModel == null)
+            {
+                Debug.LogError("This ManualDataChannelController is set for standalone - in this case it requires its myModel to point to an AtomicDataSwitch. Attach one to this object and link it to myModel.");
+            }
+
+            SetModel(myModel);
+
             foreach (var g in gameObject.transform.GetComponentsInChildren<ChannelSliderController>())
             {
                 g.AddModel(myModel);
@@ -65,9 +72,11 @@ public class ManualDataChannelsController : MonoBehaviour
     public void SetModel(AtomicDataSwitch model)
     {
         myModel = model;
-        string n = myModel.unityView__CurrentChannel.Substring(1, 1);
-        int n_ = int.Parse(n);
-        myModel.SetCurrentChannel("C" + n);
+        string nn = myModel.unityView__CurrentChannel.Substring(1, 1);
+        int n_ = int.Parse(nn);
+        myModel.SetCurrentChannel("C" + nn);
+
+        channelLabel.SetText("C" + n_);
         ToggleOnDataSwitchChannelButton(n_);
     }
 
