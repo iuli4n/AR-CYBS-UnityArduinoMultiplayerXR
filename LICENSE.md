@@ -12,16 +12,19 @@ Please see [LICENSES.txt](LICENSES.txt) for the actual licenses.
 ## OTHER LIBRARIES:
 
 ### Mixed Reality Toolkit 
+(c) Microsoft Corporation  
 Licensed under MIT License (see [LICENSES.txt](LICENSES.txt))
 
 Downloaded January 2021 from: https://docs.microsoft.com/en-us/windows/mixed-reality/mrtk-unity/
 
 ### Photon Unity Networking
+(c) Exit Games Inc  
 Licensed under the Unity Asset Store EULA (see [LICENSE_UnityAssetStore](LICENSE_UnityAssetStore.txt))
 
 Downloaded January 2021 from: https://www.photonengine.com/pun
 
 ### Ardity: Arduino + Unity communication made easy
+(c) Daniel Wilches  
 Licensed under the Unity Asset Store EULA (see [LICENSE_UnityAssetStore](LICENSE_UnityAssetStore.txt))
 
 Downloaded January 2021 from: https://assetstore.unity.com/
