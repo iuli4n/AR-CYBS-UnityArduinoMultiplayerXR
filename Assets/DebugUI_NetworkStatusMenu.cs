@@ -14,6 +14,11 @@ public class DebugUI_NetworkStatusMenu : MonoBehaviour
     public Material materialGood;
     public Material materialBad;
 
+
+    Vector3 goodPos, goodRot;
+    Vector3 badPos, badRot;
+    Vector3 goodScale, badScale;
+
     public bool debug_dontMove = false;
 
     public void ShowStatusGood(string text)
@@ -22,6 +27,7 @@ public class DebugUI_NetworkStatusMenu : MonoBehaviour
         {
             this.GetComponent<SolverHandler>().AdditionalOffset = goodPos;
             this.GetComponent<SolverHandler>().AdditionalRotation = goodRot;
+            this.transform.localScale = goodScale;
         }
 
         textMesh.text = text;
@@ -33,14 +39,13 @@ public class DebugUI_NetworkStatusMenu : MonoBehaviour
         {
             this.GetComponent<SolverHandler>().AdditionalOffset = badPos;
             this.GetComponent<SolverHandler>().AdditionalRotation = badRot;
+            this.transform.localScale = badScale;
         }
 
         textMesh.text = text;
         backplate.material = materialBad;
     }
 
-    public Vector3 goodPos, goodRot;
-    public Vector3 badPos, badRot;
 
     private void Awake()
     {
@@ -48,6 +53,9 @@ public class DebugUI_NetworkStatusMenu : MonoBehaviour
         goodRot = this.GetComponent<SolverHandler>().AdditionalRotation;
         badPos = Vector3.zero;
         badRot = Vector3.zero;
+
+        goodScale = this.transform.localScale;
+        badScale = goodScale * 3;
 
         Debug.Assert(Instance == null, "Should not have multiple instances of this object!");
         Instance = this;

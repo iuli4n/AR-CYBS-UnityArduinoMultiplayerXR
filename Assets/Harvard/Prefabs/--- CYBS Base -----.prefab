@@ -80,6 +80,7 @@ MonoBehaviour:
   ObjectsMenu: {fileID: 0}
   localPlayerHead: {fileID: 0}
   localPlayerFingerPenTip: {fileID: 0}
+  DEBUG_TEST_MESSAGE: 0
 --- !u!114 &712585541242609736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1040,10 +1041,6 @@ MonoBehaviour:
   materialGood: {fileID: 2100000, guid: ec72a3a105768f746b556a8dfdae61a8, type: 2}
   materialBad: {fileID: 2100000, guid: 68581ab65a54bad45b3d0fbfca7613fe, type: 2}
   debug_dontMove: 1
-  goodPos: {x: 0, y: 0, z: 0}
-  goodRot: {x: 0, y: 0, z: 0}
-  badPos: {x: 0, y: 0, z: 0}
-  badRot: {x: 0, y: 0, z: 0}
 --- !u!114 &3341701061438394186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12107,7 +12104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3341701062795032029}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0032}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3341701061964590326}
@@ -14921,6 +14918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showGUI: 1
+  guiMode_simplified: 1
   pointersManager: {fileID: 3341701063410941047}
   lastEdited: {fileID: 0}
   managedNormalInteractiveObjects: []

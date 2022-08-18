@@ -8,19 +8,21 @@ public class PlayersManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
 {
 	public static PlayersManager Instance;
 
-
-	//public GameObject pcOnlyObjects;
 	public GameObject playerPrefab;
 
-    public GameObject ObjectsMenu;
-
+	// These things get auto populated at runtime
+	public GameObject ObjectsMenu = null;
 	public GameObject localPlayerHead = null;
 	public ActivateTip localPlayerFingerPenTip = null; // set by the player's Debug_Keyboard script
+
+	//public bool DEBUG_TEST_MESSAGE;
 
     private void Awake()
     {
 		Debug.Assert(Instance == null, "Should not have multiple instances of this object!");
 		Instance = this;
+
+		DebugUI_NetworkStatusMenu.Instance.ShowStatusBad("NOT CONNECTED TO NETWORK");
 	}
 
     // Start is called before the first frame update
@@ -31,7 +33,12 @@ public class PlayersManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
     // Update is called once per frame
     void Update()
     {
-        
+		/**
+        if (DEBUG_TEST_MESSAGE)
+        {
+			DebugUI_NetworkStatusMenu.Instance.ShowStatusBad("TEST MESSAGE BAD");
+		}
+		**/
     }
 
     public override void OnConnected()
@@ -77,11 +84,30 @@ public class PlayersManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
 		DebugUI_NetworkStatusMenu.Instance.ShowStatusGood("Connected to Room");
 		Debug.Log("PlayersManager: OnJoinedRoom() called by PUN. Now this client is in a room.");
 
+
+		// First check what's going on in this room:
+		// Are we the first ones ? If yes, we need to be the computer
+
+#if UNITY_EDITOR
 		// === PC ONLY ===
 		// pc is always the master client; enable PC objects (serial port, etc)
-#if UNITY_EDITOR
 		PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
+
+#else
+		// we're not the PC
+		if (PhotonNetwork.PlayerListOthers.Length == 0)
+        {
+			// means we're the only one here; in this case, just abort because this app isn't supposed to run like this
+			DebugUI_NetworkStatusMenu.Instance.ShowStatusBad("ERROR: The PC running Unity needs to be started first before all other users. Please start that first, and restart this app.");
+			return;
+		}
+		// if we got here we're all good
 #endif
+
+
+
+
+
 
 
 		// === SPAWN PLAYER ===
