@@ -558,51 +558,6 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!1 &3218134720366779110
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7177469317993697106}
-  - component: {fileID: 161120064466177701}
-  m_Layer: 0
-  m_Name: ChannelSelectionManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7177469317993697106
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3218134720366779110}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.14853144, y: -0.108829975, z: 0.09186438}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4984946735558527936}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &161120064466177701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3218134720366779110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4b92e48832243341adbb0c2e532fce1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  channelName: {fileID: 3631331351590485240}
-  componentName: {fileID: 3631331351590484101}
 --- !u!1 &3242243836306508663
 GameObject:
   m_ObjectHideFlags: 0
@@ -8682,7 +8637,7 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 161120064466177701}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ChannelSelectionManager, Assembly-CSharp
         m_MethodName: ChannelToggle
         m_Mode: 1
@@ -19128,7 +19083,6 @@ Transform:
   - {fileID: 6554112684138075790}
   - {fileID: 4827954680201687619}
   - {fileID: 3148356887994997494}
-  - {fileID: 7177469317993697106}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

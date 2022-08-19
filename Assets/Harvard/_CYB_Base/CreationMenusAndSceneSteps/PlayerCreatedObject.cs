@@ -16,7 +16,7 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
 
     // TODO / ALSO SEE: PointerInteractionConfigurer because that class should be dealing with the pointer configuration for these objects.
 
-
+    public bool dontMoveToScene = false; // whether this object should be moved into the scene object when the scripts execute
     public bool autoAttachScripts = true; // whether we are attaching scripts
     public bool autoConfigureScripts = true; // whether we are configuring scripts when the object is photon-instantiated
     public bool debug_dontEnableBounds = false;
@@ -75,7 +75,7 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
         }
 
 
-        if (!this.gameObject.GetComponent<AttachToSceneStep>())
+        if (!this.gameObject.GetComponent<AttachToSceneStep>() && !dontMoveToScene)
         {
             this.gameObject.AddComponent<AttachToSceneStep>().enabled = false;
         }
@@ -90,7 +90,10 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
 
         if (!this.gameObject.GetComponent<BoundsControl>())
         {
-            this.gameObject.AddComponent<BoundsControl>();
+            BoundsControl b = this.gameObject.AddComponent<BoundsControl>();
+
+            // if this object already has a box collider, use that to override the bounds controller
+            b.BoundsOverride = this.gameObject.GetComponent<BoxCollider>();
         }
         
 

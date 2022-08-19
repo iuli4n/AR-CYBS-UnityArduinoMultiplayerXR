@@ -8,8 +8,8 @@ public class ChannelsManager : MonoBehaviour
     public static ChannelsManager Instance;
     Dictionary<string, ChannelModelHolder> channelToHolderMap;
 
-    public string TODOREMOVE_currentChannelSelection;
-    public GameObject currentComponent;
+    //public string TODOREMOVE_currentChannelSelection;
+    //public GameObject currentComponent;
 
     // Start is called before the first frame update
     void Awake()
@@ -45,9 +45,11 @@ public class ChannelsManager : MonoBehaviour
         return keys;
     }
 
+    /*
     public void ChannelSwitch(string channelName)
     {
         TODOREMOVE_currentChannelSelection = channelName;
         currentComponent.GetComponent<AtomicDataSwitch>().SetCurrentChannel(TODOREMOVE_currentChannelSelection);
     }
+    */
 }

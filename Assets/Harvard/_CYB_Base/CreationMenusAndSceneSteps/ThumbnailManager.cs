@@ -128,17 +128,17 @@ public class ThumbnailManager : MonoBehaviour
         GetTexturesFromDirectory(di, ref texturesList, ref texturesPathList, true);
 
         textures = texturesList.ToArray();
-        Debug.Log("loaded textures");
-        Debug.Log(textures);
-        Debug.Log("number of textures");
-        Debug.Log(textures.Length);
+        //Debug.Log("loaded textures");
+        //Debug.Log(textures);
+        //Debug.Log("number of textures");
+        //Debug.Log(textures.Length);
         totalNumPages = (textures.Length - 1) / 9 + 1;
         texturespaths = texturesPathList.ToArray();
     }
 
     private void GetTexturesFromDirectory(DirectoryInfo di, ref List<Texture2D>texturesList, ref List<string>texturesPathList, bool recursive)
     {
-        Debug.Log("TM: looking for images in " + di.Name);
+        //Debug.Log("TM: looking for images in " + di.Name);
 
         string[] fileEnds = new string[] { "JPG", "PNG", "TIF", "TIFF", "GIF" };
 
@@ -212,7 +212,7 @@ public class ThumbnailManager : MonoBehaviour
 
                 var tmp = textMeshP.gameObject.GetComponent<TextMeshPro>();
 
-                Debug.Log("Loading image path: " + path);
+                //Debug.Log("Loading image path: " + path);
                 var imageName = path.Substring(path.LastIndexOf("\\")+1);
                 //var imageName = path.Substring(path.IndexOf("\\Textures") + "\\Textures\\".Length);
                 //var imageName2 = path.Substring()

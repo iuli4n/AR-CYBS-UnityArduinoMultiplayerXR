@@ -232,6 +232,76 @@ MonoBehaviour:
   needsNetworkSync2: 0
   actualDataModel: {fileID: 0}
   debug_ActualValue: 0
+--- !u!114 &9305130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9305127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 1
+  m_UseLocal: 1
+--- !u!114 &9305131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9305127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 9305128}
+  - {fileID: 9305130}
+  sceneViewId: 28
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &9305132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9305127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb7c2b94a1e26f4b88e02b032905d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontMoveToScene: 1
+  autoAttachScripts: 1
+  autoConfigureScripts: 1
+  debug_dontEnableBounds: 0
+  isConfigured: 0
+--- !u!65 &9305133
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9305127}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.30900422, y: 1.0756152, z: 0.0050873947}
+  m_Center: {x: 0.044372953, y: -0.03851691, z: 0.028880611}
 --- !u!4 &68451031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5416468272090924953, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
@@ -350,6 +420,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4463546822518946943, guid: b0272b7b5d1651c4a9cfe6733af3b0ca, type: 3}
   m_PrefabInstance: {fileID: 4463546822847425824}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &352632352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3205122808464253842, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+  m_PrefabInstance: {fileID: 5416468272024599886}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &383934834
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,6 +467,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 427a06bd75916bc4e90f00d5d38ac013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &808662530 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3205122808478093159, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+  m_PrefabInstance: {fileID: 5416468272024599886}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c258eabb3917948a8c29359be23a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &859093520
@@ -692,6 +778,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &1814156522 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3205122806402138891, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+  m_PrefabInstance: {fileID: 5416468272024599886}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc5f48af2cffd747a079fe8c632e2c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1907824650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -870,6 +967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb7c2b94a1e26f4b88e02b032905d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontMoveToScene: 1
   autoAttachScripts: 1
   autoConfigureScripts: 1
   debug_dontEnableBounds: 0
@@ -912,6 +1010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb7c2b94a1e26f4b88e02b032905d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontMoveToScene: 1
   autoAttachScripts: 1
   autoConfigureScripts: 1
   debug_dontEnableBounds: 0
@@ -928,6 +1027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb7c2b94a1e26f4b88e02b032905d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontMoveToScene: 1
   autoAttachScripts: 1
   autoConfigureScripts: 1
   debug_dontEnableBounds: 0
@@ -970,6 +1070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb7c2b94a1e26f4b88e02b032905d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontMoveToScene: 0
   autoAttachScripts: 1
   autoConfigureScripts: 1
   debug_dontEnableBounds: 0
@@ -986,6 +1087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb7c2b94a1e26f4b88e02b032905d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontMoveToScene: 0
   autoAttachScripts: 1
   autoConfigureScripts: 1
   debug_dontEnableBounds: 0
@@ -1758,6 +1860,10 @@ PrefabInstance:
       propertyPath: mrtk_playspace
       value: 
       objectReference: {fileID: 1539806097}
+    - target: {fileID: 3341701061438394189, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
+      propertyPath: debug_dontMove
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3341701061463531516, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
       propertyPath: sceneViewId
       value: 3
@@ -4594,6 +4700,42 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 1278890481690022318, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: arduino_ComPort
+      value: COM6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1278890481690022318, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: arduino_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1278890481690022318, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: simchannels_squareChannel
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1278890481690022318, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: simchannels_increasingChannel
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1278890481690022318, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: arduino_channelsToArduino.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1278890481690022318, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: arduino_channelsFromArduino.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1278890481690022318, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: arduino_channelsToArduino.Array.data[0]
+      value: C3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1278890481690022318, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: arduino_channelsFromArduino.Array.data[0]
+      value: C4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1278890481690022318, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: arduino_channelsFromArduino.Array.data[1]
+      value: C5
+      objectReference: {fileID: 0}
     - target: {fileID: 1298230057778780290, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
       propertyPath: sensorModel3
       value: 
@@ -4601,6 +4743,10 @@ PrefabInstance:
     - target: {fileID: 1298230057778780290, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
       propertyPath: sensorModel4
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1298230057778780301, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2295346732559765195, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
       propertyPath: sceneViewId
@@ -4620,11 +4766,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3205122808464253842, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3205122808478093159, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
       propertyPath: channelsToArduino.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3205122808478093159, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
       propertyPath: channelsToArduino.Array.data[0]
@@ -4644,6 +4790,70 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3205122808478093159, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
       propertyPath: channelsFromArduino.Array.data[1]
+      value: C5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332829827409634479, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: simchannelsObj
+      value: 
+      objectReference: {fileID: 6426377638470788547}
+    - target: {fileID: 3332829827409634479, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: arduino_ComPort
+      value: COM6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332829827409634479, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: arduino_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332829827409634479, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: simchannels_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332829827409634479, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: arduinoObj_SerialPort
+      value: 
+      objectReference: {fileID: 352632352}
+    - target: {fileID: 3332829827409634479, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: simchannels_sineChannel
+      value: C3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332829827409634479, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: arduinoObj_SerialManager
+      value: 
+      objectReference: {fileID: 808662530}
+    - target: {fileID: 3332829827409634479, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: simchannels_spikyChannel
+      value: C1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332829827409634479, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: simchannels_squareChannel
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332829827409634479, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: arduinoObj_SerialController
+      value: 
+      objectReference: {fileID: 1814156522}
+    - target: {fileID: 3332829827409634479, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: simchannels_increasingChannel
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332829827409634479, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: arduino_channelsToArduino.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332829827409634479, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: arduino_channelsFromArduino.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332829827409634479, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: arduino_channelsToArduino.Array.data[0]
+      value: C3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332829827409634479, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: arduino_channelsFromArduino.Array.data[0]
+      value: C4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332829827409634479, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: arduino_channelsFromArduino.Array.data[1]
       value: C5
       objectReference: {fileID: 0}
     - target: {fileID: 5416468272090924952, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}

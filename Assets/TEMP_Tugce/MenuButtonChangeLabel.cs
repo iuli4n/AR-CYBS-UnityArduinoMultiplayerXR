@@ -14,7 +14,7 @@ public class MenuButtonChangeLabel : MonoBehaviour
     void Start()
     {
         textMeshP = GetComponent<TextMeshPro>();
-        Debug.Log(textMeshP.text);
+        //Debug.Log(textMeshP.text);
         //textMeshP.text = "Object Name";
 
     }

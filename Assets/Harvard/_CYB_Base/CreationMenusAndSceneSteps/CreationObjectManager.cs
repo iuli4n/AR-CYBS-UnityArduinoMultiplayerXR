@@ -308,7 +308,7 @@ public class CreationObjectManager : MonoBehaviourPun
     {
         buttonPos = startPos;
         newLinePos = startPos;
-        Debug.Log("Thumbnail list size: " + thumbnailList.Count);
+        //Debug.Log("Thumbnail list size: " + thumbnailList.Count);
         thumbnailList[0].transform.position = buttonPos;
         objectList[0].transform.position = buttonPos + Vector3.forward * .05f;
 
