@@ -5,10 +5,12 @@ using UnityEngine;
 public class Debug_GUISwitcher : MonoBehaviour
 {
     // switches between different GUIs
-    
+
+    public DebugUI_CalibrateKinectHL gui_calibration;
     public FileDriveManager gui_files;
     public EditingManager gui_editing;
-    public GameObject simulatedSensors;
+    public SceneStepsManager gui_scenes;
+    ///public GameObject simulatedSensors;
 
     // Start is called before the first frame update
     void Start()
@@ -22,13 +24,13 @@ public class Debug_GUISwitcher : MonoBehaviour
         
     }
 
-    string GBSS(string name, bool enabled)
+    string GUIButtonSelector(string name, bool enabled)
     {
         return (enabled ? "[" : " ") + name + (enabled ? "]" : " ");
     }
-    void GBS(string name, ref bool enabled)
+    void GUIGameobjectButtonSelector(string name, ref bool enabled)
     {
-        string s = GBSS(name, enabled);
+        string s = GUIButtonSelector(name, enabled);
 
         if (GUILayout.Button(s))
         {
@@ -41,12 +43,17 @@ public class Debug_GUISwitcher : MonoBehaviour
         GUILayout.BeginHorizontal();
 
         GUILayout.Label("                                                                        ");
-        GBS("FILES", ref gui_files.debug_gui);
-        GBS("POINT", ref gui_editing.showGUI);
-        if (GUILayout.Button(GBSS("SIM", simulatedSensors.activeInHierarchy)))
+        GUIGameobjectButtonSelector("POINT", ref gui_editing.showGUI);
+        GUIGameobjectButtonSelector("SCENE", ref gui_scenes.showGUI);
+        GUIGameobjectButtonSelector("CALIB", ref gui_calibration.showGUI);
+        GUIGameobjectButtonSelector("FILES", ref gui_files.debug_gui);
+
+        /**
+        if (GUILayout.Button(GUIButtonSelector("SIM", simulatedSensors.activeInHierarchy)))
         {
             simulatedSensors.SetActive(!simulatedSensors.activeInHierarchy);
         }
+        ***/
 
         GUILayout.EndHorizontal();
     }

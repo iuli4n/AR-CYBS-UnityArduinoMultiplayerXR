@@ -328,7 +328,8 @@ public class SceneStepsManager : MonoBehaviour
 
     private void DetachFromCurrentScene()
     {
-        // stop player UI related things (ex: drawings, undo)
+        // This stops the player UI related things (ex: drawings, undo)
+
         // NOTE:TODOMAYBE: ideally this should be done earlier before prefab saving, in case scene disconnection generates other objects that need to be saved
 
         if (PlayersManager.Instance != null && PlayersManager.Instance.localPlayerHead != null)
@@ -336,6 +337,7 @@ public class SceneStepsManager : MonoBehaviour
 
             foreach (DrawingVR d in GameObject.FindObjectsOfType<DrawingVR>())
             {
+                // force stop drawing thigns !
                 d.Local_ReleaseCurrentDrawing();
             }
 
@@ -353,11 +355,17 @@ public class SceneStepsManager : MonoBehaviour
 
     private void ClearLocalObjectsFromScene()
     {
+        // TODO: REMOVE THIS FUNCTION ? There's no more local objects, everything is remote.
+        Debug.LogWarning("TODO: SceneStepsManager.ClearLocalObjectsFromScene: Called but this function isn't needed anymore");
+        return;
+
+
         List<GameObject> gl = new List<GameObject>();
 
         int c = currentSceneRoot.transform.childCount;
         for (int i = 0; i < c; i++)
         {
+
             /*****
             if (currentSceneRoot.transform.GetChild(i).gameObject.name == PREFABNAME_BASELINE)
             {

@@ -147,6 +147,10 @@ public class PlayersManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
 			localPlayerHead.transform.Find("HANDS/HandPivot_R").gameObject.SetActive(false);
 		}
 
+		ExitGames.Client.Photon.Hashtable cp = PhotonNetwork.LocalPlayer.CustomProperties;
+		if (cp == null) cp = new ExitGames.Client.Photon.Hashtable();
+		cp["platform"] = Application.platform;
+		PhotonNetwork.LocalPlayer.SetCustomProperties(cp);
 	}
 
 	public bool IsPlayerReady()

@@ -754,9 +754,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024fb67cbde5999489d3ccc99e3df1fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gui_calibration: {fileID: 3341701061421080404}
   gui_files: {fileID: 3341701061463531489}
   gui_editing: {fileID: 3341701063187587352}
-  simulatedSensors: {fileID: 0}
+  gui_scenes: {fileID: 3341701062983589671}
 --- !u!1 &3341701061421080407
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,6 +817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7835ef8b4d416024c811e9aa73af8a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showGUI: 0
   mrtk_playspace: {fileID: 0}
   hl_fingertip: {fileID: 3341701062927528512}
   virtual_point: {fileID: 0}
@@ -17860,7 +17862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd6710f16a4ace4daf84071b396d732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showGUI: 1
+  showGUI: 0
   DEBUG_DISABLENETWORKSAVE: 0
   DEBUG_STARTINPROJECT: 1
   DEBUG_TRYSAVEONQUIT: 1
@@ -17880,7 +17882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableAutoSave: 1
-  showGUI: 1
+  showGUI: 0
   resourcesRootFolder: Assets/Iulian_Temp/Resources
 --- !u!114 &5018593660364324512
 MonoBehaviour:

@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb7c2b94a1e26f4b88e02b032905d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontMoveToScene: 0
   autoAttachScripts: 1
   autoConfigureScripts: 1
   debug_dontEnableBounds: 0

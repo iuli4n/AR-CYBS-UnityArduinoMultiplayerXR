@@ -69,6 +69,7 @@ MonoBehaviour:
   - RPC_EnableObject
   - RPC_ForPC_FromClientDeleteObject
   - RPC_FinalizeDrawing
+  - RPC_CalibratePlayer
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
