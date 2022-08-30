@@ -1,25 +1,26 @@
 
-# HEAVY
-* > ADD: a way to calibrate HL finger without keyboard
-** Ideally use PC GUI dropdown and RPC
-* > UI: Remove PC UI
-* ADD on HL the state of the current pointer (can be finger color; or just text)
-
 
 
 * Effects Menu
-** >> BUG: Scale centering
+** >> BUG: Scale centering on arrows  [need scale .1 don't move it so far]
+*** scaleY and scaleZ not using scaleYenabled (instead using syA and syB)
+*** scaleY and scaleZ not implemented in both directions ?
+
 ** > BUG: draw effects ? changing drawing color I think causes a crash because can't change other draw effects
 ** Button: put it on the hand, and/or in the main buttons
-** >> GUI quick: "click chart to control channel" remove ?
-** >> Plugins: GUI quick: "plugins GUIs"
+
+///** >> GUI quick: "click chart to control channel" remove ?
+/** [noteasy] Plugins: GUI quick: "plugins GUIs"
 
 
 
+# QUICK TEST
+* > NEEDSTEST: ADD: a way to calibrate HL finger without keyboard. Ideally use PC GUI dropdown and RPC
 
 
 # QUICK
 * > Example arduino scene: Manual Data Channel make it smaller
+* Trash can [will require talking through SSM]
 
 # SOON
 * > TEST: Scenes load/save/next

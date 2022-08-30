@@ -7,20 +7,18 @@ using UnityEngine;
 
 public class FollowTheFinger : MonoBehaviour
 {
-    public bool HACK_USELOCALPOS = false;
+    public bool HACK_USELOCALPOS = false; // if true, will move using our local pos/rot instead of the global
 
-    public Camera cameraForProjectionTest;
-    public bool doingProjectionTest;
-
-    public float extraDistance = 0;
-
-
+    public bool doingProjectionTest;  // if true, will not place on the object, but will raycast through the camera&the object, and the final location will be at whatever collider is hit by the raytrace
+    public Camera cameraForProjectionTest;  // only if doing projection test, needs to know what camera we're firing through
+    
+    public float extraDistance = 0; // when we're attached to hands, this says how far from the joint's forward we are
     public Handedness hand = Handedness.Right;
     public TrackedHandJoint joint = TrackedHandJoint.IndexTip;
 
-    public GameObject overrideFingerObject = null; // if not null will use this
+    public GameObject overrideFingerObject = null; // if not null will use this instead of the hand/joint
 
-    public bool smoothing = false;
+    public bool smoothing = false;  // if yes, we'll lerp
 
     float nextUpdateTime;
     // Start is called before the first frame update

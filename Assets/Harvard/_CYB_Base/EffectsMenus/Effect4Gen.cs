@@ -431,10 +431,12 @@ public class Effect4Gen : MonoBehaviour
             // scaling in only one direction
             float os = override_modelScaleFactor == 0 ? 1 : override_modelScaleFactor;
 
+            // ?? BUG ABOUT SCALING ? here is the previous code
+            /**
             // HACK:HACK: all objects should be a default size 1.1.1 but they actually aren't so we need to do this instead
             Debug.LogWarning("HACK:HACK: effect for scale is adding multiplier because objects aren't scaled at 1.1.1 by default");
             os *= 1/7f;
-
+            **/
 
             pOffsetX = sx / 2f * 1f / os * (myData.sxEnabledA ? 1 : -1);
             
@@ -450,10 +452,12 @@ public class Effect4Gen : MonoBehaviour
             // scaling in only one direction
             float os = override_modelScaleFactor == 0 ? 1 : override_modelScaleFactor;
 
+            // ?? BUG ABOUT SCALING ? here is the previous code
+            /**
             // HACK:HACK: all objects should be a default size 1.1.1 but they actually aren't so we need to do this instead
             Debug.LogWarning("HACK:HACK: effect for scale is adding multiplier because objects aren't scaled at 1.1.1 by default");
             os *= 1 / 7f;
-
+            ***/
 
             pOffsetY = sy / 2f * 1f / os * (myData.syA ? 1 : -1);
 
@@ -469,10 +473,12 @@ public class Effect4Gen : MonoBehaviour
             // scaling in only one direction
             float os = override_modelScaleFactor == 0 ? 1 : override_modelScaleFactor;
 
+            // ?? BUG ABOUT SCALING ? here is the previous code
+            /**
             // HACK:HACK: all objects should be a default size 1.1.1 but they actually aren't so we need to do this instead
             Debug.LogWarning("HACK:HACK: effect for scale is adding multiplier because objects aren't scaled at 1.1.1 by default");
             os *= 1 / 7f;
-
+            ***/
 
             pOffsetZ = sz / 2f * 1f / os * (myData.szA ? 1 : -1);
 
