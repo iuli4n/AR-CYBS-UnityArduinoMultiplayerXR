@@ -107,7 +107,7 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
     private void ConfigureAllScripts()
     {
 
-
+        // we will need an effectsmodel
 
         var e = this.gameObject.GetComponent<Effect4Model>();
         if (e)
@@ -117,6 +117,7 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
 
 
         // set up photon
+
         photonView.OwnershipTransfer = OwnershipOption.Takeover;
         PhotonTransformView ptv = this.gameObject.GetComponent<PhotonTransformView>();
         {
@@ -180,8 +181,13 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
             this.gameObject.GetComponent<AttachToSceneStep>().enabled = true;
         }
 
+        // enable configuration
+
         this.gameObject.GetComponent<NearInteractionGrabbable>().enabled = true;
         this.gameObject.GetComponent<ObjectManipulatorIuli>().enabled = true;
+
+
+        // configure the effects engine so it changes the proper sub object
 
         if ( /*ok to use e4g*/ this.gameObject.GetComponent<Effect4Gen>() && !(TEMP_Debug_DemoSequenceTools.Instance && TEMP_Debug_DemoSequenceTools.Instance.Override_DontEffect4Gen))
         {
@@ -294,7 +300,6 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
         //GameObject newObject = this.gameObject;// PhotonView.Find(newobjectviewid).gameObject;
         // PERF: Not sure if this Find is needed anymore because we are that object
 
-        this.gameObject.name = newObjectName;
         this.gameObject.transform.position = position;
 
         if (localScale.x != Mathf.NegativeInfinity)
@@ -310,7 +315,8 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
         if (mediaType == 0)
         {
             // regular prefab object
-            
+            this.gameObject.name = newObjectName + "_Container";
+
             // Now (this runs on every client) tell the PCP to connect itself to the subobject
 
             //OLDER: string prefabPath = (string)instantiationData[i++];
@@ -322,6 +328,9 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
         if (mediaType == 1)
         {
             // special object: image
+
+            this.gameObject.name = newObjectName;
+
             string imagePath = (string)instantiationData[i++];
 
             this.gameObject.GetComponent<PlayerCreatedImage>().SetAndRefresh(imagePath);
@@ -330,6 +339,9 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
         if (mediaType == 2)
         {
             // special object: raw model
+
+            this.gameObject.name = newObjectName;
+
             string drivePath = (string)instantiationData[i++];
             Vector3 modelOffset = (Vector3)instantiationData[i++];
 
@@ -339,6 +351,10 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
         if (mediaType == 3)
         {
             // special object: line
+
+            this.gameObject.name = newObjectName;
+
+
             Vector3[] positions = (Vector3[])instantiationData[i++];
 
             Debug.Log("Instantiating with drawing line positions: " + positions.Length);
@@ -347,6 +363,8 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
 
         if (mediaType == 99)
         {
+            this.gameObject.name = newObjectName;
+
             // special object without any data
         }
 

@@ -382,6 +382,7 @@ public class SceneStepsManager : MonoBehaviour
     }
     private void PC_ClearNetworkObjectsFromScene(System.Action nextAction, string onlyPrefabsNamed = "")
     {
+        
         List<GameObject> gl = new List<GameObject>();
 
         // PC only
@@ -395,6 +396,7 @@ public class SceneStepsManager : MonoBehaviour
             {
                 o.GetComponent<PhotonView>().RequestOwnership();
                 gl.Add(o);
+
             }
         }
 
@@ -483,7 +485,8 @@ public class SceneStepsManager : MonoBehaviour
     private void RPC_PC_MoveToNextScene()
     {
 #if UNITY_EDITOR
-        if (StudentProjectSceneManager.Instance.CurrentSceneIndex >= StudentProjectSceneManager.Instance.pc_prefabScenes.Length - 1)
+        if (StudentProjectSceneManager.Instance.CurrentSceneIndex >= 
+            StudentProjectSceneManager.Instance.pc_prefabScenes.Length - 1)
         {
             Debug.Log("At last scene; cannot move further.");
             return;
@@ -494,7 +497,8 @@ public class SceneStepsManager : MonoBehaviour
             return;
         }
         PhotonView.Get(this).RPC("RPC_LoadScene", RpcTarget.All, 
-            StudentProjectSceneManager.Instance.CurrentProjectName, StudentProjectSceneManager.Instance.CurrentSceneIndex + 1);
+            StudentProjectSceneManager.Instance.CurrentProjectName, 
+            StudentProjectSceneManager.Instance.CurrentSceneIndex + 1);
 #endif
     }
     [PunRPC]
@@ -550,7 +554,7 @@ public class SceneStepsManager : MonoBehaviour
 
         // Now instantiate the container (it will be linked to the subobject when it instantiates on every client)
         GameObject gg = PhotonNetwork.Instantiate(prefabContainerName, new Vector3(999f, 999f, 999f), tq, 0, 
-            new object[] { newObjectPrefabName+"_Container", ts, tp, 0, photonId});
+            new object[] { newObjectPrefabName, ts, tp, 0, photonId});
 
         return gg;
     }
@@ -613,6 +617,7 @@ public class SceneStepsManager : MonoBehaviour
             {
                 SpawnSavedScenePrefabPart_PCImage(g);
             }
+            else if (g.GetComponent<PlayerCreatedModel>())
             else if (g.GetComponent<PlayerCreatedModel>())
             {
                 SpawnSavedScenePrefabPart_PCModel(g);
@@ -895,7 +900,7 @@ public class SceneStepsManager : MonoBehaviour
 
 
 
-        GUILayout.Space(Screen.height * 0.75f);
+        GUILayout.Space(Screen.height * 0.6f);
 
         if (GUILayout.Button("CLEAR ALL"))
             SceneStepsManager.Instance.Activate_ClearScene();
@@ -910,6 +915,18 @@ public class SceneStepsManager : MonoBehaviour
         if (GUILayout.Button("NEXT >> "))
             SceneStepsManager.Instance.Activate_MoveToNextScene();
 
+
+        if (GUILayout.Button("SAVE TEMP SCENE"))
+            DEBUG_prefabLoadSaveHelper.SaveToPrefab(
+                currentSceneRoot, 
+                StudentProjectSceneManager.Instance.GetTempSceneDiskLocation(),
+                false);
+
+        if (GUILayout.Button("LOAD TEMP SCENE"))
+            PhotonView.Get(this).RPC(
+                "RPC_LoadScene", RpcTarget.All,
+                StudentProjectSceneManager.Instance.CurrentProjectName,
+                StudentProjectSceneManager.Instance.TempSceneIndex);
 
         GUILayout.EndVertical();
 

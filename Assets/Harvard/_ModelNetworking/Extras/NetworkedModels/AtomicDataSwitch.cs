@@ -85,7 +85,7 @@ public class AtomicDataSwitch : AtomicDataModel
 
     private void OnDestroy()
     {
-        Debug.LogWarning("DESTROYING ADS");
+        //Debug.LogWarning("DESTROYING ADS");
 
         if (actualDataModel != null)
             actualDataModel.OnDataUpdated -= OnInternalModelChanged;

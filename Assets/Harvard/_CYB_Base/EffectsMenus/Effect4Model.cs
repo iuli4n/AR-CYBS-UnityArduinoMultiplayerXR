@@ -11,47 +11,39 @@ public class Effect4Model : MonoBehaviourPun, IPunObservable
 
     public List<AEffect4PluginModel> pluginsModels = new List<AEffect4PluginModel>();
 
-    public bool vis_enabled;
-    public bool rx_enabled;
-    public bool ry_enabled;
-    public bool rz_enabled;
+    // flags to enable/disable effects
+
+    public bool vis_enabled; // visualization
+    public bool rx_enabled;  // rotation x
+    public bool ry_enabled;  // rotation y
+    public bool rz_enabled;  // rotation z
     
-    public bool sxEnabledA, sxEnabledB;
+    public bool sxEnabledA, sxEnabledB; // scale x left/right
+    public bool syEnabledA, syEnabledB; // scale y up/down
+    public bool szEnabledA, szEnabledB; // scale z in/out
 
-    public bool sy_enabled;
-    public bool sz_enabled;
 
-    // Visual active effects
+    // Visual active effects config
 
     public float vis_thresh;
     public bool vis_visibleBelow = false;
     public bool vis_visibleAbove = true;
 
-    // Rotation effects
+    // Rotation effects config
 
-    public Vector3 r_base;
+    public Vector3 r_base; // this typically holds the object's original rotation
     public float rx_mult = 1;
-    //public float rx_offset;
-    //public bool rx_continuous = true;
-
     public float ry_mult = 1;
-
     public float rz_mult = 1;
 
 
     // Scale effects
 
-    public Vector3 s_base;
-
+    public Vector3 s_base; // this typically ohlds the object's original scale
     public float sx_mult = 1;
-    
-
     public float sy_mult = 1;
-    public bool syA, syB;
-
     public float sz_mult = 1;
-    public bool szA, szB;
-
+    
     /*
     void Start()
     {
@@ -74,8 +66,6 @@ public class Effect4Model : MonoBehaviourPun, IPunObservable
         // read the data from the stream
         this.OnPhotonSerializeView(stream, new PhotonMessageInfo());
     }
-    ***/
-
 
 
 
@@ -92,7 +82,7 @@ public class Effect4Model : MonoBehaviourPun, IPunObservable
         }
     }
 
-
+    ***/
 
     #region IPunObservable implementation
 
@@ -131,11 +121,11 @@ public class Effect4Model : MonoBehaviourPun, IPunObservable
                 stream.SendNext(sxEnabledA);
                 stream.SendNext(sxEnabledB);
                 stream.SendNext(sx_mult);
-                stream.SendNext(syA);
-                stream.SendNext(syB);
+                stream.SendNext(syEnabledA);
+                stream.SendNext(syEnabledB);
                 stream.SendNext(sy_mult);
-                stream.SendNext(szA);
-                stream.SendNext(szB);
+                stream.SendNext(szEnabledA);
+                stream.SendNext(szEnabledB);
                 stream.SendNext(sz_mult);
 
                 //needsNetworkSync = false;
@@ -180,11 +170,11 @@ public class Effect4Model : MonoBehaviourPun, IPunObservable
             this.sxEnabledA = (bool)stream.ReceiveNext();
             this.sxEnabledB = (bool)stream.ReceiveNext();
             this.sx_mult = (float)stream.ReceiveNext();
-            this.syA = (bool)stream.ReceiveNext();
-            this.syB = (bool)stream.ReceiveNext();
+            this.syEnabledA = (bool)stream.ReceiveNext();
+            this.syEnabledB = (bool)stream.ReceiveNext();
             this.sy_mult = (float)stream.ReceiveNext();
-            this.szA = (bool)stream.ReceiveNext();
-            this.szB = (bool)stream.ReceiveNext();
+            this.szEnabledA = (bool)stream.ReceiveNext();
+            this.szEnabledB = (bool)stream.ReceiveNext();
             this.sz_mult = (float)stream.ReceiveNext();
 
             /*

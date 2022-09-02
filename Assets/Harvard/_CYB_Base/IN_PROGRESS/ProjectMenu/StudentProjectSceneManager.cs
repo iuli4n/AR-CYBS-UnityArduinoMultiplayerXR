@@ -15,9 +15,16 @@ public class StudentProjectSceneManager : MonoBehaviour
     public int CurrentSceneIndex { get; private set; }
     public string CurrentScenePrefabName { get; private set; }
 
+    public int TempSceneIndex { get { return pc_prefabScenes.Length - 1;  } }
+
     public string CurrentScenePrefabLocationFull { get {
-            return resourcesRootFolder + "/" + CONST_studentProjectsFolderName + "/" + CurrentProjectName + "/" + CurrentScenePrefabName + ".prefab";
+            return GetFullPathForScene(CurrentScenePrefabName);
         }
+    }
+
+    private string GetFullPathForScene(string scenePrefabName)
+    {
+        return resourcesRootFolder + "/" + CONST_studentProjectsFolderName + "/" + CurrentProjectName + "/" + scenePrefabName + ".prefab";
     }
     /*
     public string CurrentScenePrefabLocationShort
@@ -108,5 +115,16 @@ public class StudentProjectSceneManager : MonoBehaviour
         CurrentScenePrefabName = prefa.name;
         CurrentScenePrefabFromDisk = prefa;
 #endif
+    }
+
+
+    public string GetTempSceneDiskLocation()
+    {
+        GameObject prefa = pc_prefabScenes[TempSceneIndex];
+        return GetFullPathForScene(prefa.name);
+    }
+    public GameObject GetTempScenePrefab()
+    {
+        return pc_prefabScenes[TempSceneIndex]; ;
     }
 }

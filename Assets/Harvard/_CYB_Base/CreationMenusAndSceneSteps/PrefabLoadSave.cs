@@ -40,6 +40,10 @@ public class PrefabLoadSave : MonoBehaviour
     }
     ***/
 
+
+
+
+
     public void SaveToPrefab(GameObject objectToSave, string localPrefabPath, bool automatic = true)
     {
         if (automatic && disableAutoSave) return;
@@ -82,7 +86,10 @@ public class PrefabLoadSave : MonoBehaviour
                 //pco.GetComponent<BoundsControl>().enabled = true;
             }
 
-            pco.GetComponent<NearInteractionGrabbable>().enabled = false;
+            if (pco.GetComponent<NearInteractionGrabbable>())
+            {
+                pco.GetComponent<NearInteractionGrabbable>().enabled = false;
+            }
         }
 
         /***

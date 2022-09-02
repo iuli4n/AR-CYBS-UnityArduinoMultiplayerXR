@@ -1097,7 +1097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb7c2b94a1e26f4b88e02b032905d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontMoveToScene: 0
+  dontMoveToScene: 1
   autoAttachScripts: 1
   autoConfigureScripts: 1
   debug_dontEnableBounds: 0
@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb7c2b94a1e26f4b88e02b032905d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontMoveToScene: 0
+  dontMoveToScene: 1
   autoAttachScripts: 1
   autoConfigureScripts: 1
   debug_dontEnableBounds: 0
@@ -2055,9 +2055,17 @@ PrefabInstance:
       propertyPath: menuObjects_creating_special
       value: 
       objectReference: {fileID: 1946023337}
+    - target: {fileID: 4235353503620002262, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
+      propertyPath: sceneViewId
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5018593660364324510, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
       propertyPath: sceneViewId
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5018593660364324542, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
+      propertyPath: disableAutoSave
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
@@ -4594,6 +4602,10 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2552842098518339487, guid: b0272b7b5d1651c4a9cfe6733af3b0ca, type: 3}
+      propertyPath: m_Name
+      value: ImageThumbnailManager
+      objectReference: {fileID: 0}
     - target: {fileID: 4463546821841544611, guid: b0272b7b5d1651c4a9cfe6733af3b0ca, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4709,6 +4721,10 @@ PrefabInstance:
     - target: {fileID: 6341160205081872206, guid: b0272b7b5d1651c4a9cfe6733af3b0ca, type: 3}
       propertyPath: sceneViewId
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037013603379750368, guid: b0272b7b5d1651c4a9cfe6733af3b0ca, type: 3}
+      propertyPath: sceneViewId
+      value: 32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0272b7b5d1651c4a9cfe6733af3b0ca, type: 3}

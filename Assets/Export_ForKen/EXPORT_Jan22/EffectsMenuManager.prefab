@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7566750838142855479}
   - component: {fileID: 7566750838142855472}
+  - component: {fileID: 1488128494656813030}
   m_Layer: 0
   m_Name: EffectsMenuManager
   m_TagString: Untagged
@@ -50,6 +51,28 @@ MonoBehaviour:
   effectsMenuPositionOffset: {x: -0.25, y: 0, z: -0.25}
   effectsButtonPositionOffset: {x: 0, y: 0, z: -0.3}
   useThisStaticPosition: {fileID: 7566750838829416110}
+--- !u!114 &1488128494656813030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7566750838142855473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 1
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7566750838829416110
 GameObject:
   m_ObjectHideFlags: 0

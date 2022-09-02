@@ -53,6 +53,8 @@ public class EffectsMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {     
+        // TODO: PERFORMANCE: This should be a listener on the EditingManager whenever the last edited item changes
+
         if (EditingManager.Instance.GetLastEdited() != null)
         {
             GameObject t = EditingManager.Instance.GetLastEdited();
@@ -99,39 +101,47 @@ public class EffectsMenu : MonoBehaviour
 
     public void ToggleEffectsMenu()
     {
-        // get most recently touched object;
-
         if (!showingMenu)
         {
-            showingMenu = true;
-            Vector3 effectsMenuPosition;
-            
-            if (useThisStaticPosition)
-                effectsMenuPosition  = useThisStaticPosition.transform.position;
-            else
-                effectsMenuPosition = targetTransform.position + effectsMenuPositionOffset;
-            
-            menu = Instantiate(effectsMenuprefab, effectsMenuPosition, Quaternion.identity);
-
-            // place menu to face user
-            menu.transform.LookAt(Camera.main.transform);
-            menuController = menu.transform.GetComponent<EffectsMenuController>();
-            menuController.SetTarget(targetTransform);
+            // We will OPEN the menu
+            PhotonView.Get(this).RPC("RPC_OpenMenu", RpcTarget.AllViaServer);
         }
         else
         {
-            foreach (AtomicDataSwitch s in menuController.GetDataSwitches())
-            {
-                s.OnDataUpdated -= menuController.RefreshVisTabDataSwitchValues;
-            }
-            Destroy(menu);
-            Destroy(title);
-            
-            showingMenu = false;
+            // we will CLOSE the menu
+            PhotonView.Get(this).RPC("RPC_CloseMenu", RpcTarget.AllViaServer);
         }
     }
 
-    //Iulian will make function to notify when current target transform's model changes
+    [PunRPC] private void RPC_OpenMenu()
+    {
+        showingMenu = true;
+        Vector3 effectsMenuPosition;
+
+        if (useThisStaticPosition)
+            effectsMenuPosition = useThisStaticPosition.transform.position;
+        else
+            effectsMenuPosition = targetTransform.position + effectsMenuPositionOffset;
+
+        menu = Instantiate(effectsMenuprefab, effectsMenuPosition, Quaternion.identity);
+
+        // place menu to face user
+        menu.transform.LookAt(Camera.main.transform);
+        menuController = menu.transform.GetComponent<EffectsMenuController>();
+        menuController.SetTarget(targetTransform);
+    }
+
+    [PunRPC] private void RPC_CloseMenu()
+    {
+        foreach (AtomicDataSwitch s in menuController.GetDataSwitches())
+        {
+            s.OnDataUpdated -= menuController.RefreshVisTabDataSwitchValues;
+        }
+        Destroy(menu);
+        Destroy(title);
+
+        showingMenu = false;
+    }
 
     public void RefreshMenuWhenTargetModelChanges()
     {

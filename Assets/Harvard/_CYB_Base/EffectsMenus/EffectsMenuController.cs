@@ -291,8 +291,8 @@ public class EffectsMenuController : MonoBehaviour
             LoadModelEffectValue("YRotate", ref effectsModel.ry_enabled, ref effectsModel.rx_mult);
             LoadModelEffectValue("ZRotate", ref effectsModel.rz_enabled, ref effectsModel.rx_mult);
             LoadModelEffectValue("XScaleLeft", "XScaleRight", ref effectsModel.sxEnabledA, ref effectsModel.sxEnabledB, ref effectsModel.sx_mult);
-            LoadModelEffectValue("YScaleUp", "YScaleDown", ref effectsModel.syA, ref effectsModel.syB, ref effectsModel.sy_mult);
-            LoadModelEffectValue("ZScaleLeft", "ZScaleRight", ref effectsModel.szA, ref effectsModel.szB, ref effectsModel.sz_mult);
+            LoadModelEffectValue("YScaleUp", "YScaleDown", ref effectsModel.syEnabledA, ref effectsModel.syEnabledB, ref effectsModel.sy_mult);
+            LoadModelEffectValue("ZScaleLeft", "ZScaleRight", ref effectsModel.szEnabledA, ref effectsModel.szEnabledB, ref effectsModel.sz_mult);
             #endregion
 
             #region setup vis tab
@@ -465,10 +465,10 @@ public class EffectsMenuController : MonoBehaviour
     public void ToggleZRotate() { ToggleButton("ZRotate", ref effectsModel.rz_enabled); }
     public void ToggleXScaleLeft() { ToggleButton("XScaleLeft", ref effectsModel.sxEnabledA); }
     public void ToggleXScaleRight() { ToggleButton("XScaleRight", ref effectsModel.sxEnabledB); }
-    public void ToggleYScaleUp() { ToggleButton("YScaleUp", ref effectsModel.syA); }
-    public void ToggleYScaleDown() { ToggleButton("YScaleDown", ref effectsModel.syB); }
-    public void ToggleZScaleLeft() { ToggleButton("ZScaleLeft", ref effectsModel.szA); }
-    public void ToggleZScaleRight() { ToggleButton("ZScaleRight", ref effectsModel.szB); }
+    public void ToggleYScaleUp() { ToggleButton("YScaleUp", ref effectsModel.syEnabledA); }
+    public void ToggleYScaleDown() { ToggleButton("YScaleDown", ref effectsModel.syEnabledB); }
+    public void ToggleZScaleLeft() { ToggleButton("ZScaleLeft", ref effectsModel.szEnabledA); }
+    public void ToggleZScaleRight() { ToggleButton("ZScaleRight", ref effectsModel.szEnabledB); }
     
     public void ToggleVisibility()
     {

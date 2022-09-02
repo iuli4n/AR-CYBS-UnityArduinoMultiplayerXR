@@ -396,27 +396,11 @@ public class Effect4Gen : MonoBehaviour
         //if (!(myData.sx_enabled || myData.sy_enabled || myData.sz_enabled)) 
         //    return;
 
-        // TEMPORARY
-        //bool myDatasxEnabledA = myData.sxEnabledA || myData.sxEnabledB || myData.sx_enabled;
-        //bool myDatasxEnabledB = myData.sxEnabledA || myData.sxEnabledB || myData.sx_enabled;
+        float sx = !effectsDisabled && (myData.sxEnabledA || myData.sxEnabledB) ? myData.sx_mult * modelValue / 1000f : 1f;
+        float sy = !effectsDisabled && (myData.syEnabledA || myData.syEnabledB) ? myData.sy_mult * modelValue / 1000f : 1f;
+        float sz = !effectsDisabled && (myData.szEnabledA || myData.szEnabledB) ? myData.sz_mult * modelValue / 1000f : 1f;
+        
 
-        float sx = !effectsDisabled && (myData.sxEnabledA || myData.sxEnabledB) ? myData.sx_mult * modelValue / 100f : 1f;
-        float sy = !effectsDisabled && (myData.syA || myData.syB) ? myData.sy_mult * modelValue / 100f : 1f;
-        float sz = !effectsDisabled && (myData.szA || myData.szB) ? myData.sz_mult * modelValue / 100f : 1f;
-        //float sy = !effectsDisabled && myData.sy_enabled ? myData.sy_mult * modelValue / 100f : 1f;
-        //float sz = !effectsDisabled && myData.sz_enabled ? myData.sz_mult * modelValue / 100f : 1f;
-
-        /**
-        BoxCollider box = this.GetComponent<BoxCollider>();
-        Debug.Log("box: " + box);
-        if (box != null)
-        {
-            Vector3 size = box.size;
-
-            Debug.Log("-----"+ size);
-
-        }
-        **/
 
         if (override_modelScaleFactor != 0)
         {
@@ -447,7 +431,7 @@ public class Effect4Gen : MonoBehaviour
 
         float pOffsetY = 0;
 
-        if (override_effectedModel && (myData.syA ^ myData.syB)) // !!! XOR !!!
+        if (override_effectedModel && (myData.syEnabledA ^ myData.syEnabledB)) // !!! XOR !!!
         {
             // scaling in only one direction
             float os = override_modelScaleFactor == 0 ? 1 : override_modelScaleFactor;
@@ -459,7 +443,7 @@ public class Effect4Gen : MonoBehaviour
             os *= 1 / 7f;
             ***/
 
-            pOffsetY = sy / 2f * 1f / os * (myData.syA ? 1 : -1);
+            pOffsetY = sy / 2f * 1f / os * (myData.syEnabledA ? 1 : -1);
 
             ///was: (override_effectedModel ? override_effectedModel : this.gameObject).transform.localPosition = new Vector3(pOffsetX, 0, 0);
 
@@ -468,7 +452,7 @@ public class Effect4Gen : MonoBehaviour
 
         float pOffsetZ = 0;
 
-        if (override_effectedModel && (myData.szA ^ myData.szB)) // !!! XOR !!!
+        if (override_effectedModel && (myData.szEnabledA ^ myData.szEnabledB)) // !!! XOR !!!
         {
             // scaling in only one direction
             float os = override_modelScaleFactor == 0 ? 1 : override_modelScaleFactor;
@@ -480,7 +464,7 @@ public class Effect4Gen : MonoBehaviour
             os *= 1 / 7f;
             ***/
 
-            pOffsetZ = sz / 2f * 1f / os * (myData.szA ? 1 : -1);
+            pOffsetZ = sz / 2f * 1f / os * (myData.szEnabledA ? 1 : -1);
 
             
 

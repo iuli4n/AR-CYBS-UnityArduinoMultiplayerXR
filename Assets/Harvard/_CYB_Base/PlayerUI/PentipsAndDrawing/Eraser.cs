@@ -23,8 +23,8 @@ public class Eraser : PenScript
         }
         */
 
-        Debug.Log("Eraser collided with " + other.name);
-
+        Debug.LogError("Eraser pen tip is not supported anymore. Use TrashScript. Collided with " + other.name);
+        return;
 
         if (other.GetComponent<PlayerCreatedObject>())
         {
