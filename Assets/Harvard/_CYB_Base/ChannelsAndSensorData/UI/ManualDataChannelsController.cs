@@ -17,7 +17,9 @@ public class ManualDataChannelsController : MonoBehaviour
         {
             if (myModel == null)
             {
-                Debug.LogError("This ManualDataChannelController is set for standalone - in this case it requires its myModel to point to an AtomicDataSwitch. Attach one to this object and link it to myModel.");
+                // doesn't have a model switch, so we're going to set our own default 
+                myModel = this.gameObject.AddComponent<AtomicDataSwitch>();
+                myModel.SetCurrentChannel("C3");
             }
 
             SetModel(myModel);

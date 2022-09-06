@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 8484227829072409797, guid: 10f9fa78a51108c43a47d41c6bc1e0b4, type: 3}
       propertyPath: myModel
       value: 
-      objectReference: {fileID: 9305128}
+      objectReference: {fileID: 0}
     - target: {fileID: 8484227829072409797, guid: 10f9fa78a51108c43a47d41c6bc1e0b4, type: 3}
       propertyPath: isStandalone
       value: 1
@@ -198,7 +198,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5837734904561368088, guid: 10f9fa78a51108c43a47d41c6bc1e0b4, type: 3}
+    - {fileID: 5837734904984056387, guid: 10f9fa78a51108c43a47d41c6bc1e0b4, type: 3}
+    - {fileID: 5837734904757340844, guid: 10f9fa78a51108c43a47d41c6bc1e0b4, type: 3}
+    - {fileID: 5837734904697573120, guid: 10f9fa78a51108c43a47d41c6bc1e0b4, type: 3}
+    - {fileID: 5837734903971053878, guid: 10f9fa78a51108c43a47d41c6bc1e0b4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 10f9fa78a51108c43a47d41c6bc1e0b4, type: 3}
 --- !u!4 &9305126 stripped
 Transform:
@@ -210,28 +215,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8484227829072409798, guid: 10f9fa78a51108c43a47d41c6bc1e0b4, type: 3}
   m_PrefabInstance: {fileID: 9305125}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9305128
-MonoBehaviour:
+--- !u!65 &9305128
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9305127}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0158d4bfe66a234785bc2da403e0692, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _autoTakeover: 1
-  _value: 0
-  force_newValue: 0
-  forceIt: 0
-  switchLabel: 
-  unityView__CurrentChannel: C3
-  _currentChannel: 
-  needsNetworkSync2: 0
-  actualDataModel: {fileID: 0}
-  debug_ActualValue: 0
+  serializedVersion: 2
+  m_Size: {x: 0.30559045, y: 1.0193789, z: 0.010616723}
+  m_Center: {x: 0.04730414, y: -0.054380216, z: 0.0052608056}
 --- !u!114 &9305130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,7 +263,6 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 9305128}
   - {fileID: 9305130}
   sceneViewId: 28
   InstantiationId: 0
@@ -289,19 +284,20 @@ MonoBehaviour:
   autoConfigureScripts: 1
   debug_dontEnableBounds: 0
   isConfigured: 0
---- !u!65 &9305133
-BoxCollider:
+--- !u!114 &9305134
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9305127}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.30900422, y: 1.0756152, z: 0.0050873947}
-  m_Center: {x: 0.044372953, y: -0.03851691, z: 0.028880611}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98de877dee5fc341b4eb59dfdab266c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoConstraintSelection: 1
+  selectedConstraints: []
 --- !u!4 &68451031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5416468272090924953, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
@@ -2066,6 +2062,18 @@ PrefabInstance:
     - target: {fileID: 5018593660364324542, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
       propertyPath: disableAutoSave
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143784385133082781, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.786
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143784385133082781, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143784385133082781, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.768
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
@@ -4745,11 +4753,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1278890481690022318, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
       propertyPath: arduino_ComPort
-      value: COM6
+      value: COM5
       objectReference: {fileID: 0}
     - target: {fileID: 1278890481690022318, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
       propertyPath: arduino_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1278890481690022318, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: simchannels_sineChannel
+      value: C3
       objectReference: {fileID: 0}
     - target: {fileID: 1278890481690022318, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
       propertyPath: simchannels_squareChannel
@@ -4790,6 +4802,10 @@ PrefabInstance:
     - target: {fileID: 1298230057778780301, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900126775135648719, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
+      propertyPath: m_Name
+      value: _CONFIGURATION_
       objectReference: {fileID: 0}
     - target: {fileID: 2295346732559765195, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
       propertyPath: sceneViewId

@@ -90,10 +90,22 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
 
         if (!this.gameObject.GetComponent<BoundsControl>())
         {
+            BoxCollider existingCollider = this.gameObject.GetComponent<BoxCollider>();
+
             BoundsControl b = this.gameObject.AddComponent<BoundsControl>();
 
             // if this object already has a box collider, use that to override the bounds controller
-            b.BoundsOverride = this.gameObject.GetComponent<BoxCollider>();
+            if (existingCollider)
+            {
+                b.enabled = false;
+                b.BoundsOverride = existingCollider;
+
+                // BoxCollider bug: the BoundsControl creates a box collider when it gets created; delete that !
+                foreach (var bc in this.gameObject.GetComponents<BoxCollider>())
+                {
+                    if (bc != existingCollider) { GameObject.DestroyImmediate(bc); }
+                }
+            }
         }
         
 
@@ -130,8 +142,7 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
 
         var b = this.gameObject.GetComponent<BoundsControl>();
         if (!debug_dontEnableBounds) {
-            b.enabled = true;
-
+            
             b.CalculationMethod = Microsoft.MixedReality.Toolkit.UI.BoundsControlTypes.BoundsCalculationMethod.ColliderOverRenderer; 
             b.BoundsControlActivation = Microsoft.MixedReality.Toolkit.UI.BoundsControlTypes.BoundsControlActivationType.ActivateByProximityAndPointer;
 
@@ -161,7 +172,9 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
 
             this.gameObject.GetComponent<BoundsControl>().ScaleStarted.AddListener(() => { this.gameObject.GetComponent<Effect4Gen>()?.DisableEffects(); });
             this.gameObject.GetComponent<BoundsControl>().ScaleStopped.AddListener(() => { this.gameObject.GetComponent<Effect4Gen>()?.ResetBasesAndEnable(); });
-            
+
+            b.enabled = true;
+
         }
 
         this.gameObject.GetComponent<ObjectManipulatorIuli>().OnManipulationStarted.AddListener((x) => { this.gameObject.GetComponent<Effect4Gen>()?.DisableEffects(); });

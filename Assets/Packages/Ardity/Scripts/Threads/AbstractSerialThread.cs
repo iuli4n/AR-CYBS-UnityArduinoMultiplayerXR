@@ -110,7 +110,10 @@ public abstract class AbstractSerialThread
     // ------------------------------------------------------------------------
     public void SendMessage(object message)
     {
-        outputQueue.Enqueue(message);
+        lock (outputQueue.SyncRoot)
+        {
+            outputQueue.Enqueue(message);
+        }
     }
 
 
@@ -167,7 +170,10 @@ public abstract class AbstractSerialThread
             // from the output queue to reach the other endpoint.
             while (outputQueue.Count != 0)
             {
-                SendToWire(outputQueue.Dequeue(), serialPort);
+                lock (outputQueue.SyncRoot)
+                {
+                    SendToWire(outputQueue.Dequeue(), serialPort);
+                }
             }
 
             // Attempt to do a final cleanup. This method doesn't fail even if
@@ -239,7 +245,10 @@ public abstract class AbstractSerialThread
             // Send a message.
             if (outputQueue.Count != 0)
             {
-                SendToWire(outputQueue.Dequeue(), serialPort);
+                lock (outputQueue.SyncRoot)
+                {
+                    SendToWire(outputQueue.Dequeue(), serialPort);
+                }
             }
 
             // Read a message.
@@ -255,7 +264,7 @@ public abstract class AbstractSerialThread
                 }
                 else
                 {
-                    Debug.LogWarning("Queue is full ("+inputQueue.Count+"). Dropping message: " + inputMessage);
+                    Debug.LogWarning("Input queue is full ("+inputQueue.Count+"). Dropping message: " + inputMessage);
                 }
             }
         }

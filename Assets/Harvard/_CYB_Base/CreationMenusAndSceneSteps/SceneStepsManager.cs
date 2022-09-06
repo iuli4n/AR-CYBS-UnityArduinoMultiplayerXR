@@ -618,7 +618,6 @@ public class SceneStepsManager : MonoBehaviour
                 SpawnSavedScenePrefabPart_PCImage(g);
             }
             else if (g.GetComponent<PlayerCreatedModel>())
-            else if (g.GetComponent<PlayerCreatedModel>())
             {
                 SpawnSavedScenePrefabPart_PCModel(g);
             } else if (g.name == PREFABNAME_BASELINE)

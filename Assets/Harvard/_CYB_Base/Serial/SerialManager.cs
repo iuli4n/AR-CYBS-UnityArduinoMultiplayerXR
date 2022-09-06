@@ -56,13 +56,18 @@ public class SerialManager : MonoBehaviourPun
     {
         // TODO: Sometimes this receives a lot of messages concatenated together. This methods needs updating to fix that 
 
+        if (message.Contains("ERROR"))
+        {
+            Debug.Log("Unity received serial message containing error: " + message);
+        }
+
         bool ischannel = false;
         foreach (string channel in channelsFromArduino)
         {
             if (message.StartsWith(":" + channel + ":"))
             {
                 ischannel = true;
-                //Debug.Log(message);
+                
                 message = message.Remove(0, 2 + channel.Length);
 
                 // BUG/HACK: this is needed because sometimes messages might get received concatenated together; just look at the first one

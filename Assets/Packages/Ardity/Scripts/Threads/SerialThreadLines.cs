@@ -9,6 +9,7 @@
 using UnityEngine;
 
 using System.IO.Ports;
+using System.Threading;
 
 /**
  * This class contains methods that must be run from inside a thread and others
@@ -32,6 +33,10 @@ public class SerialThreadLines : AbstractSerialThread
     protected override void SendToWire(object message, SerialPort serialPort)
     {
         serialPort.WriteLine((string) message);
+
+        // MODIFICATION: this is needed because my serial port jumbles things if they overlap
+        Thread.Sleep(50);
+
     }
 
     protected override object ReadFromWire(SerialPort serialPort)
