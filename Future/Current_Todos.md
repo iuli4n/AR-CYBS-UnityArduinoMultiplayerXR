@@ -1,8 +1,19 @@
 #################################
+# FOR MIT DEMOS
+#################################
+
+* Remote calibration
+* Clicker
+
+* load: put it in the original position under NetworkedSceneRoot 
+* prev / next: works even if autosafe disabled; also saves in wrong index
+
+
+#################################
 # BEFORE DRAFT RELEASE
 #################################
 
-* Arduino data
+* just use clicker
 
 * load: put it in the original position under NetworkedSceneRoot 
 * prev / next: works even if autosafe disabled; also saves in wrong index
@@ -12,7 +23,7 @@
 
 * New scene with more objects
 
-* Update 
+* Update documentation
 
 
 
@@ -74,6 +85,17 @@
 ** > Plugins: activating plugins has weird GUI popups; also make sure the populs show near the plugins menu
 
 
+* CreationObjectManager.ExecuteButtonPress -- Object creation should be done only through SSM via RPC 
+
+
+
+##########################
+# DOCUMENTATION DONT FORGET
+##########################
+
+* ManualDataChannel: if you want it to be manual and standalone will need atomicdataswitch on it, photontransformview,pv,boxcollider, playercreatedobject
+
+
 
 
 #######################
@@ -82,11 +104,10 @@
 
 * BUG: creating objects from library has error in nearinteractiongrabbable aboutcollider
 
-** Scene saving doesn't save effects model
+* BUG: Scene saving doesn't save effects model
 
+* BUG: If your NetworkedSceneRoot object isn't at origin in your scene, then saving/loading prefab will have issues because it saves the whole object (with local coordinates) into a prefab, then it instantiates it in world coordinates.
 
-# documentation dont forget
-* ManualDataChannel: if you want it to be manual and standalone will need atomicdataswitch on it, photontransformview,pv,boxcollider, playercreatedobject
 
 
 
@@ -102,3 +123,9 @@
 # Hand Menu
 * EffectMenu SpawnButton: put it on the hand, and/or in the main buttons
 * >> Button on hand for erase all drawings [have RPC already]
+
+
+
+# REMOVE UNUSED CLASSES
+* TouchMenu_CreateObjects
+

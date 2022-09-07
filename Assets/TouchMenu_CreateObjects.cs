@@ -20,6 +20,9 @@ public class TouchMenu_CreateObjects : MonoBehaviour
 
     private void OnGUI()
     {
+        /*** TODO: REMOVE THIS WHOLE CLASS BECAUSE NOT USED ANYMORE
+         * 
+         * 
         GUILayout.BeginVertical();
 
         GUILayout.Label("");
@@ -39,5 +42,6 @@ public class TouchMenu_CreateObjects : MonoBehaviour
         }
 
         GUILayout.EndVertical();
+        ***/
     }
 }

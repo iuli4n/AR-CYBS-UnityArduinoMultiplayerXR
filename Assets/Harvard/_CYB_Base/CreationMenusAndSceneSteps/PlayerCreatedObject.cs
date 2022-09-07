@@ -110,10 +110,13 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
         
 
         //this.gameObject.AddComponent<ConstraintManager>();
+
+        /**
         if (!this.gameObject.GetComponent<NearInteractionGrabbable>())
         {
             this.gameObject.AddComponent<NearInteractionGrabbable>().enabled = false;
         }
+        **/
     }
 
     private void ConfigureAllScripts()
@@ -196,7 +199,7 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
 
         // enable configuration
 
-        this.gameObject.GetComponent<NearInteractionGrabbable>().enabled = true;
+        //this.gameObject.GetComponent<NearInteractionGrabbable>().enabled = true;
         this.gameObject.GetComponent<ObjectManipulatorIuli>().enabled = true;
 
 

@@ -160,8 +160,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3341701061339164872}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7407622, y: 0.009802759, z: 0.6011715}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3341701062383457837}
@@ -13174,8 +13174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HACK_USELOCALPOS: 0
-  cameraForProjectionTest: {fileID: 0}
   doingProjectionTest: 0
+  cameraForProjectionTest: {fileID: 0}
   extraDistance: 0.1
   hand: 2
   joint: 10
@@ -13739,8 +13739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HACK_USELOCALPOS: 0
-  cameraForProjectionTest: {fileID: 0}
   doingProjectionTest: 0
+  cameraForProjectionTest: {fileID: 0}
   extraDistance: 0
   hand: 1
   joint: 11
@@ -16162,8 +16162,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HACK_USELOCALPOS: 0
-  cameraForProjectionTest: {fileID: 0}
   doingProjectionTest: 0
+  cameraForProjectionTest: {fileID: 0}
   extraDistance: 0.1
   hand: 2
   joint: 10
@@ -17821,8 +17821,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5018593660364324515}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.97253674, y: -0.77721703, z: -0.39842707}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3341701061339164873}
@@ -17920,8 +17920,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5018593661053401299}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.97253674, y: -0.77721703, z: -0.39842707}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3341701061339164873}

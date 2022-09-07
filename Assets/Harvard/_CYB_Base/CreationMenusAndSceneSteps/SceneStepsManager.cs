@@ -19,7 +19,7 @@ public class SceneStepsManager : MonoBehaviour
     public static SceneStepsManager Instance = null;
 
     public bool showGUI = false;
-    public bool DEBUG_DISABLENETWORKSAVE = true;
+    public bool DEBUG_DISABLESAVE = false;
     public bool DEBUG_STARTINPROJECT = true;
     public bool DEBUG_TRYSAVEONQUIT = true;
 
@@ -312,9 +312,9 @@ public class SceneStepsManager : MonoBehaviour
     {
 ///// NETWORKED SAVE
 
-        if (DEBUG_DISABLENETWORKSAVE)
+        if (DEBUG_DISABLESAVE)
         {
-            Debug.LogWarning("Scene save is disabled.");
+            Debug.LogError("Warning: Scene save is disabled.");
             return;
         }
 
@@ -639,6 +639,7 @@ public class SceneStepsManager : MonoBehaviour
     {
         // Creates an object that's coming from our saved scene
 
+        // these are the positions/scales/rotation inside the prefab !
         Vector3 tp = objectFromPrefab.transform.position;
         Vector3 ts = objectFromPrefab.transform.localScale;
         Quaternion tq = objectFromPrefab.transform.rotation;
@@ -664,6 +665,7 @@ public class SceneStepsManager : MonoBehaviour
     {
         // Creates an object that's coming from our saved scene
 
+        // these are the positions/scales/rotation inside the prefab !
         Vector3 tp = objectFromPrefab.transform.position;
         Vector3 ts = objectFromPrefab.transform.localScale;
         Quaternion tq = objectFromPrefab.transform.rotation;
@@ -692,6 +694,8 @@ public class SceneStepsManager : MonoBehaviour
     void SpawnSavedScenePrefabPart_PCModel(GameObject objectFromPrefab)
     {
         // Creates an object that's coming from our saved scene
+
+        // these are the positions/scales/rotation inside the prefab !
         Vector3 tp = objectFromPrefab.transform.position;
         Vector3 ts = objectFromPrefab.transform.localScale;
         Quaternion tq = objectFromPrefab.transform.rotation;
@@ -719,6 +723,7 @@ public class SceneStepsManager : MonoBehaviour
 
     void SpawnSavedScenePrefabPart_BaseLineDrawing(GameObject objectFromPrefab)
     {
+        // these are the positions/scales/rotation inside the prefab !
         Vector3 tp = objectFromPrefab.transform.position;
         Vector3 ts = objectFromPrefab.transform.localScale;
         Quaternion tq = objectFromPrefab.transform.rotation;
@@ -789,93 +794,6 @@ public class SceneStepsManager : MonoBehaviour
 
 
 
-    /**
-
-    private void OLD_SpawnObjectsFromPrefab(GameObject prefa)
-    {
-        int c = prefa.transform.childCount;
-        for (int i = 0; i < c; i++)
-        {
-            OLD_SpawnSavedScenePrefabPart(prefa.transform.GetChild(i).gameObject);
-        }
-    }
-    void OLD_SpawnSavedScenePrefabPart(GameObject objectFromPrefab)
-    {
-        // Creates an object that's coming from our saved scene
-
-        // Create this object for us and everyone else
-
-        string prefabName = "Objects/" + objectFromPrefab.name;
-        
-        if (objectFromPrefab.name == PREFABNAME_BASELINE)
-        {
-            // this is a line that was stored in the prefab
-            prefabName = "InternalPrefabs/" + PREFABNAME_BASELINE;
-        }
-        
-        Vector3 tp = objectFromPrefab.transform.position;
-        Vector3 ts = objectFromPrefab.transform.localScale;
-        Quaternion tq = objectFromPrefab.transform.rotation;
-        GameObject newObject = null;
-        try
-        {
-            if (objectFromPrefab.name == PREFABNAME_BASELINE)
-            {
-                // special object: line
-                Vector3[] positions = new Vector3[objectFromPrefab.GetComponent<LineRenderer>().positionCount];
-                objectFromPrefab.GetComponent<LineRenderer>().GetPositions(positions);
-
-                newObject = CreateAndConfigureNewObjectForScene_BaseLineDrawing(
-                    objectFromPrefab.name, prefabName, tp, tq, ts, positions);
-            }
-            else
-            {
-                // just a regular object
-                newObject = CreateAndConfigureNewObjectForScene_ModelFromPrefab(objectFromPrefab.name, prefabName, tp, tq, ts);
-            }
-                // NOTE: There may be a delay while the initialization RPC is called after instantiating this
-        }
-        finally
-        {
-
-        }
-
-        if (newObject == null)
-        {
-            Debug.LogError("Could not create object from scene prefab " + prefabName);
-            // this object couldn't be instantiated from prefab (is probably drawing)
-            return;
-        }
-
-        // Now set child data according to the prefab; this will be networked through the individual models
-
-        // switches
-        {
-            AtomicDataSwitch[] gs = objectFromPrefab.GetComponentsInChildren<AtomicDataSwitch>();
-            AtomicDataSwitch[] ggs = newObject.GetComponentsInChildren<AtomicDataSwitch>();
-            Debug.Assert(gs.Length == ggs.Length, "Spawn networked scene prefab: did not find the same components in the spawned object !");
-            for (int i = 0; i < gs.Length; i++)
-            {
-                ggs[i].Value = gs[i].Value;
-                ggs[i].CurrentChannel = gs[i].CurrentChannel;
-                Debug.Log("Set to channel " + ggs[i].CurrentChannel);
-            }
-        }
-        // models
-        {
-            AtomicDataModel[] gs = objectFromPrefab.GetComponentsInChildren<AtomicDataModel>();
-            AtomicDataModel[] ggs = newObject.GetComponentsInChildren<AtomicDataModel>();
-            Debug.Assert(gs.Length == ggs.Length, "Spawn networked scene prefab: did not find the same components in the spawned object !");
-            for (int i = 0; i < gs.Length; i++)
-            {
-                ggs[i].Value = gs[i].Value;
-            }
-        }
-
-        
-    }
-
-    ***/
 
 
     private void OnApplicationQuit()
@@ -918,8 +836,7 @@ public class SceneStepsManager : MonoBehaviour
         if (GUILayout.Button("SAVE TEMP SCENE"))
             DEBUG_prefabLoadSaveHelper.SaveToPrefab(
                 currentSceneRoot, 
-                StudentProjectSceneManager.Instance.GetTempSceneDiskLocation(),
-                false);
+                StudentProjectSceneManager.Instance.GetTempSceneDiskLocation());
 
         if (GUILayout.Button("LOAD TEMP SCENE"))
             PhotonView.Get(this).RPC(

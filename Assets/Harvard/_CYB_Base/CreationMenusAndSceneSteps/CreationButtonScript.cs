@@ -14,7 +14,6 @@ public class CreationButtonScript : MonoBehaviour
 
     public void ButtonPress()
     {
-        // TODO: This should be ExecuteButtonPress
         myObjectManager.ExecuteButtonPress(_name);
 
     }

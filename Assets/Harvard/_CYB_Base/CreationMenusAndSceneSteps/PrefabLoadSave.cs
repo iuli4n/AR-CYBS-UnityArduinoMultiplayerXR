@@ -12,8 +12,6 @@ public class PrefabLoadSave : MonoBehaviour
 
     // BUGS: - This instantiates the prefab over network, so won't work when multiple people are here
 
-    public bool disableAutoSave = false;
-
     GameObject objectToSave;
 
     public bool showGUI = true;
@@ -44,10 +42,8 @@ public class PrefabLoadSave : MonoBehaviour
 
 
 
-    public void SaveToPrefab(GameObject objectToSave, string localPrefabPath, bool automatic = true)
+    public void SaveToPrefab(GameObject objectToSave, string localPrefabPath)
     {
-        if (automatic && disableAutoSave) return;
-
         StartCoroutine(Coroutine_SavePrefab(objectToSave, localPrefabPath));
     }
     IEnumerator Coroutine_SavePrefab(GameObject objectToSave, string localPrefabPath) {
@@ -161,12 +157,12 @@ public class PrefabLoadSave : MonoBehaviour
         GUILayout.Label(" ");
         GUILayout.Label(" ");
         GUILayout.Label(" ");
-        disableAutoSave = GUILayout.Toggle(disableAutoSave, " Disable NN auto save");
+
         if (GUILayout.Button("FORCE SAVE"))
         {
             Debug.LogError("TODO: Move to old RPC from SceneStepsManager");
 
-            SaveToPrefab(SceneStepsManager.Instance.currentSceneRoot, StudentProjectSceneManager.Instance.CurrentScenePrefabLocationFull, false);
+            SaveToPrefab(SceneStepsManager.Instance.currentSceneRoot, StudentProjectSceneManager.Instance.CurrentScenePrefabLocationFull);
         }
         if (GUILayout.Button("FORCE BSAVE "+ backupString))
         {
@@ -181,7 +177,7 @@ public class PrefabLoadSave : MonoBehaviour
             filename = filename + backupString + ".prefab";
 
             SaveToPrefab(SceneStepsManager.Instance.currentSceneRoot, 
-                filename, false);
+                filename);
         }
         if (GUILayout.Button("CLEAR"))
         {
