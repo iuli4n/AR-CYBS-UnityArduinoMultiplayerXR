@@ -42,11 +42,11 @@ public class PrefabLoadSave : MonoBehaviour
 
 
 
-    public void SaveToPrefab(GameObject objectToSave, string localPrefabPath)
+    public void SaveToPrefab(GameObject objectToSave, string localPrefabPath, System.Action nextAction)
     {
-        StartCoroutine(Coroutine_SavePrefab(objectToSave, localPrefabPath));
+        StartCoroutine(Coroutine_SavePrefab(objectToSave, localPrefabPath, nextAction));
     }
-    IEnumerator Coroutine_SavePrefab(GameObject objectToSave, string localPrefabPath) {
+    IEnumerator Coroutine_SavePrefab(GameObject objectToSave, string localPrefabPath, System.Action nextAction) {
 
 #if UNITY_EDITOR
 
@@ -135,7 +135,8 @@ public class PrefabLoadSave : MonoBehaviour
         }
 
 #endif
-        yield return 0;
+
+        nextAction?.Invoke();
     }
 
 
@@ -162,7 +163,9 @@ public class PrefabLoadSave : MonoBehaviour
         {
             Debug.LogError("TODO: Move to old RPC from SceneStepsManager");
 
-            SaveToPrefab(SceneStepsManager.Instance.currentSceneRoot, StudentProjectSceneManager.Instance.CurrentScenePrefabLocationFull);
+            SaveToPrefab(SceneStepsManager.Instance.currentSceneRoot, 
+                StudentProjectSceneManager.Instance.CurrentScenePrefabLocationFull,
+                () => { });
         }
         if (GUILayout.Button("FORCE BSAVE "+ backupString))
         {
@@ -177,7 +180,7 @@ public class PrefabLoadSave : MonoBehaviour
             filename = filename + backupString + ".prefab";
 
             SaveToPrefab(SceneStepsManager.Instance.currentSceneRoot, 
-                filename);
+                filename, () => { });
         }
         if (GUILayout.Button("CLEAR"))
         {

@@ -5,9 +5,6 @@
 * Remote calibration
 * Clicker
 
-* load: put it in the original position under NetworkedSceneRoot 
-* prev / next: works even if autosafe disabled; also saves in wrong index
-
 
 #################################
 # BEFORE DRAFT RELEASE
@@ -15,15 +12,9 @@
 
 * just use clicker
 
-* load: put it in the original position under NetworkedSceneRoot 
-* prev / next: works even if autosafe disabled; also saves in wrong index
+* QUICK HL: Example arduino scene: Manual Data Channel make it smaller
 
-
-* HL: Example arduino scene: Manual Data Channel make it smaller
-
-* New scene with more objects
-
-* Update documentation
+* Update documentation for arduino scene
 
 
 
@@ -31,6 +22,8 @@
 #################################
 # BEFORE FIRST RELEASE
 #################################
+
+* New scene with more objects
 
 * HL: does ObjectMenu and ImageMenu move in the same way [colliders are different]
 ** [not done, seems complicated because menus are spawned] Object / Image menu: position networked

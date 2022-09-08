@@ -220,10 +220,20 @@ public class SceneStepsManager : MonoBehaviour
         // if editor PC, then first save the scene then clean it and then spawn objects
         if (StudentProjectSceneManager.Instance.CurrentSceneIndex != -1)
         {
-            if (andSave)
-                SaveCurrentScene();
+            System.Action afterSaveAction = () => {
 
-            PC_ClearNetworkObjectsFromScene(nextAction, onlyPrefabsNamed);
+                PC_ClearNetworkObjectsFromScene(nextAction, onlyPrefabsNamed);
+            };
+
+            if (andSave)
+            {
+                SaveCurrentScene(afterSaveAction);
+            }
+
+            else
+            {
+                afterSaveAction?.Invoke();
+            }
         }
     }
 
@@ -308,7 +318,7 @@ public class SceneStepsManager : MonoBehaviour
     }
 
 
-    private void SaveCurrentScene()
+    private void SaveCurrentScene(System.Action nextAction)
     {
 ///// NETWORKED SAVE
 
@@ -321,7 +331,7 @@ public class SceneStepsManager : MonoBehaviour
 
 #if UNITY_EDITOR
 
-        DEBUG_prefabLoadSaveHelper.SaveToPrefab(currentSceneRoot, StudentProjectSceneManager.Instance.CurrentScenePrefabLocationFull);
+        DEBUG_prefabLoadSaveHelper.SaveToPrefab(currentSceneRoot, StudentProjectSceneManager.Instance.CurrentScenePrefabLocationFull, nextAction);
 
 #endif
     }
@@ -799,7 +809,7 @@ public class SceneStepsManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         if (DEBUG_TRYSAVEONQUIT)
-            SaveCurrentScene();
+            SaveCurrentScene( ()=> { });
     }
 
 
@@ -836,7 +846,8 @@ public class SceneStepsManager : MonoBehaviour
         if (GUILayout.Button("SAVE TEMP SCENE"))
             DEBUG_prefabLoadSaveHelper.SaveToPrefab(
                 currentSceneRoot, 
-                StudentProjectSceneManager.Instance.GetTempSceneDiskLocation());
+                StudentProjectSceneManager.Instance.GetTempSceneDiskLocation(),
+                () => { });
 
         if (GUILayout.Button("LOAD TEMP SCENE"))
             PhotonView.Get(this).RPC(

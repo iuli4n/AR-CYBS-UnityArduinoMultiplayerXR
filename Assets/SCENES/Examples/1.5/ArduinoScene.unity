@@ -2039,6 +2039,10 @@ PrefabInstance:
       propertyPath: DEBUG_DISABLESAVE
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3341701062983589671, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
+      propertyPath: DEBUG_TRYSAVEONQUIT
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3341701063410941047, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
       propertyPath: menuObjects_default
       value: 
