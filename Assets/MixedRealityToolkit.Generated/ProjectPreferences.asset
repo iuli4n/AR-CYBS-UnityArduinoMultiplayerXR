@@ -21,10 +21,12 @@ MonoBehaviour:
     keys:
     - MixedRealityToolkit_Editor_AudioSpatializerCount
     - _MixedRealityToolkit_Editor_ConfiguratorState
-    values: 0000000000000000
+    values: 01000000f4010000
   floatPreferences:
     keys: []
     values: []
   stringPreferences:
-    keys: []
-    values: []
+    keys:
+    - BuildDeployWindow_AppLauncherModelLocation
+    values:
+    - 

@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: knob export test2
+  companyName: Harvard University HGSE LIT Lab
+  productName: ARCYBS
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -136,6 +136,12 @@ PlayerSettings:
     Others: 1
   bundleVersion: 0.1
   preloadedAssets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -646,14 +652,14 @@ PlayerSettings:
     Standalone: 3
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Template3D
+  metroPackageName: ARCYBS
   metroPackageVersion: 1.0.0.0
   metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: DefaultCompany
-  metroCertificateIssuer: DefaultCompany
-  metroCertificateNotAfter: 0079caefc6bcd801
-  metroApplicationDescription: Template_3D
+  metroCertificateSubject: Harvard University HGSE LIT Lab
+  metroCertificateIssuer: Harvard University HGSE LIT Lab
+  metroCertificateNotAfter: 0065e0c5d1e2d901
+  metroApplicationDescription: ARCYBS
   wsaImages: {}
   metroTileShortName: knob export test
   metroTileShowName: 0

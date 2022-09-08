@@ -40,12 +40,12 @@ public class DebugUI_CalibrateKinectHL : MonoBehaviour
 
         GUILayout.BeginVertical();
         if (PhotonNetwork.PlayerListOthers.Length == 0) { GUILayout.Label("No other players besides me here"); }
-        foreach (var player in PhotonNetwork.PlayerListOthers)
+        foreach (var player in PhotonNetwork.PlayerList)
         {
             var customprops = player.CustomProperties;
             if (customprops != null && customprops["platform"] != null)
             {
-                if (GUILayout.Button("Player  " + customprops["platform"] + ""))
+                if (GUILayout.Button("Calibrate player id  " + customprops["platform"] + ""))
                 {
                     PhotonView.Get(this).RPC("RPC_CalibratePlayer", RpcTarget.AllViaServer, player.UserId);
                 }

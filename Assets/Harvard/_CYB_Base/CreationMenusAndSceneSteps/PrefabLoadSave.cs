@@ -134,9 +134,13 @@ public class PrefabLoadSave : MonoBehaviour
             b.enabled = true;
         }
 
+        nextAction?.Invoke();
+#else
+        Debug.LogError("PrefabLoadSave: Coroutine_SavePrefab called but this is not supported when running in non-unity-editor.");
 #endif
 
-        nextAction?.Invoke();
+
+        yield return 0;
     }
 
 
