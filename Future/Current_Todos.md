@@ -5,6 +5,20 @@
 * Remote calibration
 * Clicker
 
+* Finger issue ?
+
+** MIT Scene: Knob influence servo robot
+
+
+* Creation menu: doesn't show scale properly; use renderer bounds instead of collider ?
+* creation menu: objects get rotated 90deg !?
+
+* load scene: collider isn't set properly after reload
+* save scene only if click button
+
+* effects menu button could be turned into an actual button
+
+* knob can't be controlled [just use slider for now]
 
 #################################
 # BEFORE DRAFT RELEASE
@@ -26,7 +40,7 @@
 * New scene with more objects
 
 * HL: does ObjectMenu and ImageMenu move in the same way [colliders are different]
-** [not done, seems complicated because menus are spawned] Object / Image menu: position networked
+** [not done, seems complicated because menus are spawned, how about dont regenerate menus] Object / Image menu: position networked
 
 ** HL: TEST object/image menu RPC for open/close 
 * HL TEST: trash can
@@ -46,7 +60,7 @@
 
 ** Effect Menu BUG: after closing effect menu, there's some listeners (probably from sensorchart) which got broken. Need to unlisten.
 
-
+* TEST: network scene load/save when person joins after scene was switched [shouldn't happen just put it under docs]
 
 
 #################################

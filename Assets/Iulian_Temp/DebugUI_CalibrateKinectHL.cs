@@ -24,6 +24,9 @@ public class DebugUI_CalibrateKinectHL : MonoBehaviour
     [PunRPC]
     void RPC_CalibratePlayer(string playername)
     {
+        InGameChatConsole.Instance.PostMessage("RPC_CalibratePlayer received for " + playername +
+            " and I am " + PhotonNetwork.LocalPlayer.UserId);
+
         if (!PhotonNetwork.LocalPlayer.UserId.Equals(playername))
             return; // not for us
 
@@ -60,6 +63,7 @@ public class DebugUI_CalibrateKinectHL : MonoBehaviour
 
     void PerformCalibrationHololensFinger()
     {
+        InGameChatConsole.Instance.PostMessage("Performing calibration " + hl_fingertip);
         if (hl_fingertip == null)
         {
             hl_fingertip = PlayersManager.Instance.localPlayerHead.transform.Find("FingertipCollider").gameObject;
@@ -69,6 +73,7 @@ public class DebugUI_CalibrateKinectHL : MonoBehaviour
             hl_fingertip.transform.position, hl_fingertip.transform.forward,
             virtual_point.transform.position, virtual_point.transform.forward);
 
+        InGameChatConsole.Instance.PostMessage("Done calibration ");
     }
 
     // Moves the MRTK playspace so that the two source/dest points are aligned

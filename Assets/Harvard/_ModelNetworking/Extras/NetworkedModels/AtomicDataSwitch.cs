@@ -44,12 +44,27 @@ public class AtomicDataSwitch : AtomicDataModel
 
 
 
-    int debug_channelid = 0;
-    string[] debug_channels = { "C1", "C2", "C3", "P1", "P2" };
     public void MoveToNextChannel()
     {
-        debug_channelid = (debug_channelid + 1) % debug_channels.Length;
-        CurrentChannel = debug_channels[debug_channelid];
+        string[] availableChannels = ChannelsManager.Instance.GetChannelNames();
+
+        int nextIndex = -1;
+        int currentIndex = 0;
+        foreach (string c in availableChannels)
+        {
+            if (_currentChannel.Equals(c))
+            {
+                nextIndex = (currentIndex + 1) % availableChannels.Length;
+                break;
+            }
+            currentIndex++;
+        }
+        if (nextIndex == -1)
+        {
+            // we couldn't find our channel; this shouldn't happen but if it does just choose the first one
+            nextIndex = 0;
+        }
+        CurrentChannel = availableChannels[nextIndex];
     }
 
     public bool SetCurrentChannel(string newChannel, bool updatedFromNetwork = false)
