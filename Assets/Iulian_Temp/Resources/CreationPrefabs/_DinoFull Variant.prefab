@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 892520904818342712, guid: 6e3f5ddbe6dfb71459821d0827c8d64c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4f0bb7c7f0bfb2943bdce5930449225e, type: 2}
     - target: {fileID: 1204568469377693400, guid: 6e3f5ddbe6dfb71459821d0827c8d64c, type: 3}
       propertyPath: m_Name
       value: _DinoFull Variant
@@ -54,6 +58,10 @@ PrefabInstance:
     - target: {fileID: 1204568469377693402, guid: 6e3f5ddbe6dfb71459821d0827c8d64c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050850275559724374, guid: 6e3f5ddbe6dfb71459821d0827c8d64c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e3f5ddbe6dfb71459821d0827c8d64c, type: 3}

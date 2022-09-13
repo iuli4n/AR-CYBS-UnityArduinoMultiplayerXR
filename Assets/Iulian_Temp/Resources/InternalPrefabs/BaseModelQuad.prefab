@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb7c2b94a1e26f4b88e02b032905d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontMoveToScene: 0
   autoAttachScripts: 1
   autoConfigureScripts: 1
   debug_dontEnableBounds: 0
@@ -339,8 +340,10 @@ MonoBehaviour:
   rz_enabled: 0
   sxEnabledA: 0
   sxEnabledB: 0
-  sy_enabled: 0
-  sz_enabled: 0
+  syEnabledA: 0
+  syEnabledB: 0
+  szEnabledA: 0
+  szEnabledB: 0
   vis_thresh: 500
   vis_visibleBelow: 0
   vis_visibleAbove: 1
@@ -351,11 +354,7 @@ MonoBehaviour:
   s_base: {x: 0, y: 0, z: 0}
   sx_mult: 1
   sy_mult: 1
-  syA: 0
-  syB: 0
   sz_mult: 1
-  szA: 0
-  szB: 0
 --- !u!114 &4071883952183472674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +369,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _autoTakeover: 1
   _value: 0
+  force_newValue: 0
+  forceIt: 0
+  switchLabel: 
   unityView__CurrentChannel: C2
   _currentChannel: 
   needsNetworkSync2: 0

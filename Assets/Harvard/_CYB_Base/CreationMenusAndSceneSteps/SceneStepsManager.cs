@@ -450,14 +450,14 @@ public class SceneStepsManager : MonoBehaviour
         int retries = 0;
 
         yield return new WaitForSeconds(0.5f);
-        while (retries > 10 && !pv.IsMine)
+        while (retries < 10 && !pv.IsMine)
         {
-            Debug.LogWarning("SSM: Wanting to delete network object but still waiting for ownership on PV " + pv.gameObject.name);
+            Debug.LogError("SSM: Wanting to delete network object but still waiting for ownership on PV " + pv.gameObject.name);
             pv.RequestOwnership();
             retries++;
             yield return new WaitForSeconds(0.5f);
         }
-        if (retries > 10) Debug.LogWarning("SSM: Gave up waiting for ownership on " + pv.gameObject.name);
+        if (retries > 10) Debug.LogError("SSM: Gave up waiting for ownership on " + pv.gameObject.name);
 
         // we're out of the loop, meaning it's mine or we gave up; try destroying it
         PhotonNetwork.Destroy(pv.gameObject);

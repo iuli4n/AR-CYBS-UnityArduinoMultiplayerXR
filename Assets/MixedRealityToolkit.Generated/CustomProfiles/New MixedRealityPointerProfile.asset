@@ -52,7 +52,7 @@ MonoBehaviour:
     handedness: 7
     pointerPrefab: {fileID: 1247086986094436, guid: 039b325c9e8fd0545a0475fd4aa35b10, type: 3}
   - controllerType: 1024
-    handedness: 2
+    handedness: 1
     pointerPrefab: {fileID: 1507865967819406, guid: 717fe6cdf3f98f144afec9fd47e1655d, type: 3}
   pointerMediator:
     reference: IuliPointersMediator, Assembly-CSharp
