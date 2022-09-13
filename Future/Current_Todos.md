@@ -2,23 +2,32 @@
 # FOR MIT DEMOS
 #################################
 
-* Remote calibration
 * Clicker
 
 * Finger issue ?
 
 ** MIT Scene: Knob influence servo robot
 
+* disable StandaloneDataChannel movement
+
+
+LATER:
+* save scene only if click button
+* load scene: collider isn't set properly after reload
 
 * Creation menu: doesn't show scale properly; use renderer bounds instead of collider ?
 * creation menu: objects get rotated 90deg !?
 
-* load scene: collider isn't set properly after reload
-* save scene only if click button
-
 * effects menu button could be turned into an actual button
 
 * knob can't be controlled [just use slider for now]
+
+* update the client login so it waits for the pc master [how to check if it connected ?]
+
+MUCH LATER:
+
+* can calibrate 
+
 
 #################################
 # BEFORE DRAFT RELEASE

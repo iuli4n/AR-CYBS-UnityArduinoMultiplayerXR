@@ -19,10 +19,9 @@ public class SceneStepsManager : MonoBehaviour
     public static SceneStepsManager Instance = null;
 
     public bool showGUI = false;
-    public bool DEBUG_DISABLESAVE = false;
-    public bool DEBUG_STARTINPROJECT = true;
-    public bool DEBUG_TRYSAVEONQUIT = true;
-
+    public bool disableAutoSave = true;
+    public bool loadProjectOnStart = true;
+    
     //public bool DEBUG_usingNotNetworkedScene = true;
     public PrefabLoadSave DEBUG_prefabLoadSaveHelper = null;
 
@@ -129,7 +128,7 @@ public class SceneStepsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (DEBUG_STARTINPROJECT) {
+        if (loadProjectOnStart) {
             // This will open the project after photon is initialized
             OpenProject(GetProjectNames()[0]);
         }
@@ -318,18 +317,19 @@ public class SceneStepsManager : MonoBehaviour
     }
 
 
-    private void SaveCurrentScene(System.Action nextAction)
+    private void SaveCurrentScene(System.Action nextAction, bool forceSave = false)
     {
-///// NETWORKED SAVE
-
-        if (DEBUG_DISABLESAVE)
-        {
-            Debug.LogError("Warning: Scene save is disabled.");
-            return;
-        }
+        ///// NETWORKED SAVE
 
 
 #if UNITY_EDITOR
+
+        if (!forceSave && disableAutoSave)
+        {
+            // skip saving
+            nextAction?.Invoke();
+            return;
+        }
 
         DEBUG_prefabLoadSaveHelper.SaveToPrefab(currentSceneRoot, StudentProjectSceneManager.Instance.CurrentScenePrefabLocationFull, nextAction);
 
@@ -808,8 +808,7 @@ public class SceneStepsManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        if (DEBUG_TRYSAVEONQUIT)
-            SaveCurrentScene( ()=> { });
+        SaveCurrentScene( ()=> { });
     }
 
 
@@ -836,13 +835,21 @@ public class SceneStepsManager : MonoBehaviour
             SceneStepsManager.Instance.Activate_ClearScene(PREFABNAME_BASELINE);
 
 
+
+
+        if (GUILayout.Button("< SAVE >"))
+            SaveCurrentScene(() => { }, true);
+
         if (GUILayout.Button(" << PREV"))
             SceneStepsManager.Instance.Activate_MoveToPrevScene();
 
         if (GUILayout.Button("NEXT >> "))
             SceneStepsManager.Instance.Activate_MoveToNextScene();
 
+        
 
+
+        /***
         if (GUILayout.Button("SAVE TEMP SCENE"))
             DEBUG_prefabLoadSaveHelper.SaveToPrefab(
                 currentSceneRoot, 
@@ -854,6 +861,7 @@ public class SceneStepsManager : MonoBehaviour
                 "RPC_LoadScene", RpcTarget.All,
                 StudentProjectSceneManager.Instance.CurrentProjectName,
                 StudentProjectSceneManager.Instance.TempSceneIndex);
+        ***/
 
         GUILayout.EndVertical();
 

@@ -22,12 +22,12 @@ public class DebugUI_CalibrateKinectHL : MonoBehaviour
     }
 
     [PunRPC]
-    void RPC_CalibratePlayer(string playername)
+    void RPC_CalibratePlayer(int playerNumber)
     {
-        InGameChatConsole.Instance.PostMessage("RPC_CalibratePlayer received for " + playername +
-            " and I am " + PhotonNetwork.LocalPlayer.UserId);
+        InGameChatConsole.Instance.PostMessage("RPC_CalibratePlayer received for " + playerNumber +
+            " and I am " + PhotonNetwork.LocalPlayer.ActorNumber);
 
-        if (!PhotonNetwork.LocalPlayer.UserId.Equals(playername))
+        if (!PhotonNetwork.LocalPlayer.ActorNumber.Equals(playerNumber))
             return; // not for us
 
         PerformCalibrationHololensFinger();
@@ -45,13 +45,9 @@ public class DebugUI_CalibrateKinectHL : MonoBehaviour
         if (PhotonNetwork.PlayerListOthers.Length == 0) { GUILayout.Label("No other players besides me here"); }
         foreach (var player in PhotonNetwork.PlayerList)
         {
-            var customprops = player.CustomProperties;
-            if (customprops != null && customprops["platform"] != null)
+            if (GUILayout.Button("Calibrate player id  " + player.ActorNumber))
             {
-                if (GUILayout.Button("Calibrate player id  " + customprops["platform"] + ""))
-                {
-                    PhotonView.Get(this).RPC("RPC_CalibratePlayer", RpcTarget.AllViaServer, player.UserId);
-                }
+                PhotonView.Get(this).RPC("RPC_CalibratePlayer", RpcTarget.AllViaServer, player.ActorNumber);
             }
         }
         GUILayout.EndVertical();

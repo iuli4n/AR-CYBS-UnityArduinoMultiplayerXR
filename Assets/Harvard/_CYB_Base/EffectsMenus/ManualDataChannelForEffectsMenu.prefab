@@ -13219,7 +13219,7 @@ GameObject:
   - component: {fileID: 8484227829072409799}
   - component: {fileID: 8484227829072409797}
   m_Layer: 0
-  m_Name: ManualDataChannel
+  m_Name: ManualDataChannelForEffectsMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

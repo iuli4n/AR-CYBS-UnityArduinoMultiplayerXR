@@ -31,14 +31,17 @@ public class InGameChatConsole : MonoBehaviour
 
     private void AddLogMessage(string text, bool isPrivate)
     {
-        string newText = (isPrivate? "[local] ":"") + textMesh.text + "\n" + text;
+        string newMessage = (isPrivate? "[local] ":"") + text;
 
+        string newText = textMesh.text + "\n" + newMessage;
         if (newText.Split('\n').Length > 15)
         {
             // our buffer is too big, cut the first line
             newText = newText.Substring(newText.IndexOf("\n") + 1);
         }
         textMesh.text = newText;
+
+        Debug.Log("ChatConsole New Message: " + newMessage);
     }
 
     // Post log message for everyone in the network
@@ -46,8 +49,7 @@ public class InGameChatConsole : MonoBehaviour
     {
 
         PhotonView.Get(this).RPC("RPC_DebugLog", RpcTarget.AllViaServer,
-            "[" + (PhotonNetwork.LocalPlayer.CustomProperties != null ?
-                 PhotonNetwork.LocalPlayer.CustomProperties["platform"] : "") + "] "+
+            "[" + (PhotonNetwork.LocalPlayer.ActorNumber) + "] "+
             text);
 
     }

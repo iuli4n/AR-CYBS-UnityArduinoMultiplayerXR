@@ -3,7 +3,7 @@
 
 #include <Servo.h>
 Servo myservo;  // create servo object to control a servo
-
+int prevServoVal = 0;
 
 
 // channels with unity
@@ -40,7 +40,9 @@ void loop()
   C2 = analogRead(A2);
 
   int val = map(C3, 0, 1023, 0, 180);     // scale it to use it with the servo (value between 0 and 180)
-
-  myservo.write(val);
+  if (prevServoVal != val) {
+    myservo.write(val);
+    prevServoVal = val;
+  }
   
 }
