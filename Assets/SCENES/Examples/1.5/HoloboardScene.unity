@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1925,9 +1925,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 383934835}
     m_Modifications:
+    - target: {fileID: 511459116, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
+      propertyPath: sceneViewId
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 546604549247494003, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
+      propertyPath: sceneViewId
+      value: 36
+      objectReference: {fileID: 0}
     - target: {fileID: 1354740192066659177, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
       propertyPath: sceneViewId
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2928404677651788606, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
+      propertyPath: sceneViewId
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3278085576836965086, guid: 83946dc542d3b7b4d87f0ed72b8f4b62, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5001,14 +5013,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1900126775135648719, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
-      propertyPath: m_Name
-      value: _CONFIGURATION_
-      objectReference: {fileID: 0}
-    - target: {fileID: 1900126775135648719, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2295346732559765195, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
       propertyPath: sceneViewId
       value: 13
@@ -5020,10 +5024,6 @@ PrefabInstance:
     - target: {fileID: 2295346733652102760, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
       propertyPath: sceneViewId
       value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 3205122806402138891, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
-      propertyPath: portName
-      value: COM8
       objectReference: {fileID: 0}
     - target: {fileID: 3205122808464253842, guid: fca183f03cfe04347bd38f7b32c50aff, type: 3}
       propertyPath: m_IsActive

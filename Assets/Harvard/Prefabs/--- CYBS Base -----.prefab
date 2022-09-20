@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 712585541242609738}
   - component: {fileID: 712585541242609737}
   - component: {fileID: 712585541242609736}
+  - component: {fileID: 546604549247494003}
   m_Layer: 0
   m_Name: Players Manager
   m_TagString: Untagged
@@ -93,6 +94,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   USING_REAL_PHOTON: 1
+--- !u!114 &546604549247494003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712585541242609739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &712585541653084426
 GameObject:
   m_ObjectHideFlags: 0
@@ -5538,7 +5561,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3341701061999528608}
   m_HandleRect: {fileID: 3341701062032587734}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -18161,11 +18184,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08aaf189f5ef9ab4daacd06da667a558, type: 3}
---- !u!4 &5143784384682979079 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7566750838142855479, guid: 08aaf189f5ef9ab4daacd06da667a558, type: 3}
-  m_PrefabInstance: {fileID: 3341701061720016432}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5143784384682979072 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7566750838142855472, guid: 08aaf189f5ef9ab4daacd06da667a558, type: 3}
@@ -18177,3 +18195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf65655837885dc40b5153f23b8e839f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &5143784384682979079 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7566750838142855479, guid: 08aaf189f5ef9ab4daacd06da667a558, type: 3}
+  m_PrefabInstance: {fileID: 3341701061720016432}
+  m_PrefabAsset: {fileID: 0}
