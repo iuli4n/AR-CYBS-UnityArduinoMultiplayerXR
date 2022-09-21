@@ -14,25 +14,27 @@ public class LineToTarget : MonoBehaviour
     void Start()
     {
         lineAnchor = Line.transform.Find("Anchor").gameObject;
+
+        EditingManager.Instance.onEditedObjectChanged += OnEditedObjectChanged;
+
+        target = null;
+        Line.SetActive(false);
+    }
+
+    void OnEditedObjectChanged(GameObject newObject)
+    {
+        target = EditingManager.Instance.GetLastEdited().transform;
+        Line.SetActive(true);
+        if (lineAnchor.transform.position != target.position)
+        {
+            lineAnchor.transform.position = target.position;
+        }
+        Line.SetActive(displayLineToTarget);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (EditingManager.Instance.GetLastEdited() != null)
-        {
-            target = EditingManager.Instance.GetLastEdited().transform;
-            Line.SetActive(true);
-            if (lineAnchor.transform.position != target.position)
-            {
-                lineAnchor.transform.position = target.position;
-            }
-        }
-        else
-        {
-            target = null;
-            Line.SetActive(false);
-        }
-        Line.SetActive(displayLineToTarget);
+        
     }
 }

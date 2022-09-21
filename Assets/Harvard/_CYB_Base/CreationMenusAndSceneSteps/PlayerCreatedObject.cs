@@ -80,13 +80,16 @@ public class PlayerCreatedObject : MonoBehaviourPunCallbacks, IPunInstantiateMag
             this.gameObject.AddComponent<AttachToSceneStep>().enabled = false;
         }
 
-        /*
+        /*** TBD: Attach effects. Challenging because effects use photonviews that need to be synchronized from start
         if (!this.gameObject.GetComponent<Effect4Gen>())
         {
+            if (this.gameObject.transform.Find("EffectsModel") == null)
+            {
+                ....write some cool code here....
+            }
             this.gameObject.AddComponent<Effect4Gen>().enabled = false;
         }
-        */
-
+        ***/
 
         if (!this.gameObject.GetComponent<BoundsControl>())
         {

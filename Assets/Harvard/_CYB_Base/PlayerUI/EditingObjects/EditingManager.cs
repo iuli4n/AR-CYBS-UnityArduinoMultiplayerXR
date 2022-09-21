@@ -16,7 +16,7 @@ public class EditingManager : MonoBehaviour
     public bool guiMode_simplified = true;
     public TEMP_Debug_Pointers pointersManager;
 
-    public GameObject lastEdited;
+    private GameObject lastEdited;
 
     [SerializeField]
     private List<PointerInteractionConfigurer> managedNormalInteractiveObjects = new List<PointerInteractionConfigurer>();
@@ -28,6 +28,9 @@ public class EditingManager : MonoBehaviour
     public Debug_RPCEnabler TEMP_DEBUG_enabledisableSpecialCreation;
 
     public bool startInCreationMode = true;
+
+    // Invoked whenever the last edited object changes (ie: when the user grabs a new object).
+    public event Action<GameObject> onEditedObjectChanged;
 
     // Start is called before the first frame update
     void Awake()
@@ -56,7 +59,12 @@ public class EditingManager : MonoBehaviour
 
     public void BeginEditing(GameObject o)
     {
-        lastEdited = o;
+        if (lastEdited != o)
+        {
+            lastEdited = o;
+            onEditedObjectChanged?.Invoke(o);
+        }
+        
     }
     public void EndEditing(GameObject o)
     {

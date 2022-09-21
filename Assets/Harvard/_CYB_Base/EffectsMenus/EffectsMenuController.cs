@@ -52,6 +52,9 @@ public class EffectsMenuController : MonoBehaviour
     AEffect4PluginManager[] pluginManagers;
 
 
+    // The label of the currently edited object
+    TextMeshPro objectNameLabel;
+
     // BUTTONS AND SLIDERS
 
     // This dictionary refers to the off-state button plate for each EffectsMenu effect.
@@ -161,6 +164,8 @@ public class EffectsMenuController : MonoBehaviour
 
     void Awake()
     {
+        objectNameLabel = transform.Find("All/Title/Subtitle_EditedObject").gameObject.GetComponent<TextMeshPro>();
+
         rotPage = transform.Find("All/Rot").gameObject;
         scalePage = transform.Find("All/Scale").gameObject;
         visPage = transform.Find("All/Vis").gameObject;
@@ -249,14 +254,38 @@ public class EffectsMenuController : MonoBehaviour
 
     public void SetTarget(Transform t)
     {
+        UnloadTargetComponents();
+
         target = t;
+
+        if (target.Find("EffectsModel") == null)
+        {
+            // This object actually doesn't have an EffectsModel on it (means it was somehow custom created by users and can't have effects)
+            // So reset the effects menu so it can't edit anything
+            target = null;
+        }
+
         LoadTargetComponents();
+    }
+
+    public void UnloadTargetComponents()
+    {
+        // just unregister ourselves from the current target's data channel
+        if (target == null) return;
+
+        dataSwitches = target.GetComponentsInChildren<AtomicDataSwitch>();
+        if (dataSwitches == null || dataSwitches.Length == 0) return;
+
+        //update vis tab UI based on target's primary dataSwitch
+        dataSwitches[0].OnDataUpdated -= RefreshVisTabDataSwitchValues;
     }
 
     public void LoadTargetComponents()
     {
         if (target != null)
         {
+            objectNameLabel.text = target.name;
+
             #region setup data
 
             //get attached components from target
@@ -391,6 +420,8 @@ public class EffectsMenuController : MonoBehaviour
         }
         else
         {
+            objectNameLabel.text = "(no edited object)";
+
             #region disable all tabs
             activeTabDisplayNames = new string[] { "No target"};
             totalNumPages = 1;

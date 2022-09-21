@@ -5,41 +5,80 @@
 #################################
 
 
-* Document clearly main features
+**** NEED TO DO
+
+- Think about what documentation you need
+	* >> Example docs: Color cube, text cube
+	
+	* Document clearly main features through some main image
 	- Arduino to Unity
 	- Unity to many HL
-
-	- other features: effects, pointers, editing, files
-
-
-* New scene with more objects
+	- Data channels
 
 
-MINOR:
 
-* Can you use the cyb prefab in new scene properly ? [might have changed prefabs]
 
-* Update documentation for arduino scene
+- Check all example scenes to make sure they work
+	- actually just send ArduinoScene and Empty 
 
-* Clicker ?
+- Also check that you can make a new scene
 
-* Finger issue ?
+-?nah Sketchy menu & RPC to switch scenes [use same as calibration]
 
-* disable StandaloneDataChannel movement
-
-* HL TEST: trash can
 
 * >> Clean up example scenes folder
 
-* >> Example docs: Color cube, text cube
+- Disable object menu open/close for all users
 
 
 
-MAYBE:
+
+*** HL TEST
+
+- Check finger issue
+
+* HL TEST: trash can
+
+* disable StandaloneDataChannel movement
+
+
+
+
+**** DOCUMENTATION
+
+* import from Shankar
+* Update documentation for arduino scene: configuration prefab, channels
+
+* Make list of known bugs
+	* add object / image menu not opening/closing/moving
+	* document load scene doesn't save effects
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MAYBE BUGS:
+
+* closing EffectsMenu gives problem because sensorchart keeps getting updated after being destroyed [proably is forgetting to unregister somewhere]
+
+- other features: effects, pointers, editing, files
 
 * HL: does ObjectMenu and ImageMenu move in the same way [colliders are different]
 ** [not done, seems complicated because menus are spawned, how about dont regenerate menus] Object / Image menu: position networked
-
 ** HL: TEST object/image menu RPC for open/close 
 
 * load scene: collider isn't set properly after reload
@@ -61,8 +100,6 @@ BUGS MAYBE:
 
 * effects menu button could be turned into an actual button
 
-* * HL: way to calibrate HL finger without keyboard. Ideally use PC GUI dropdown and RPC
-
 ** EffectMenu Remote: Need to do something when the current target's effects menu changes remotely, so that the current UI updates [send RPC so that others find the object, based on PhotonView]
 	** Check if the last edited object is per user or per network
 	** Networked open/close only works properly if everyone's last edited object is in sync
@@ -79,6 +116,8 @@ BUGS MAYBE:
 
 ** Effect Menu Link to current object
 
+
+** Effect Menu needs to be attached on player created objects in the base scene; right now effects don't work on those kinsd of objects
 
 ### LOWER PRIORITY
 
@@ -116,7 +155,7 @@ BUGS MAYBE:
 
 * BUG: If your NetworkedSceneRoot object isn't at origin in your scene, then saving/loading prefab will have issues because it saves the whole object (with local coordinates) into a prefab, then it instantiates it in world coordinates.
 
-
+* CLICKER
 
 
 ###########################

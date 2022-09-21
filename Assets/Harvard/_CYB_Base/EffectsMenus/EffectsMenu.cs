@@ -34,7 +34,14 @@ public class EffectsMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        EditingManager.Instance.onEditedObjectChanged += OnNewEditedObject;
+
+        if (targetTransform != null)
+        {
+            targetTransform = null;
+            menuController = menu.transform.GetComponent<EffectsMenuController>();
+            menuController.SetTarget(targetTransform);
+        }
     }
 
     public void PlaceLaunchButton()
@@ -50,53 +57,46 @@ public class EffectsMenu : MonoBehaviour
         interactable.OnClick.AddListener(ToggleEffectsMenu);
     }
 
+    void OnNewEditedObject(GameObject o)
+    {
+        // The edited object has changed; refresh the menu or just the button
+
+        GameObject t = EditingManager.Instance.GetLastEdited();
+
+        if (t.transform != targetTransform)
+        {
+            if (useThisStaticPosition && showingMenu)
+            {
+                // Menu is static in one place
+                targetTransform = t.transform;
+
+                EffectsMenuController menuController = menu.transform.GetComponent<EffectsMenuController>();
+                menuController.SetTarget(targetTransform);
+
+                /*
+                // reopen the menu so we get updated settings
+                // TODO: need cleaner way of refreshing, but for now this is ok
+                // TODO: if keeping this way, should remember what tab we were on
+                ToggleEffectsMenu(); // close
+                ToggleEffectsMenu(); // reopen
+                */
+            }
+            else
+            {
+                // Menu is dynamically generated for each object
+
+                Destroy(menuLaunchButton);
+                targetTransform = t.transform;
+                PlaceLaunchButton();
+            }
+
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {     
-        // TODO: PERFORMANCE: This should be a listener on the EditingManager whenever the last edited item changes
-
-        if (EditingManager.Instance.GetLastEdited() != null)
-        {
-            GameObject t = EditingManager.Instance.GetLastEdited();
-
-            if (t.transform != targetTransform)
-            {
-                if (useThisStaticPosition && showingMenu)
-                {
-                    // Menu is static in one place
-                    targetTransform = t.transform;
-
-                    EffectsMenuController menuController = menu.transform.GetComponent<EffectsMenuController>();
-                    menuController.SetTarget(targetTransform);
-
-                    /*
-                    // reopen the menu so we get updated settings
-                    // TODO: need cleaner way of refreshing, but for now this is ok
-                    // TODO: if keeping this way, should remember what tab we were on
-                    ToggleEffectsMenu(); // close
-                    ToggleEffectsMenu(); // reopen
-                    */
-                }
-                else
-                {
-                    // Menu is dynamically generated for each object
-
-                    Destroy(menuLaunchButton);
-                    targetTransform = t.transform;
-                    PlaceLaunchButton();
-                }
-                
-            }
-        }
-        else
-        {
-            if (targetTransform != null)
-            {
-                targetTransform = null;
-                menuController = menu.transform.GetComponent<EffectsMenuController>();
-                menuController.SetTarget(targetTransform);
-            }
-        }
+       
     }
 
     public void ToggleEffectsMenu()
