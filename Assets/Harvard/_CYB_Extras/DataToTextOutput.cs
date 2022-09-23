@@ -25,4 +25,9 @@ public class DataToTextOutput : MonoBehaviour
     {
         
     }
+
+    private void OnDestroy()
+    {
+        dataSwitch.OnDataUpdated -= OnDataUpdated;
+    }
 }

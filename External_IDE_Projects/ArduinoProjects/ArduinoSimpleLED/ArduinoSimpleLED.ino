@@ -1,3 +1,15 @@
+/**
+ * CYB Arduino-Unity example
+ * 
+ * Arduino reads data from a button / potentiometer / ultrasonic sensor and sends that to Unity on channel C2
+ * 
+ * Unity sends data on C1, which is then used to turn the onboard LED on/off. 
+ * 
+ * Arduino sends back C4 which is half of C1
+ * 
+ */
+
+
 #include "Arduino.h"
 #include "UnityConnector.hpp"
 
