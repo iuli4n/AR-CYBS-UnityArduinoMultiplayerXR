@@ -339,6 +339,8 @@ GameObject:
   - component: {fileID: 97999172}
   - component: {fileID: 97999171}
   - component: {fileID: 6715039087600882154}
+  - component: {fileID: 97999178}
+  - component: {fileID: 97999177}
   m_Layer: 0
   m_Name: _ChannelTextLabel
   m_TagString: Untagged
@@ -452,14 +454,47 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97999170}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1385, y: 1.2095, z: -2.2803898}
-  m_LocalScale: {x: 0.015591, y: 0.015591, z: 0.015591}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.054926787, y: 0.28707173, z: 0}
+  m_LocalScale: {x: 0.22072788, y: 0.08240155, z: 0.06287315}
   m_Children:
   - {fileID: 919107981}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &97999177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97999170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb7c2b94a1e26f4b88e02b032905d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontMoveToScene: 1
+  autoAttachScripts: 1
+  autoConfigureScripts: 1
+  debug_dontEnableBounds: 0
+  isConfigured: 0
+--- !u!114 &97999178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97999170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 1
+  m_UseLocal: 1
 --- !u!1 &151047759
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,7 +733,7 @@ MonoBehaviour:
   simchannels_Enabled: 1
   simchannels_spikyChannel: 
   simchannels_sineChannel: 
-  simchannels_squareChannel: 
+  simchannels_squareChannel: C1
   simchannels_increasingChannel: 
 --- !u!1 &859093520
 GameObject:
@@ -802,7 +837,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -897,7 +932,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.32005, y: 0.26}
+  m_AnchoredPosition: {x: 0.13, y: 0.64}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &929507196
@@ -3763,6 +3798,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 97999171}
+  - {fileID: 97999178}
   sceneViewId: 22
   InstantiationId: 0
   isRuntimeInstantiated: 0
