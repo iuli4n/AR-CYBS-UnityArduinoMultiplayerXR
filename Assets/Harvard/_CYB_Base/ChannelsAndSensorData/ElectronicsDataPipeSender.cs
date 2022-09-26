@@ -53,7 +53,7 @@ public class ElectronicsDataPipeSender : MonoBehaviour
 
         if (!PlayersManager.Instance.IsPlayerReady())
         {
-            Debug.LogWarning("Sensor data is generated but photon is not ready, so ignoring this update...");
+            //Debug.LogWarning("Sensor data is generated but photon is not ready, so ignoring this update...");
             return;
         }
 

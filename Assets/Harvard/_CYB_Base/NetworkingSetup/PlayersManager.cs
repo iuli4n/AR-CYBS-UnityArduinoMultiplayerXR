@@ -84,73 +84,117 @@ public class PlayersManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
 		DebugUI_NetworkStatusMenu.Instance.ShowStatusGood("Connected to Room");
 		Debug.Log("PlayersManager: OnJoinedRoom() called by PUN. Now this client is in a room.");
 
+        // Set the local player to know its own platform
+        ExitGames.Client.Photon.Hashtable cp = PhotonNetwork.LocalPlayer.CustomProperties;
+        if (cp == null) cp = new ExitGames.Client.Photon.Hashtable();
+        cp["platform"] = Application.platform;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(cp);
 
-		// First check what's going on in this room:
-		// Are we the first ones ? If yes, we need to be the computer
+
+        // First check what's going on in this room:
+        // Are we the first ones ? If yes, we need to be the computer
+        StartCoroutine(NetworkWatchdogCoroutine());
 
 #if UNITY_EDITOR
-		// === PC ONLY ===
-		// pc is always the master client; enable PC objects (serial port, etc)
-		PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
+        // === PC ONLY ===
+        // pc is always the master client; enable PC objects (serial port, etc)
+        PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
 
-#else
-		// we're not the PC
-		if (PhotonNetwork.PlayerListOthers.Length == 0)
-        {
-			// means we're the only one here; in this case, just abort because this app isn't supposed to run like this
-			DebugUI_NetworkStatusMenu.Instance.ShowStatusBad("ERROR: The PC running Unity needs to be started first before all other users. Please start that first, and restart this app.");
-			return;
-		}
-		// if we got here we're all good
 #endif
+	}
 
-
-
-
-
-
-
-		// === SPAWN PLAYER ===
-		// Spawn player and then configure local enable/disable scripts
-		localPlayerHead = PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
-		
-		PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "PhotonViewID",localPlayerHead.GetPhotonView().ViewID} });
-		
-		// LOCAL CONTROL UI STUFF
-		localPlayerHead.transform.Find("LocalControl").gameObject.SetActive(true);
-
-		// HEAD and PENS		
-
-		localPlayerHead.transform.Find("Head").GetComponent<FollowTheCamera>().enabled = (true);
-		// hide head: localPlayerHead.transform.Find("Head/HeadModel").gameObject.SetActive(false);
-
-		localPlayerHead.transform.Find("Pens").gameObject.GetComponent<FollowTheFinger>().enabled = (true);
-		localPlayerHead.transform.Find("Pens").gameObject.GetComponent<FingerTrackingIndicator>().enabled = (true);
-
-		// LASER POINTERS
-
-		//localPlayerHead.transform.Find("FingerLaserPointers/smoothTip").gameObject.GetComponent<FollowTheFinger>().enabled = (true);
-		localPlayerHead.transform.Find("FingerLaserPointers/controller").gameObject.SetActive(true);
-
-
-		// HANDS
-		if (localPlayerHead.transform.Find("HANDS") != null)
+	IEnumerator NetworkWatchdogCoroutine()
+	{
+		while (true)
 		{
-			// control the hand
-			if (localPlayerHead.transform.Find("HANDS/JointsController_L") != null)
-				localPlayerHead.transform.Find("HANDS/JointsController_L").gameObject.SetActive(true);
-			if (localPlayerHead.transform.Find("HANDS/JointsController_R") != null)
-				localPlayerHead.transform.Find("HANDS/JointsController_R").gameObject.SetActive(true);
+#if UNITY_EDITOR
+			// if we are unity editor then the purpose of this coroutine is to just spawn the local player and exit
+			DoSpawnThisPlayer();
+            break;
+#else
+			// if we are not the unity editor, then we will need to wait for an editor to be present
 
-			// disable the model since the local player already has a hand
-			localPlayerHead.transform.Find("HANDS/HandPivot_L").gameObject.SetActive(false);
-			localPlayerHead.transform.Find("HANDS/HandPivot_R").gameObject.SetActive(false);
-		}
+			bool editorIsPresent = false;
+            foreach (var player in PhotonNetwork.PlayerListOthers)
+            {
+				if (player.CustomProperties != null && 
+					player.CustomProperties["platform"] != null && 
+					PlayersManager.IsUnityEditorPlatform((RuntimePlatform)player.CustomProperties["platform"]))
+				{
+					editorIsPresent = true;
+					break;
+				}
+            }
 
-		ExitGames.Client.Photon.Hashtable cp = PhotonNetwork.LocalPlayer.CustomProperties;
-		if (cp == null) cp = new ExitGames.Client.Photon.Hashtable();
-		cp["platform"] = Application.platform;
-		PhotonNetwork.LocalPlayer.SetCustomProperties(cp);
+            if (!editorIsPresent)
+			{
+                DebugUI_NetworkStatusMenu.Instance.ShowStatusBad("ERROR: This device is not the Unity Editor. The editor needs to be running - please run that, ideally before starting this device.");
+            } else
+			{
+                if (localPlayerHead == null)
+                {
+                    // we haven't spawned the local player yet, but we can do it now because the editor is present
+                    DoSpawnThisPlayer();
+                }
+            }
+            
+            yield return new WaitForSeconds(2f);
+#endif
+        }
+
+        yield return 0;
+	}
+
+	private void DoSpawnThisPlayer()
+	{
+        // === SPAWN PLAYER in response to local OnJoinedRoom() ===
+        // Spawn local player and then configure local enable/disable scripts
+        localPlayerHead = PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+
+        PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "PhotonViewID", localPlayerHead.GetPhotonView().ViewID } });
+
+        // LOCAL CONTROL UI STUFF
+        localPlayerHead.transform.Find("LocalControl").gameObject.SetActive(true);
+
+        // HEAD and PENS		
+
+        localPlayerHead.transform.Find("Head").GetComponent<FollowTheCamera>().enabled = (true);
+        // hide head: localPlayerHead.transform.Find("Head/HeadModel").gameObject.SetActive(false);
+
+        localPlayerHead.transform.Find("Pens").gameObject.GetComponent<FollowTheFinger>().enabled = (true);
+        localPlayerHead.transform.Find("Pens").gameObject.GetComponent<FingerTrackingIndicator>().enabled = (true);
+
+        // LASER POINTERS
+
+        //localPlayerHead.transform.Find("FingerLaserPointers/smoothTip").gameObject.GetComponent<FollowTheFinger>().enabled = (true);
+        localPlayerHead.transform.Find("FingerLaserPointers/controller").gameObject.SetActive(true);
+
+
+        // HANDS
+        if (localPlayerHead.transform.Find("HANDS") != null)
+        {
+            // control the hand
+            if (localPlayerHead.transform.Find("HANDS/JointsController_L") != null)
+                localPlayerHead.transform.Find("HANDS/JointsController_L").gameObject.SetActive(true);
+            if (localPlayerHead.transform.Find("HANDS/JointsController_R") != null)
+                localPlayerHead.transform.Find("HANDS/JointsController_R").gameObject.SetActive(true);
+
+            // disable the model since the local player already has a hand
+            localPlayerHead.transform.Find("HANDS/HandPivot_L").gameObject.SetActive(false);
+            localPlayerHead.transform.Find("HANDS/HandPivot_R").gameObject.SetActive(false);
+        }
+
+        
+
+        Debug.LogWarning("Spawned local player for platform " + PhotonNetwork.LocalPlayer.CustomProperties["platform"]);
+    }
+
+	public static bool IsUnityEditorPlatform(RuntimePlatform platform)
+	{
+		return
+			platform == RuntimePlatform.OSXEditor ||
+			platform == RuntimePlatform.LinuxEditor ||
+			platform == RuntimePlatform.WindowsEditor;
 	}
 
 	public bool IsPlayerReady()

@@ -56,7 +56,52 @@
 
 
 
+====================================
 
+- DO YOU HAVE ARDUINO ?
+-> YES
+--- In Unity, open the ConfigurationProfile object and set the COM port of your arduino (you can find it through the Arduino IDE)
+--- you will control C2 by changing A0 on the arduino
+--- Open the Arduino IDE and the arduino project, upload it
+
+-> NO
+--- open the ConfigurationProfile object and disable Arduino_Enabled 
+--- you will control C2 manually through the window
+
+
+- DO YOU HAVE HOLOLENS ?
+-> YES
+--- build the project for hololens and upload it to your device
+-> NO
+--- no problem, you can use the Unity editor
+
+
+run the project
+- whenever you change C2 (either through the Arduino knob, or through the panel)
+
+
+
+2. control arduino light with control panel
+(-- you'll need to modify the ConfigurationProfile. You can either make a copy of it and disable the old one, or just change it.)
+-- in configuration profile, remove simchannels square from C1
+-- run and change data switch controller to C1 and change manually. you should see light change and C2 change
+
+3. control unity object with arduino
+- look at the ColorCube object in scene. it was created by ...- if want to manipulate, add PlayerCreatedObject and tell it to PhotonTransformView scale; and PCO don't attach to scene
+
+
+
+
+IF DONT HAVE ARDUINO
+- you can still run this scene but it'll give some USB errors
+
+- run the hololens sample
+
+
+
+
+
+====================================
 
 
 

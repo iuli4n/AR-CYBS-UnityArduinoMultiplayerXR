@@ -5,6 +5,7 @@ using UnityEngine;
 
 using Photon.Pun;
 using Photon.Realtime;
+using System;
 
 public class DebugUI_CalibrateKinectHL : MonoBehaviour
 {
@@ -45,7 +46,10 @@ public class DebugUI_CalibrateKinectHL : MonoBehaviour
         if (PhotonNetwork.PlayerListOthers.Length == 0) { GUILayout.Label("No other players besides me here"); }
         foreach (var player in PhotonNetwork.PlayerList)
         {
-            if (GUILayout.Button("Calibrate player id  " + player.ActorNumber))
+            if (GUILayout.Button("Calibrate player id  " + player.ActorNumber 
+                + (PhotonNetwork.LocalPlayer.ActorNumber == player.ActorNumber ? " (me)" : "") + " " 
+                + "["+ Enum.GetName(typeof(RuntimePlatform), player.CustomProperties["platform"]) +"]"
+                ))
             {
                 PhotonView.Get(this).RPC("RPC_CalibratePlayer", RpcTarget.AllViaServer, player.ActorNumber);
             }
