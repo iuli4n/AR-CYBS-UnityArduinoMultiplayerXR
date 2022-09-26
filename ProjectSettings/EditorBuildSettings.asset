@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SCENES/Examples/1.5/ArduinoScene2.unity
+    path: Assets/SCENES/Examples/ArduinoAndMultiplayerScene.unity
     guid: 31a02645eb0b2d14895b308011b0e001
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: f0372c52e5309a24caa9d6003f445975, type: 2}

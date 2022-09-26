@@ -136,11 +136,15 @@ public class PlayersManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
                     // we haven't spawned the local player yet, but we can do it now because the editor is present
                     DoSpawnThisPlayer();
                 }
+
+                if (PhotonNetwork.IsConnectedAndReady) {
+                    DebugUI_NetworkStatusMenu.Instance.ShowStatusGood("Player is connected properly");
+                }            
             }
-            
             yield return new WaitForSeconds(2f);
 #endif
         }
+
 
         yield return 0;
 	}
@@ -184,8 +188,6 @@ public class PlayersManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
             localPlayerHead.transform.Find("HANDS/HandPivot_R").gameObject.SetActive(false);
         }
 
-        
-
         Debug.LogWarning("Spawned local player for platform " + PhotonNetwork.LocalPlayer.CustomProperties["platform"]);
     }
 
@@ -200,6 +202,7 @@ public class PlayersManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
 	public bool IsPlayerReady()
     {
 		// Returns true if the local player has been initialized and photon is running
+        // NOTE: There might be a case where this is the only player but is not unity editor, and this returns true even though activities shouldn't happen
 
 		return (PhotonNetwork.IsConnectedAndReady && localPlayerHead != null);
     }

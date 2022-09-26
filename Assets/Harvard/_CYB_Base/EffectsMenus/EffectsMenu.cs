@@ -5,6 +5,7 @@ using Photon.Pun;
 using Microsoft.MixedReality.Toolkit.Input;
 using UnityEngine;
 using TMPro;
+using static UnityEngine.GraphicsBuffer;
 
 public class EffectsMenu : MonoBehaviour
 {
@@ -57,11 +58,24 @@ public class EffectsMenu : MonoBehaviour
         interactable.OnClick.AddListener(ToggleEffectsMenu);
     }
 
+    public static bool CanEditEffectsOnObject(GameObject o)
+    {
+        return
+            (o.transform.Find("EffectsModel") != null);
+    }
+
     void OnNewEditedObject(GameObject o)
     {
         // The edited object has changed; refresh the menu or just the button
 
         GameObject t = EditingManager.Instance.GetLastEdited();
+
+        bool canEditEffects = CanEditEffectsOnObject(t);
+        if (!canEditEffects)
+        {
+            // don't update anything because it means that object won't be editable
+            return;
+        }
 
         if (t.transform != targetTransform)
         {

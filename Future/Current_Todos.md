@@ -5,7 +5,19 @@
 #################################
 
 
+
+LATER:
+- close button for effectsmenu
+- effects controller more easily
+- saving/loading current scene
+- issue clicking on items with right hand
+- Disable object menu open/close for all users
+
+
+
 **** NEED TO DO
+
+- Make empty scene
 
 - Think about what documentation you need
 	* >> Example docs: Color cube, text cube
@@ -14,34 +26,6 @@
 	- Arduino to Unity
 	- Unity to many HL
 	- Data channels
-
-
-
-
-- Check all example scenes to make sure they work
-	- actually just send ArduinoScene and Empty 
-
-- Also check that you can make a new scene
-
--?nah Sketchy menu & RPC to switch scenes [use same as calibration]
-
-
-* >> Clean up example scenes folder
-
-- Disable object menu open/close for all users
-
-
-
-
-*** HL TEST
-
-- Check finger issue
-
-* HL TEST: trash can
-
-* disable StandaloneDataChannel movement
-
-
 
 
 **** DOCUMENTATION
