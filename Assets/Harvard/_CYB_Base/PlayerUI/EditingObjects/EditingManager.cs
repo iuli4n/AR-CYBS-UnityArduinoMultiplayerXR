@@ -278,7 +278,11 @@ public class EditingManager : MonoBehaviour
         if (!showGUI)
             return;
 
-
+        if (!PlayersManager.Instance.isActiveAndEnabled)
+        {
+            GUILayout.Label("Waiting for Photon to connect...");
+            return;
+        }
 
         GUILayout.Label("             ");
         GUILayout.BeginHorizontal();
@@ -349,7 +353,8 @@ public class EditingManager : MonoBehaviour
 
         //GUIPointerButton("Cp", TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate);
         GUILayout.EndHorizontal();
-        GUILayout.Label("Current: " + TEMP_Debug_Pointers.Instance.currentPointerType);
+        GUILayout.Label("Current Pointer: " + EditingManager.Instance.pointersManager.currentPointerType);
+        GUILayout.Label("Current Subpointer: " + PlayersManager.Instance.localPlayerFingerPenTip.currentMode);
 
     }
 }

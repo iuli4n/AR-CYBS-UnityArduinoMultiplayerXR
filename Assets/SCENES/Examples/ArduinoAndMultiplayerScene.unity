@@ -1623,7 +1623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1336b91e0e994d648af0b6fa78782a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arduino_Enabled: 0
+  arduino_Enabled: 1
   arduino_ComPort: COM8
   arduino_channelsFromArduino:
   - C2

@@ -310,7 +310,7 @@ public class ActivateTip : MonoBehaviour//PunCallbacks
 
         if (menuItemName == "Pointer1" || menuItemName == "Pointer3")
         {
-            Debug.Assert(false, "NOT IMPLEMENTED - CODE NEEDS UPDATE HERE");
+            Debug.Assert(false, "WARNING - SWITCHING POINTERS CODE MIGHT BE OUT OF DATE AND NOT NETWORK SYNCHRONIZED");
 
             // but record this is the present mode
             //currentMode = model.lastTriggerEntered;

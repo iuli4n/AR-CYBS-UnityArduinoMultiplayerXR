@@ -59,13 +59,17 @@ public class Debug_Keyboard : MonoBehaviour
 
     }
 
-    void OnGUI() { 
+    void OnGUI() {
+
+        // don't do anything - this is old code
+        return;
 
         GUILayout.BeginArea(new Rect(300, 0, 300, 600));
 
         GUILayout.Label("");
         GUILayout.Label("POINTER: "+ EditingManager.Instance.pointersManager.currentPointerType);
         GUILayout.Label("Current OT: " + PlayersManager.Instance.localPlayerFingerPenTip.currentMode);
+        
 
         /***
         if (GUILayout.Button("RESET"))
@@ -96,7 +100,7 @@ public class Debug_Keyboard : MonoBehaviour
         {
             GUILayout.Label("Last edited object: " + lastEditedObject.name);
             DrawingPropertiesManager dpm = lastEditedObject.GetComponent<DrawingPropertiesManager>();
-            /**
+            
             if (dpm)
             {
                 GUILayout.Label("SetColor:");
@@ -114,7 +118,7 @@ public class Debug_Keyboard : MonoBehaviour
                 //    penTip.SetDrawingColor(0);
                 
             }
-            **/
+            
         
         } else
         {
