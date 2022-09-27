@@ -15,7 +15,7 @@ public class StudentProjectSceneManager : MonoBehaviour
     public int CurrentSceneIndex { get; private set; }
     public string CurrentScenePrefabName { get; private set; }
 
-    //public int TempSceneIndex { get { return pc_prefabScenes.Length - 1;  } }
+    public int TempSceneIndex { get { return pc_prefabScenes.Length - 1;  } }
 
     public string CurrentScenePrefabLocationFull { get {
             return GetFullPathForScene(CurrentScenePrefabName);
@@ -117,7 +117,7 @@ public class StudentProjectSceneManager : MonoBehaviour
 #endif
     }
 
-    /**
+
     public string GetTempSceneDiskLocation()
     {
         GameObject prefa = pc_prefabScenes[TempSceneIndex];
@@ -127,5 +127,4 @@ public class StudentProjectSceneManager : MonoBehaviour
     {
         return pc_prefabScenes[TempSceneIndex]; ;
     }
-    **/ 
 }

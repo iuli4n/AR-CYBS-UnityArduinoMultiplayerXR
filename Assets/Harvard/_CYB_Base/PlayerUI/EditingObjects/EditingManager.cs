@@ -250,15 +250,17 @@ public class EditingManager : MonoBehaviour
     {
         
     }
-
+    //A few changes here
     private bool GUIPointerButton(string s, TEMP_Debug_Pointers.PointerType p)
     {
-        if (TEMP_Debug_Pointers.Instance.currentPointerType == p)
-            s = "[" + s + "]";
+        // editied out  because of duplication if (GUILayout.Button(s))
+            
 
-        if (GUILayout.Button(s))
+        if (GUILayout.Button(s, GUILayout.Width(Screen.width / 10), GUILayout.Height(Screen.height / 10)))
         {
-            SwitchPointerTo(p);
+                s = "[" + s + "]";
+
+                SwitchPointerTo(p);
             return true;
         }
 
@@ -272,9 +274,21 @@ public class EditingManager : MonoBehaviour
 
 
 
-        GUILayout.Label("             ");
-        GUILayout.BeginHorizontal();
-        GUILayout.FlexibleSpace(); 
+        GUILayout.Label("            ");
+        //For Mobile Interface
+        GUILayout.BeginVertical();
+
+        /*GUILayout.BeginVertical();
+        GUILayout.FlexibleSpace();
+        GUILayout.FlexibleSpace();
+        GUILayout.FlexibleSpace();
+        GUILayout.FlexibleSpace();
+        GUILayout.FlexibleSpace();
+        GUILayout.EndVertical();
+        */
+        GUILayout.BeginVertical();
+        
+       
         GUIPointerButton("P", TEMP_Debug_Pointers.PointerType.NoControl);
         GUIPointerButton("C", TEMP_Debug_Pointers.PointerType.Create_Default);
         GUIPointerButton("Es", TEMP_Debug_Pointers.PointerType.Edit_PrecisionScale);
@@ -296,7 +310,7 @@ public class EditingManager : MonoBehaviour
                 TEMP_DEBUG_enabledisableSpecialCreation.EnableObject(0);
             }
             **/
-            if (GUILayout.Button("Kt"))
+            if (GUILayout.Button("Kt")) 
             {
                 TEMP_Debug_Pointers.Instance.SwitchPointerTo(TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate);
                 CreationTipManager.Instance.StartCreating_Tooltip();
@@ -312,22 +326,29 @@ public class EditingManager : MonoBehaviour
                 CreationTipManager.Instance.StartCreating_Path();
             }
         }
+
         
-        if (GUILayout.Button("D"))
+        
+
+        
+        if (GUILayout.Button("D", GUILayout.Width(Screen.width / 10), GUILayout.Height(Screen.height / 10)))
         {
             SwitchPointerToByS("OriginalTool_Drawing");
         }
-        if (GUILayout.Button("P1"))
+        if (GUILayout.Button("P1", GUILayout.Width(Screen.width / 10), GUILayout.Height(Screen.height / 10)))
         {
             SwitchPointerToByS("OriginalTool_Point1");
         }
-        if (GUILayout.Button("P2"))
+        if (GUILayout.Button("P2", GUILayout.Width(Screen.width / 10), GUILayout.Height(Screen.height / 10)))
         {
             SwitchPointerToByS("OriginalTool_Point2");
         }
+        GUILayout.EndVertical();//For Mobile Interface 
 
 
-        
+        //End Mobile Interface
+
+
         if (!guiMode_simplified)
         {
             // show other complicated optionsGUILayout.BeginHorizontal();
@@ -340,8 +361,10 @@ public class EditingManager : MonoBehaviour
         }
 
         //GUIPointerButton("Cp", TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate);
-        GUILayout.EndHorizontal();
+        // Test      GUILayout.EndHorizontal();
         GUILayout.Label("Current: " + TEMP_Debug_Pointers.Instance.currentPointerType);
+
+        GUILayout.EndVertical();
 
     }
 }

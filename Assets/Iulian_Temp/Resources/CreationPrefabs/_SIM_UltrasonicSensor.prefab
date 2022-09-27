@@ -1352,7 +1352,7 @@ GameObject:
   - component: {fileID: 8846454335980812547}
   - component: {fileID: -3929104348662624811}
   m_Layer: 0
-  m_Name: _ProximitySensor
+  m_Name: _SIM_UltrasonicSensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

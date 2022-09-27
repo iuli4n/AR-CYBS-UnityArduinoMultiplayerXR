@@ -21856,7 +21856,7 @@ MonoBehaviour:
   doingProjectionTest: 0
   cameraForProjectionTest: {fileID: 0}
   extraDistance: 0
-  hand: 1
+  hand: 2
   joint: 3
   overrideFingerObject: {fileID: 0}
   smoothing: 0

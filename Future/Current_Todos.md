@@ -1,55 +1,64 @@
+#################################
+# FOR MIT DEMOS
+#################################
+
+* Remote calibration
+* Clicker
+
+* Finger issue ?
+
+** MIT Scene: Knob influence servo robot
+
+
+* Creation menu: doesn't show scale properly; use renderer bounds instead of collider ?
+* creation menu: objects get rotated 90deg !?
+
+* load scene: collider isn't set properly after reload
+* save scene only if click button
+
+* effects menu button could be turned into an actual button
+
+* knob can't be controlled [just use slider for now]
+
+#################################
+# BEFORE DRAFT RELEASE
+#################################
+
+* just use clicker
+
+* QUICK HL: Example arduino scene: Manual Data Channel make it smaller
+
+* Update documentation for arduino scene
+
+
 
 
 #################################
 # BEFORE FIRST RELEASE
 #################################
 
-
-* Document clearly main features
-	- Arduino to Unity
-	- Unity to many HL
-
-	- other features: effects, pointers, editing, files
-
-
 * New scene with more objects
-
-
-MINOR:
-
-* Can you use the cyb prefab in new scene properly ? [might have changed prefabs]
-
-* Update documentation for arduino scene
-
-* Clicker ?
-
-* Finger issue ?
-
-* disable StandaloneDataChannel movement
-
-* HL TEST: trash can
-
-* >> Clean up example scenes folder
-
-* >> Example docs: Color cube, text cube
-
-
-
-MAYBE:
 
 * HL: does ObjectMenu and ImageMenu move in the same way [colliders are different]
 ** [not done, seems complicated because menus are spawned, how about dont regenerate menus] Object / Image menu: position networked
 
 ** HL: TEST object/image menu RPC for open/close 
-
-* load scene: collider isn't set properly after reload
-* document load scene doesn't save effects
+* HL TEST: trash can
 
 
-BUGS MAYBE:
 * BUG: effectmenu spawn when object doesn't have things [ex: sensor chart]
 * BUG: deleting signals still keeps some listeners around; someone doesn't unregister themselves
-	** Effect Menu BUG: after closing effect menu, there's some listeners (probably from sensorchart) which got broken. Need to unlisten.
+
+
+* Can you use the cyb prefab in new scene properly ? [might have changed prefabs]
+* >> Clean up example scenes folder
+* >> Example docs: Color cube, text cube
+
+
+
+** Effect Menu Link to current object
+
+** Effect Menu BUG: after closing effect menu, there's some listeners (probably from sensorchart) which got broken. Need to unlisten.
 
 * TEST: network scene load/save when person joins after scene was switched [shouldn't happen just put it under docs]
 
@@ -57,9 +66,6 @@ BUGS MAYBE:
 #################################
 # SECOND RELEASE
 #################################
-
-
-* effects menu button could be turned into an actual button
 
 * * HL: way to calibrate HL finger without keyboard. Ideally use PC GUI dropdown and RPC
 
@@ -74,16 +80,11 @@ BUGS MAYBE:
 
 ** Scene saving doesn't save effects model
 
-* Creation menu: doesn't show scale properly; use renderer bounds instead of collider ?
 
 
-** Effect Menu Link to current object
 
 
 ### LOWER PRIORITY
-
-* creation menu: objects get rotated 90deg !?
-
 
 * Tooltips and arrows - test creation with clicker; make it so people can create without, or at least just use PC
 
@@ -93,7 +94,6 @@ BUGS MAYBE:
 
 * CreationObjectManager.ExecuteButtonPress -- Object creation should be done only through SSM via RPC 
 
-* update the client login so it waits for the pc master [how to check if it connected ?]
 
 
 ##########################
@@ -102,7 +102,6 @@ BUGS MAYBE:
 
 * ManualDataChannel: if you want it to be manual and standalone will need atomicdataswitch on it, photontransformview,pv,boxcollider, playercreatedobject
 
-* The project for working on phone - Photon seems to serialize different kinds of objects !? 
 
 
 
@@ -122,9 +121,6 @@ BUGS MAYBE:
 ###########################
 # MAYBE LATER
 ############################
-
-* knob can't be controlled [just use slider for now]
-
 
 * Phone UI/RPC for swithing into a specific scene [not sure if this is possible because phone tries to start in specific place]
 

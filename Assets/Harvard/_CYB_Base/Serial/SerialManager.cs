@@ -33,13 +33,7 @@ public class SerialManager : MonoBehaviourPun
             // bind listeners to the models. NOTE: this way doesn't allow a model to change channel at runtime
             AtomicDataModel m = channelsManager.GetModelForChannel(channel);
             //Debug.Log("SerialManager creating listener for channel model " + channel + " "+m);
-            if (m != null)
-            {
-                m.OnDataUpdated += (newval) => { OnUnityModelChanged(channel, newval); };
-            } else
-            {
-                Debug.LogError("SerialManager: Couldn't find channel: " + channel);
-            }
+            m.OnDataUpdated += (newval) => { OnUnityModelChanged(channel, newval); };
         }
     }
 

@@ -19,9 +19,10 @@ public class SceneStepsManager : MonoBehaviour
     public static SceneStepsManager Instance = null;
 
     public bool showGUI = false;
-    public bool disableAutoSave = true;
-    public bool loadProjectOnStart = true;
-    
+    public bool DEBUG_DISABLESAVE = false;
+    public bool DEBUG_STARTINPROJECT = true;
+    public bool DEBUG_TRYSAVEONQUIT = true;
+
     //public bool DEBUG_usingNotNetworkedScene = true;
     public PrefabLoadSave DEBUG_prefabLoadSaveHelper = null;
 
@@ -128,7 +129,7 @@ public class SceneStepsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (loadProjectOnStart) {
+        if (DEBUG_STARTINPROJECT) {
             // This will open the project after photon is initialized
             OpenProject(GetProjectNames()[0]);
         }
@@ -317,19 +318,18 @@ public class SceneStepsManager : MonoBehaviour
     }
 
 
-    private void SaveCurrentScene(System.Action nextAction, bool forceSave = false)
+    private void SaveCurrentScene(System.Action nextAction)
     {
-        ///// NETWORKED SAVE
+///// NETWORKED SAVE
+
+        if (DEBUG_DISABLESAVE)
+        {
+            Debug.LogError("Warning: Scene save is disabled.");
+            return;
+        }
 
 
 #if UNITY_EDITOR
-
-        if (!forceSave && disableAutoSave)
-        {
-            // skip saving
-            nextAction?.Invoke();
-            return;
-        }
 
         DEBUG_prefabLoadSaveHelper.SaveToPrefab(currentSceneRoot, StudentProjectSceneManager.Instance.CurrentScenePrefabLocationFull, nextAction);
 
@@ -450,14 +450,14 @@ public class SceneStepsManager : MonoBehaviour
         int retries = 0;
 
         yield return new WaitForSeconds(0.5f);
-        while (retries < 10 && !pv.IsMine)
+        while (retries > 10 && !pv.IsMine)
         {
-            Debug.LogError("SSM: Wanting to delete network object but still waiting for ownership on PV " + pv.gameObject.name);
+            Debug.LogWarning("SSM: Wanting to delete network object but still waiting for ownership on PV " + pv.gameObject.name);
             pv.RequestOwnership();
             retries++;
             yield return new WaitForSeconds(0.5f);
         }
-        if (retries > 10) Debug.LogError("SSM: Gave up waiting for ownership on " + pv.gameObject.name);
+        if (retries > 10) Debug.LogWarning("SSM: Gave up waiting for ownership on " + pv.gameObject.name);
 
         // we're out of the loop, meaning it's mine or we gave up; try destroying it
         PhotonNetwork.Destroy(pv.gameObject);
@@ -808,7 +808,8 @@ public class SceneStepsManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        SaveCurrentScene( ()=> { });
+        if (DEBUG_TRYSAVEONQUIT)
+            SaveCurrentScene( ()=> { });
     }
 
 
@@ -835,21 +836,13 @@ public class SceneStepsManager : MonoBehaviour
             SceneStepsManager.Instance.Activate_ClearScene(PREFABNAME_BASELINE);
 
 
-
-
-        if (GUILayout.Button("< SAVE >"))
-            SaveCurrentScene(() => { }, true);
-
         if (GUILayout.Button(" << PREV"))
             SceneStepsManager.Instance.Activate_MoveToPrevScene();
 
         if (GUILayout.Button("NEXT >> "))
             SceneStepsManager.Instance.Activate_MoveToNextScene();
 
-        
 
-
-        /***
         if (GUILayout.Button("SAVE TEMP SCENE"))
             DEBUG_prefabLoadSaveHelper.SaveToPrefab(
                 currentSceneRoot, 
@@ -861,7 +854,6 @@ public class SceneStepsManager : MonoBehaviour
                 "RPC_LoadScene", RpcTarget.All,
                 StudentProjectSceneManager.Instance.CurrentProjectName,
                 StudentProjectSceneManager.Instance.TempSceneIndex);
-        ***/
 
         GUILayout.EndVertical();
 

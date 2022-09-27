@@ -2611,7 +2611,7 @@ GameObject:
   - component: {fileID: 6332964714975393399}
   - component: {fileID: 6676838743778831562}
   m_Layer: 0
-  m_Name: zKnobCP
+  m_Name: _KnobCP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

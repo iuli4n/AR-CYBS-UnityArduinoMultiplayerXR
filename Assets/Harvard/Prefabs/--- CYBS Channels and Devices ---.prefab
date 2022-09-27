@@ -446,9 +446,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1263296829470264158}
-  - component: {fileID: 2101840938739962352}
+  - component: {fileID: 1278890481690022318}
   m_Layer: 0
-  m_Name: CONFIGSYSTEM
+  m_Name: Configuration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -468,7 +468,7 @@ Transform:
   m_Father: {fileID: 5416468272090924953}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2101840938739962352
+--- !u!114 &1278890481690022318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -477,9 +477,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1900126775135648719}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3530930a39069a4478360f4f320a67ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 1336b91e0e994d648af0b6fa78782a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arduino_Enabled: 0
+  arduino_ComPort: 
+  arduino_channelsFromArduino: []
+  arduino_channelsToArduino: []
+  simchannels_Enabled: 1
+  simchannels_spikyChannel: C1
+  simchannels_sineChannel: C2
+  simchannels_squareChannel: C3
+  simchannels_increasingChannel: C4
   objArduino_SerialPort: {fileID: 3205122808464253842}
   objArduino_SerialController: {fileID: 3205122806402138891}
   objArduino_SerialManager: {fileID: 3205122808478093159}
