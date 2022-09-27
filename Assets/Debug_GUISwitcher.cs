@@ -17,6 +17,7 @@ public class Debug_GUISwitcher : MonoBehaviour
     public GameObject objMenu;
     public GameObject imgMenu;
     public GameObject spawnCylinder;
+    //Edit to check github
 
 
     //For enabling/disabling menus 
