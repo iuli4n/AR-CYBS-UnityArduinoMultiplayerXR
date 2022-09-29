@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/SCENES/Examples/ArduinoAndMultiplayerScene.unity
     guid: 31a02645eb0b2d14895b308011b0e001
+  - enabled: 1
+    path: Assets/SCENES/OlderExampleScenes/ArduinoAndMultiplayerScene_WithSoundMaking.unity
+    guid: a2b1570be3be49f4c9ca7bd12f59070d
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: f0372c52e5309a24caa9d6003f445975, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 9e6c7fd739e706f4faa21dfdc962a32c, type: 2}
