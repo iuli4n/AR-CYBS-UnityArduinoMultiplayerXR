@@ -7,7 +7,7 @@ AR CYB Project
 
 (c) 2022 Harvard University
 
-The majority of this work was created by Iulian Radu while at the Harvard University Graduate School of Education in the Learning, Innovation and Technology Lab, with advice from PI Bertrand Schneider. Other contributors to the source code: Max Cembalest, Tugce Joy, Kyle Lenhart, Max Weinstein, Elliot Lee, Shankar Ravi, Davide Zhang.
+This work is licensed under the MIT License. The majority of this work was created by Iulian Radu while at the Harvard University Graduate School of Education in the Learning, Innovation and Technology Lab (https://lit.gse.harvard.edu), with advice from P.I. Bertrand Schneider, and support from other contributors to the source code: Max Cembalest, Tugce Joy, Kyle Lenhart, Max Weinstein, Elliot Lee, Shankar Ravi, Davide Zhang.
 
 MIT License
 
@@ -54,4 +54,3 @@ Components:
 Other Unity Store external assets 
 Licensed under the Unity Asset Store EULA (see LICENSE_UnityAssetStore.txt)
 Downloaded January 2021 from: https://assetstore.unity.com/
-
