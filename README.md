@@ -1,18 +1,18 @@
 # Screenshots
 
-<img src="file:///C:/Users/hgsel/AppData/Roaming/marktext/images/2022-10-03-13-16-13-image.png" title="" alt="" width="474">
+<img src="Documentation/Images/2022-10-03-13-16-13-image.png" title="" alt="" width="474">
 
 ^ The software connects multiple devices through data channels.
 
-<img title="" src="file:///C:/Users/hgsel/AppData/Roaming/marktext/images/2022-10-03-14-26-40-image.png" alt="" width="466">
+<img title="" src="Documentation/Images/2022-10-03-14-26-40-image.png" alt="" width="466">
 
 ^ Using a virtual slider (top) to control a physical robot (bottom) [[Video](https://www.instagram.com/p/CiautRyu-fq/)]
 
-<img src="file:///C:/Users/hgsel/AppData/Roaming/marktext/images/2022-10-03-14-29-25-image.png" title="" alt="" width="466">
+<img src="Documentation/Images/2022-10-03-14-29-25-image.png" title="" alt="" width="466">
 
 ^ A smartphone user seeing the virtual shapes drawn by the Hololens user [[Video](https://www.instagram.com/p/CiBRxaaAULz/) 2nd half].
 
-<img title="" src="file:///C:/Users/hgsel/AppData/Roaming/marktext/images/2022-10-03-14-30-30-image.png" alt="" width="265"> <img title="" src="file:///C:/Users/hgsel/AppData/Roaming/marktext/images/2022-10-03-14-28-14-image.png" alt="" width="241">
+<img title="" src="Documentation/Images/2022-10-03-14-30-30-image.png" alt="" width="265"> <img title="" src="Documentation/Images/2022-10-03-14-28-14-image.png" alt="" width="241">
 
 ^ Left: A physical knob controlling a virtual shape (green) & sound [[Video](https://www.instagram.com/p/CjEj22uL-f9/)]. Right: Kicking around a virtual element [[Video](https://www.instagram.com/p/CiBRxaaAULz/)].
 
