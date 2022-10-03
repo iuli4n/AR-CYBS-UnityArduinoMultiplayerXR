@@ -2,7 +2,7 @@
 
 <img src="Documentation/Images/2022-10-03-13-16-13-image.png" title="" alt="" width="474">
 
-^ The software connects multiple devices through data channels.
+^ The software connects the virtual world (AR/VR) and physical worlds (Arduino) through data channels.
 
 <img title="" src="Documentation/Images/2022-10-03-14-26-40-image.png" alt="" width="466">
 
@@ -38,7 +38,7 @@
 
 - **Features for creating presentations:** Save/load scenes you've created, and create step-by-step presentations. Virtual laser pointers and drawings for annotating the scenes.
 
-# License
+# Licenses
 
 * This project contains multiple software libraries, described in [LICENSES.TXT](LICENSES.TXT) file. The Harvard CYBS project is licensed under MIT license. The external libraries are licensed under their respective licenses, and any use of third party code included in this software or third party libraries linked the software is subject to the third party licenses pertaining to such third party code.
 
