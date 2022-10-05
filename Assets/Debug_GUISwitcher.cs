@@ -17,25 +17,60 @@ public class Debug_GUISwitcher : MonoBehaviour
     public GameObject objMenu;
     public GameObject imgMenu;
     public GameObject spawnCylinder;
-    //Edit to check github
 
 
     //For enabling/disabling menus 
     public bool channelValue = false;
     public bool objValue = false;
     public bool imjValue = false;
-
+    public bool showAndroidGUI = false; 
     // Start is called before the first frame update
     void Start()
     {
-        StartAndroid();
 
-        //Disabling the menus on initialisation For some reason this is not working
-       /* channelcontrol.SetActive(false);
-        objMenu.SetActive(false);
-        imgMenu.SetActive(false);
-        spawnCylinder.SetActive(false);
-        */
+        initMobileObjects();
+        
+    }
+    //initializes Game Objects
+    public void initMobileObjects()
+    {
+        channelcontrol = GameObject.Find("ManualDataChannel");
+        objMenu = GameObject.Find("ObjectMenu");
+        imgMenu = GameObject.Find("ImageMenu");
+        spawnCylinder = GameObject.Find("SpawnCylinder");
+    }
+    //Creates additional Buttons for Mobile UI 
+    public void MobileGUI()
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("                                             " +
+            "                                                                           ");
+        GUIGameobjectButtonSelector("POINT", ref gui_editing.showGUI);
+        GUIGameobjectButtonSelector("SCENE", ref gui_scenes.showGUI);
+        GUIGameobjectButtonSelector("CALIB", ref gui_calibration.showGUI);
+        GUIGameobjectButtonSelector("FILES", ref gui_files.debug_gui);
+        GUILayout.Label("                        ");
+        //Additional Code for Enabling Disbling Menus and Data channel
+        if (GUILayout.Button("View Channels", GUILayout.Width(Screen.width / 10), GUILayout.Height(Screen.height / 10)))
+        {
+            channelValue = !channelValue;
+            channelcontrol.SetActive(channelValue);
+        }
+
+        if (GUILayout.Button("Object Menu", GUILayout.Width(Screen.width / 10), GUILayout.Height(Screen.height / 10)))
+        {
+            objValue = !objValue;
+            objMenu.SetActive(objValue);
+            spawnCylinder.SetActive(objValue);
+        }
+        if (GUILayout.Button("Image Menu", GUILayout.Width(Screen.width / 10), GUILayout.Height(Screen.height / 10)))
+        {
+            imjValue = !imjValue;
+            imgMenu.SetActive(imjValue);
+            spawnCylinder.SetActive(imjValue);
+        }
+
+        GUILayout.EndHorizontal();
     }
 
     // Update is called once per frame
@@ -57,68 +92,35 @@ public class Debug_GUISwitcher : MonoBehaviour
             enabled = !enabled;
         }
     }
-
-
-
-    void StartAndroid()
-    {
-        channelcontrol = GameObject.Find("ManualDataChannel");
-        objMenu = GameObject.Find("ObjectMenu");
-        imgMenu = GameObject.Find("ImageMenu");
-        spawnCylinder = GameObject.Find("SpawnCylinder");
-    }
-    void ShowAndroidGUI()
-    {
-        if (GUILayout.Button("View Channels", GUILayout.Width(Screen.width / 10), GUILayout.Height(Screen.height / 10)))
-        {
-            channelValue = !channelValue;
-            channelcontrol.SetActive(channelValue);
-        }
-
-        if (GUILayout.Button("Object Menu", GUILayout.Width(Screen.width / 10), GUILayout.Height(Screen.height / 10)))
-        {
-            objValue = !objValue;
-            objMenu.SetActive(objValue);
-            spawnCylinder.SetActive(objValue);
-        }
-        if (GUILayout.Button("Image Menu", GUILayout.Width(Screen.width / 10), GUILayout.Height(Screen.height / 10)))
-        {
-            imjValue = !imjValue;
-            imgMenu.SetActive(imjValue);
-            spawnCylinder.SetActive(imjValue);
-        }
-    }
     
     void OnGUI()
     {
-        GUILayout.BeginHorizontal();
-
-        GUILayout.Label("                                             " +
-            "                                                                           ");
-        GUIGameobjectButtonSelector("POINT", ref gui_editing.showGUI);
-        GUIGameobjectButtonSelector("SCENE", ref gui_scenes.showGUI);
-        GUIGameobjectButtonSelector("CALIB", ref gui_calibration.showGUI);
-        GUIGameobjectButtonSelector("FILES", ref gui_files.debug_gui);
-
-        GUILayout.Label("                        ");
-        //Additional Code for Enabling Disbling Menus and Data channel
-
-        if (Application.platform == RuntimePlatform.Android)
+        //Creates Mobile UI or runs in PC. showAndroidGUI is used only for debugging
+        if (Application.platform == RuntimePlatform.Android || showAndroidGUI == true)
         {
-            ShowAndroidGUI();
-        } else
-        {
-            // previous code....
+            MobileGUI();
+            Debug.Log("Andorid enabled DebugSwitcher");
         }
-        //end of code for menus
-
-        /**
-        if (GUILayout.Button(GUIButtonSelector("SIM", simulatedSensors.activeInHierarchy)))
+        else
         {
-            simulatedSensors.SetActive(!simulatedSensors.activeInHierarchy);
-        }
-        ***/
+            GUILayout.BeginHorizontal();
 
-        GUILayout.EndHorizontal();
+            GUILayout.Label("                                                                        ");
+            GUIGameobjectButtonSelector("POINT", ref gui_editing.showGUI);
+            GUIGameobjectButtonSelector("SCENE", ref gui_scenes.showGUI);
+            GUIGameobjectButtonSelector("CALIB", ref gui_calibration.showGUI);
+            GUIGameobjectButtonSelector("FILES", ref gui_files.debug_gui);
+
+            /**
+            if (GUILayout.Button(GUIButtonSelector("SIM", simulatedSensors.activeInHierarchy)))
+            {
+                simulatedSensors.SetActive(!simulatedSensors.activeInHierarchy);
+            }
+            ***/
+
+            GUILayout.EndHorizontal();
+        }
+
+        
     }
 }
