@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EditingManager : MonoBehaviour
+   public class EditingManager : MonoBehaviour
 {
     // DESCRIPTION: This is in charge of making sure each object can/can't be interacted by the current pointer.
     // This actually switches pointers and talks to all the objects' PointerInteractionConfigurer so they can be interacted appropriately
@@ -15,6 +15,8 @@ public class EditingManager : MonoBehaviour
     public bool showGUI = false;
     public bool guiMode_simplified = true;
     public TEMP_Debug_Pointers pointersManager;
+    public bool showAndroidGUI = true;
+    //checking GUI while debugging
 
     public GameObject lastEdited;
 
@@ -22,7 +24,7 @@ public class EditingManager : MonoBehaviour
     private List<PointerInteractionConfigurer> managedNormalInteractiveObjects = new List<PointerInteractionConfigurer>();
     [SerializeField]
     private List<PointerInteractionConfigurer> managedSpecialInteractiveObjects = new List<PointerInteractionConfigurer>();
-
+    
 
     public EffectsMenu effectsButton;
     public Debug_RPCEnabler TEMP_DEBUG_enabledisableSpecialCreation;
@@ -243,6 +245,88 @@ public class EditingManager : MonoBehaviour
     }
 
 
+    public void MobileGUI()
+    {
+        GUILayout.BeginVertical();
+        GUILayout.BeginVertical();
+        GUIPointerButton("P", TEMP_Debug_Pointers.PointerType.NoControl);
+        GUIPointerButton("C", TEMP_Debug_Pointers.PointerType.Create_Default);
+        GUIPointerButton("Es", TEMP_Debug_Pointers.PointerType.Edit_PrecisionScale);
+
+        if (!guiMode_simplified)
+        {
+            // show other complicated options
+
+            GUIPointerButton("Em", TEMP_Debug_Pointers.PointerType.Edit_PrecisionMove);
+            GUIPointerButton("SEm", TEMP_Debug_Pointers.PointerType.Edit_SpecialPrecisionMove);
+
+            /**
+            if (GUIPointerButton("Ka", TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate))
+            {
+                TEMP_DEBUG_enabledisableSpecialCreation.EnableObject(1);
+            }
+            if (GUIPointerButton("Kt", TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate))
+            {
+                TEMP_DEBUG_enabledisableSpecialCreation.EnableObject(0);
+            }
+            **/
+            if (GUILayout.Button("Kt"))
+            {
+                TEMP_Debug_Pointers.Instance.SwitchPointerTo(TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate);
+                CreationTipManager.Instance.StartCreating_Tooltip();
+            }
+            if (GUILayout.Button("Ka"))
+            {
+                TEMP_Debug_Pointers.Instance.SwitchPointerTo(TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate);
+                CreationTipManager.Instance.StartCreating_Arrow();
+            }
+            if (GUILayout.Button("Kp"))
+            {
+                TEMP_Debug_Pointers.Instance.SwitchPointerTo(TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate);
+                CreationTipManager.Instance.StartCreating_Path();
+            }
+        }
+
+
+
+        if (GUILayout.Button("D", GUILayout.Width(Screen.width / 10), GUILayout.Height(Screen.height / 10)))
+        {
+            SwitchPointerToByS("OriginalTool_Drawing");
+        }
+        if (GUILayout.Button("P1", GUILayout.Width(Screen.width / 10), GUILayout.Height(Screen.height / 10)))
+        {
+            SwitchPointerToByS("OriginalTool_Point1");
+        }
+        if (GUILayout.Button("P2", GUILayout.Width(Screen.width / 10), GUILayout.Height(Screen.height / 10)))
+        {
+            SwitchPointerToByS("OriginalTool_Point2");
+        }
+        GUILayout.EndVertical();//For Mobile Interface 
+
+
+        if (!guiMode_simplified)
+        {
+            // show other complicated optionsGUILayout.BeginHorizontal();
+            if (GUILayout.Button("FX"))
+            {
+                effectsButton.ToggleEffectsMenu();
+            }
+            //GUILayout.FlexibleSpace();
+            //GUILayout.EndHorizontal();
+        }
+
+        //GUIPointerButton("Cp", TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate);
+        // Test      GUILayout.EndHorizontal();
+        GUILayout.Label("Current: " + TEMP_Debug_Pointers.Instance.currentPointerType);
+
+        GUILayout.EndVertical();
+
+        //End Mobile Interface
+
+
+
+    }
+
 
 
     // Update is called once per frame
@@ -271,100 +355,89 @@ public class EditingManager : MonoBehaviour
     {
         if (!showGUI)
             return;
-
-
-
         GUILayout.Label("            ");
-        //For Mobile Interface
-        GUILayout.BeginVertical();
-
-        /*GUILayout.BeginVertical();
-        GUILayout.FlexibleSpace();
-        GUILayout.FlexibleSpace();
-        GUILayout.FlexibleSpace();
-        GUILayout.FlexibleSpace();
-        GUILayout.FlexibleSpace();
-        GUILayout.EndVertical();
-        */
-        GUILayout.BeginVertical();
         
-       
-        GUIPointerButton("P", TEMP_Debug_Pointers.PointerType.NoControl);
-        GUIPointerButton("C", TEMP_Debug_Pointers.PointerType.Create_Default);
-        GUIPointerButton("Es", TEMP_Debug_Pointers.PointerType.Edit_PrecisionScale);
-
-        if (!guiMode_simplified)
+        //Creates Mobile UI or runs in PC. showAndroidGUI is used only for debugging
+        if (Application.platform == RuntimePlatform.Android  || showAndroidGUI== true)
         {
-            // show other complicated options
+            MobileGUI();
+            Debug.Log("Andorid enabled");
+        }
+        else
+        {
+            GUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+            GUIPointerButton("P", TEMP_Debug_Pointers.PointerType.NoControl);
+            GUIPointerButton("C", TEMP_Debug_Pointers.PointerType.Create_Default);
+            GUIPointerButton("Es", TEMP_Debug_Pointers.PointerType.Edit_PrecisionScale);
 
-            GUIPointerButton("Em", TEMP_Debug_Pointers.PointerType.Edit_PrecisionMove);
-            GUIPointerButton("SEm", TEMP_Debug_Pointers.PointerType.Edit_SpecialPrecisionMove);
+            if (!guiMode_simplified)
+            {
+                // show other complicated options
 
-            /**
-            if (GUIPointerButton("Ka", TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate))
-            {
-                TEMP_DEBUG_enabledisableSpecialCreation.EnableObject(1);
+                GUIPointerButton("Em", TEMP_Debug_Pointers.PointerType.Edit_PrecisionMove);
+                GUIPointerButton("SEm", TEMP_Debug_Pointers.PointerType.Edit_SpecialPrecisionMove);
+
+                /**
+                if (GUIPointerButton("Ka", TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate))
+                {
+                    TEMP_DEBUG_enabledisableSpecialCreation.EnableObject(1);
+                }
+                if (GUIPointerButton("Kt", TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate))
+                {
+                    TEMP_DEBUG_enabledisableSpecialCreation.EnableObject(0);
+                }
+                **/
+                if (GUILayout.Button("Kt"))
+                {
+                    TEMP_Debug_Pointers.Instance.SwitchPointerTo(TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate);
+                    CreationTipManager.Instance.StartCreating_Tooltip();
+                }
+                if (GUILayout.Button("Ka"))
+                {
+                    TEMP_Debug_Pointers.Instance.SwitchPointerTo(TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate);
+                    CreationTipManager.Instance.StartCreating_Arrow();
+                }
+                if (GUILayout.Button("Kp"))
+                {
+                    TEMP_Debug_Pointers.Instance.SwitchPointerTo(TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate);
+                    CreationTipManager.Instance.StartCreating_Path();
+                }
             }
-            if (GUIPointerButton("Kt", TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate))
+
+            if (GUILayout.Button("D"))
             {
-                TEMP_DEBUG_enabledisableSpecialCreation.EnableObject(0);
+                SwitchPointerToByS("OriginalTool_Drawing");
             }
-            **/
-            if (GUILayout.Button("Kt")) 
+            if (GUILayout.Button("P1"))
             {
-                TEMP_Debug_Pointers.Instance.SwitchPointerTo(TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate);
-                CreationTipManager.Instance.StartCreating_Tooltip();
+                SwitchPointerToByS("OriginalTool_Point1");
             }
-            if (GUILayout.Button("Ka"))
+            if (GUILayout.Button("P2"))
             {
-                TEMP_Debug_Pointers.Instance.SwitchPointerTo(TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate);
-                CreationTipManager.Instance.StartCreating_Arrow();
+                SwitchPointerToByS("OriginalTool_Point2");
             }
-            if (GUILayout.Button("Kp"))
+
+
+
+            if (!guiMode_simplified)
             {
-                TEMP_Debug_Pointers.Instance.SwitchPointerTo(TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate);
-                CreationTipManager.Instance.StartCreating_Path();
+                // show other complicated optionsGUILayout.BeginHorizontal();
+                if (GUILayout.Button("FX"))
+                {
+                    effectsButton.ToggleEffectsMenu();
+                }
+                //GUILayout.FlexibleSpace();
+                //GUILayout.EndHorizontal();
             }
+
+            //GUIPointerButton("Cp", TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate);
+            GUILayout.EndHorizontal();
+            GUILayout.Label("Current: " + TEMP_Debug_Pointers.Instance.currentPointerType);
         }
 
-        
-        
-
-        
-        if (GUILayout.Button("D", GUILayout.Width(Screen.width / 10), GUILayout.Height(Screen.height / 10)))
-        {
-            SwitchPointerToByS("OriginalTool_Drawing");
-        }
-        if (GUILayout.Button("P1", GUILayout.Width(Screen.width / 10), GUILayout.Height(Screen.height / 10)))
-        {
-            SwitchPointerToByS("OriginalTool_Point1");
-        }
-        if (GUILayout.Button("P2", GUILayout.Width(Screen.width / 10), GUILayout.Height(Screen.height / 10)))
-        {
-            SwitchPointerToByS("OriginalTool_Point2");
-        }
-        GUILayout.EndVertical();//For Mobile Interface 
 
 
-        //End Mobile Interface
-
-
-        if (!guiMode_simplified)
-        {
-            // show other complicated optionsGUILayout.BeginHorizontal();
-            if (GUILayout.Button("FX"))
-            {
-                effectsButton.ToggleEffectsMenu();
-            }
-            //GUILayout.FlexibleSpace();
-            //GUILayout.EndHorizontal();
-        }
-
-        //GUIPointerButton("Cp", TEMP_Debug_Pointers.PointerType.Create_PrecisionCreate);
-        // Test      GUILayout.EndHorizontal();
-        GUILayout.Label("Current: " + TEMP_Debug_Pointers.Instance.currentPointerType);
-
-        GUILayout.EndVertical();
 
     }
 }
