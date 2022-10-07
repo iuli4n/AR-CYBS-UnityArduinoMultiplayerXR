@@ -980,7 +980,8 @@ MonoBehaviour:
   param2: 17.4
   param3: 4.3
   param4: 4.5
-  dataSwitch: {fileID: 920586915}
+  dataSwitch1: {fileID: 920586915}
+  dataSwitch2: {fileID: 1963808714}
 --- !u!65 &175834185
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -992,8 +993,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 20, y: 20, z: 5}
+  m_Center: {x: 10, y: 10, z: 0}
 --- !u!23 &175834186
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1051,8 +1052,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175834183}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9906842, y: 1.4006685, z: -1.2319734}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalPosition: {x: -1.608, y: 0.789, z: 0.04}
+  m_LocalScale: {x: 0.01572132, y: 0.01572132, z: 0.01572132}
   m_Children:
   - {fileID: 920586916}
   - {fileID: 1963808715}
@@ -1071,7 +1072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb7c2b94a1e26f4b88e02b032905d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontMoveToScene: 0
+  dontMoveToScene: 1
   autoAttachScripts: 1
   autoConfigureScripts: 1
   debug_dontEnableBounds: 0
@@ -1141,7 +1142,7 @@ GameObject:
   - component: {fileID: 258349918}
   - component: {fileID: 258349917}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: CubeSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1235,8 +1236,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258349915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9906842, y: 1.4006685, z: -1.2319734}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalPosition: {x: -1.521, y: 0.789, z: 0.03999996}
+  m_LocalScale: {x: 0.061435997, y: 0.061435997, z: 0.061435997}
   m_Children:
   - {fileID: 1911857003}
   - {fileID: 542703467}
@@ -6655,8 +6656,8 @@ MonoBehaviour:
   force_newValue: 0
   forceIt: 0
   switchLabel: 
-  unityView__CurrentChannel: C3
-  _currentChannel: C3
+  unityView__CurrentChannel: C4
+  _currentChannel: C4
   needsNetworkSync2: 0
   actualDataModel: {fileID: 0}
   debug_ActualValue: 0
