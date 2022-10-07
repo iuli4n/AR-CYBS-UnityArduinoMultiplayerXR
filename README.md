@@ -53,6 +53,8 @@ The most up to date version of this repository is found at:
 
 # Downloading and Using
 
+* First please ensure you are looking at the latest repository. The latest repository is found at: [[https://github.com/iuli4n/AR-CYBS-UnityArduinoMultiplayerXR](https://github.com/iuli4n/AR-CYBS-UnityArduinoMultiplayerXR)]
+
 * Hardware requirements: This project will run on a Windows PC (in Unity Editor) without any other devices. You don't actually need an Arduino or Hololenses; but it's intended to be run on Windows PC (in Unity Editor, or built for Standalone or UWP) with a connected Arduino, and on multiple Hololens 2 (UWP) devices. (Optional: It has been used on Android mobile and on iOS mobile, in multiplayer mode together with a Windows PC and Hololens users; it can probably be ported on other devices compatible with MRTK)
 
 * Installation: Follow [the documentation](/Documentation/1.1.%20AR%20CYB%20Software%20Information%20and%20Installation.md) for instructions on downloading and using.
