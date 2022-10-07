@@ -1,3 +1,7 @@
+# Latest Branch Of This Repository
+
+The most up to date version of this repository is found at [[https://github.com/iuli4n/AR-CYBS-UnityArduinoMultiplayerXR](https://github.com/iuli4n/AR-CYBS-UnityArduinoMultiplayerXR)]
+
 # Screenshots
 
 <img src="Documentation/Images/2022-10-03-13-16-13-image.png" title="" alt="" width="474">
@@ -42,7 +46,7 @@
 
 # Licenses
 
-* This project contains multiple software libraries, described in [LICENSES.TXT](LICENSES.TXT) file. The Harvard CYBS project is licensed under MIT license. The external libraries are licensed under their respective licenses, and any use of third party code included in this software or third party libraries linked the software is subject to the third party licenses pertaining to such third party code.
+* This project contains multiple software libraries, described in [LICENSE.md](LICENSES.md) file. The Harvard CYBS project is licensed under MIT license. The external libraries are licensed under their respective licenses, and any use of third party code included in this software or third party libraries linked the software is subject to the third party licenses pertaining to such third party code.
 
 # Downloading and Using
 
