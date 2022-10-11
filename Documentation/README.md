@@ -14,15 +14,15 @@
 
 Using the Source Code
 
-* [3.0 Quick Introduction to the Code](./3.0_Quick_Introduction_to_the_Code_.md)
+* [3.0 Quick Introduction to the Code](./3.0_Quick_Introduction_to_the_Code.md)
 
-* [3.1 Data and Channels](./3.1_Data_and_Channels_.md)
+* [3.1 Data and Channels](./3.1_Data_and_Channels.md)
 
 * [3.2 Arduino Connection](./3.2_Arduino_Connection.md)
 
-* [3.3 Effects Menu and Visual Effects](./3.3_Effects_Menu_and_Visual_Effects_.md)
+* [3.3 Effects Menu and Visual Effects](./3.3_Effects_Menu_and_Visual_Effects.md)
 
-* [3.4 Effects Plugins Overview and Tutorial](./3.4_Effects_Plugins_Overview_and_Tutorial_.md)
+* [3.4 Effects Plugins Overview and Tutorial](./3.4_Effects_Plugins_Overview_and_Tutorial.md)
 
 * [3.5 Multiplayer Objects Overview and Tutorial](./3.5_Multiplayer_Objects_Overview_and_Tutorial.md)
 
