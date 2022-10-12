@@ -45,11 +45,11 @@ The most up to date version of this repository is found at:
 
 - **Features for creating presentations:** Save/load scenes you've created, and create step-by-step presentations. Virtual laser pointers and drawings for annotating the scenes.
 
-- Summary of features: see [features list](https://github.com/shankar-r19/CYBS-MArkdown-files/blob/main/1.2.%20AR%20CYB%20Software%20Features.md) 
+- Summary of features: see [features list](/Documentation/1.2_AR_CYB_Software_Features.md) 
 
 # Licenses
 
-* This project contains multiple software libraries, described in [LICENSE.md](LICENSE.md) file. The Harvard CYBS project is licensed under MIT license. The external libraries are licensed under their respective licenses, and any use of third party code included in this software or third party libraries linked the software is subject to the third party licenses pertaining to such third party code.
+* This project contains multiple software libraries, described in [LICENSE.md](LICENSE.md) file. The Harvard CYBS project is licensed under the 3-Clause BSD License. The external libraries are licensed under their respective licenses, and any use of third party code included in this software or third party libraries linked the software is subject to the third party licenses pertaining to such third party code.
 
 # Downloading and Using
 
@@ -57,7 +57,7 @@ The most up to date version of this repository is found at:
 
 * Hardware requirements: This project will run on a computer without any other devices, but it's meant to do multiplayer AR/VR with Arduino connections. You don't actually need an Arduino or Hololenses; but it's intended to be run on Windows PC (in Unity Editor, or built for Standalone or UWP) with a connected Arduino, and on multiple Hololens 2 (UWP) devices. (Optional: It has been used on iOS Unity; and on Android mobile and on iOS mobile, in multiplayer mode together with a Windows PC and Hololens users; it can probably be ported on other devices compatible with MRTK)
 
-* Installation: Follow [the documentation](/Documentation/1.1.%20AR%20CYB%20Software%20Information%20and%20Installation.md) for instructions on downloading and using.
+* Installation: Follow [the documentation](/Documentation/1.1_AR_CYB_Software_Information_and_Installation.md) for instructions on downloading and using.
 
 # 
 
