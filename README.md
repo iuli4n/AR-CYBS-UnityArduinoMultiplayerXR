@@ -49,7 +49,7 @@ The most up to date version of this repository is found at:
 
 # Licenses
 
-* This project contains multiple software libraries, described in [LICENSE.md](LICENSE.md) file. The Harvard CYBS project is licensed under MIT license. The external libraries are licensed under their respective licenses, and any use of third party code included in this software or third party libraries linked the software is subject to the third party licenses pertaining to such third party code.
+* This project contains multiple software libraries, described in [LICENSE.md](LICENSE.md) file. The Harvard CYBS project is licensed under the 3-Clause BSD License. The external libraries are licensed under their respective licenses, and any use of third party code included in this software or third party libraries linked the software is subject to the third party licenses pertaining to such third party code.
 
 # Downloading and Using
 
