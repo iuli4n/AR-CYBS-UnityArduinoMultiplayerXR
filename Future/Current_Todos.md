@@ -1,100 +1,26 @@
 
 
+##########################
+# DOCUMENTATION DONT FORGET
+##########################
+
+* ManualDataChannel: if you want it to be manual and standalone will need atomicdataswitch on it, photontransformview,pv,boxcollider, playercreatedobject
+
+* The project for working on phone - Photon seems to serialize different kinds of objects !? 
+
+
 #################################
-# BEFORE FIRST RELEASE
-#################################
-
-
-
 LATER:
 - close button for effectsmenu
-- effects controller more easily
+- effects controller use more easily
 - saving/loading current scene
 - issue clicking on items with right hand
 - Disable object menu open/close for all users
 
-
-
-**** NEED TO DO
-
-- Make empty scene
-
-- Think about what documentation you need
-	* >> Example docs: Color cube, text cube
-	
-	* Document clearly main features through some main image
-	- Arduino to Unity
-	- Unity to many HL
-	- Data channels
-
-
-**** DOCUMENTATION
-
-* import from Shankar
-* Update documentation for arduino scene: configuration prefab, channels
-
-* Make list of known bugs
-	* add object / image menu not opening/closing/moving
-	* document load scene doesn't save effects
-
-
+- Clicker
 
 
 ====================================
-
-- DO YOU HAVE ARDUINO ?
--> YES
---- In Unity, open the ConfigurationProfile object and set the COM port of your arduino (you can find it through the Arduino IDE)
---- you will control C2 by changing A0 on the arduino
---- Open the Arduino IDE and the arduino project, upload it
-
--> NO
---- open the ConfigurationProfile object and disable Arduino_Enabled 
---- you will control C2 manually through the window
-
-
-- DO YOU HAVE HOLOLENS ?
--> YES
---- build the project for hololens and upload it to your device
--> NO
---- no problem, you can use the Unity editor
-
-
-run the project
-- whenever you change C2 (either through the Arduino knob, or through the panel)
-
-
-
-2. control arduino light with control panel
-(-- you'll need to modify the ConfigurationProfile. You can either make a copy of it and disable the old one, or just change it.)
--- in configuration profile, remove simchannels square from C1
--- run and change data switch controller to C1 and change manually. you should see light change and C2 change
-
-3. control unity object with arduino
-- look at the ColorCube object in scene. it was created by ...- if want to manipulate, add PlayerCreatedObject and tell it to PhotonTransformView scale; and PCO don't attach to scene
-
-
-
-
-IF DONT HAVE ARDUINO
-- you can still run this scene but it'll give some USB errors
-
-- run the hololens sample
-
-
-
-
-
-====================================
-
-
-
-
-
-
-
-
-
 
 
 
@@ -164,15 +90,6 @@ BUGS MAYBE:
 * update the client login so it waits for the pc master [how to check if it connected ?]
 
 
-##########################
-# DOCUMENTATION DONT FORGET
-##########################
-
-* ManualDataChannel: if you want it to be manual and standalone will need atomicdataswitch on it, photontransformview,pv,boxcollider, playercreatedobject
-
-* The project for working on phone - Photon seems to serialize different kinds of objects !? 
-
-
 
 #######################
 # KNOWN BUGS
@@ -181,10 +98,6 @@ BUGS MAYBE:
 * BUG: creating objects from library has error in nearinteractiongrabbable aboutcollider
 
 * BUG: Scene saving doesn't save effects model
-
-* BUG: If your NetworkedSceneRoot object isn't at origin in your scene, then saving/loading prefab will have issues because it saves the whole object (with local coordinates) into a prefab, then it instantiates it in world coordinates.
-
-* CLICKER
 
 
 ###########################

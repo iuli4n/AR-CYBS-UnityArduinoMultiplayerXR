@@ -59,7 +59,18 @@ The most up to date version of this repository is found at:
 
 * Installation: Follow [the documentation](/Documentation/1.1_AR_CYB_Software_Information_and_Installation.md) for instructions on downloading and using.
 
-# 
+
+# Known Bugs
+
+* Clicking with the right hand doesn't work well unless the wrist is angled. Use left hand instead.
+
+* Moving/closing the in-world menus needs to be synchronized across all users
+
+* Collider for drawings has some issues
+
+* Effects set on objects do not transfer if those objects are saved/loaded across scenes
+
+
 
 # Features Under Development
 
