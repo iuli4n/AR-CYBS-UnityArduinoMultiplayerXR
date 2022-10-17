@@ -60,6 +60,13 @@ The most up to date version of this repository is found at:
 * Installation: Follow [the documentation](/Documentation/1.1_AR_CYB_Software_Information_and_Installation.md) for instructions on downloading and using.
 
 
+# Features Under Development
+
+* Websocket connections to other wifi electronics (ex: ESP32)
+
+* Deployment on other platforms: Android, Oculus VR
+
+
 # Known Bugs
 
 * Clicking with the right hand doesn't work well unless the wrist is angled. Use left hand instead.
@@ -70,10 +77,3 @@ The most up to date version of this repository is found at:
 
 * Effects set on objects do not transfer if those objects are saved/loaded across scenes
 
-
-
-# Features Under Development
-
-* Websocket connections to other wifi electronics (ex: ESP32)
-
-* Deployment on other platforms: Android, Oculus VR
