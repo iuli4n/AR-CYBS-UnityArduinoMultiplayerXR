@@ -55,7 +55,15 @@ The most up to date version of this repository is found at:
 
 * First please ensure you are looking at the latest repository. The latest repository is found at: [[https://github.com/iuli4n/AR-CYBS-UnityArduinoMultiplayerXR](https://github.com/iuli4n/AR-CYBS-UnityArduinoMultiplayerXR)]
 
-* Hardware requirements: This project will run on a computer without any other devices, but it's meant to do multiplayer AR/VR with Arduino connections. You don't actually need an Arduino or Hololenses; but it's intended to be run on Windows PC (in Unity Editor, or built for Standalone or UWP) with a connected Arduino, and on multiple Hololens 2 (UWP) devices. (Optional: It has been used on iOS Unity; and on Android mobile and on iOS mobile, in multiplayer mode together with a Windows PC and Hololens users; it can probably be ported on other devices compatible with MRTK)
+* Hardware requirements: 
+    * This project is meant to run on Windows computer with multiplayer AR/VR with Arduino connections. 
+    * You don't actually need an Arduino or Hololenses
+    * (Optional: It has been used on iOS Unity; and on Android mobile and on iOS mobile, in multiplayer mode together with a Windows PC and Hololens users; it can probably be ported on other devices compatible with MRTK)
+
+* Software requirements  
+    * **This project is built for Unity LTS 2020.3.35f1** get it from: [https://unity3d.com/unity/qa/lts-releases](https://unity3d.com/unity/qa/lts-releases) 
+    * If working with Arduino: download the [Arduino IDE](https://www.arduino.cc/en/software)
+    * If working with Hololens2: Get tools for deploying to Hololens 2 (*you will not need the Emulator, but you will definitely need Unity and Visual Studio configured properly) [https://docs.microsoft.com/en-us/windows/mixed-reality/develop/install-the-tools](https://docs.microsoft.com/en-us/windows/mixed-reality/develop/install-the-tools) 
 
 * Installation: Follow [the documentation](/Documentation/1.1_AR_CYB_Software_Information_and_Installation.md) for instructions on downloading and using.
 
