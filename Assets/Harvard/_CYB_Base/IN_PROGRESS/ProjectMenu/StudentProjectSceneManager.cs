@@ -41,7 +41,7 @@ public class StudentProjectSceneManager : MonoBehaviour
     public GameObject[] pc_prefabScenes;
 
     string CONST_studentProjectsFolderName = "StudentProjects";
-    string resourcesRootFolder = "Assets/Iulian_Temp/Resources";
+    string resourcesRootFolder = "Assets/Iulian_Temp/Resources"; // I'm sorry to whoever finds that this folder is hardcoded !!! :(((
 
     // list of student project paths on PC
     DirectoryInfo[] projectFolders;
@@ -59,6 +59,7 @@ public class StudentProjectSceneManager : MonoBehaviour
     void Start()
     {
 #if UNITY_EDITOR
+        // I'm sorry to whoever finds that this folder is hardcoded !!! :(((
         DirectoryInfo levelDirectoryPath = new DirectoryInfo(Application.dataPath + "\\Iulian_Temp\\Resources\\StudentProjects");
         projectFolders = levelDirectoryPath.GetDirectories();
 #endif
